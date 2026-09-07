@@ -234,7 +234,8 @@ tr:nth-child(odd) td { background: rgba(0, 255, 0, 0.03); }
 }
 
 .construction-gif {
-  max-width: 200px;
+  max-width: 100%;
+  height: auto;
   border: 2px outset var(--border-color);
 }
 

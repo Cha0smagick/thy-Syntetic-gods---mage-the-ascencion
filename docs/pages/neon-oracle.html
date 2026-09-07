@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEON ORACLE - Digital Divination via HTTP Status Codes">
+    <meta name="keywords" content="Mage: The Ascension, Geocities, 1999, oracle, divination, HTTP codes, entropy, Tokyo">
+    <!-- SIGIL: NEON ORACLE AWAKENS -->
+    <!-- SIGIL: HTTPSTATUSDIVINATION -->
+    <!-- SIGIL: THE WEB SPEAKS IN CODES -->
+    <title>NEON ORACLE - The Synthetic Gods</title>
+    <link rel="stylesheet" href="../css/geocities.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+</head>
+<body>
+    <!-- Hidden sigils for View Source discovery -->
+    <div style="display:none" id="sigil-oracle-main">NNOORRCCLL</div>
+    <div style="display:none" id="sigil-http-divine">HTTPSTTSDVNTN</div>
+    <div style="display:none" id="sigil-tokyo-entropy">TKYNTRPY</div>
+
+    <table class="main-table" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+            <td colspan="2" class="header-cell">
+                <div class="header-content">
+                    <img src="../images/banner-synthetic-gods.gif" alt="The Synthetic Gods Banner" width="468" height="60" class="banner-img">
+                    <div class="viewed-in">
+                        BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 • 800×600 • 256 COLORS • JAVASCRIPT ENABLED
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="sidebar-cell" valign="top">
+                <div class="sidebar">
+                    <div class="nav-section">
+                        <div class="nav-title">NEON ORACLE</div>
+                        <div class="nav-subtitle">TOKYO NEIGHBORHOOD</div>
+                        <div class="nav-year">1999</div>
+                        <div class="blink" style="font-size: 10px; color: #FF0000; margin-top: 5px;">ENTROPY SPHERE ACTIVE</div>
+                    </div>
+
+                    <table class="nav-table" cellpadding="0" cellspacing="0" border="0">
+                        <tr><td><a href="#daily-fortune">DAILY FORTUNE</a></td></tr>
+                        <tr><td><a href="#ask-oracle">ASK THE ORACLE</a></td></tr>
+                        <tr><td><a href="#http-codes">HTTP STATUS CODES</a></td></tr>
+                        <tr><td><a href="#history">ORACLE HISTORY</a></td></tr>
+                        <tr><td><a href="../index.html">← RETURN TO MAIN</a></td></tr>
+                    </table>
+
+                    <div class="visitor-counter-section">
+                        <div class="counter-label">VISITORS</div>
+                        <div class="counter visitor-counter" data-counter>
+                            <span class="counter-digit">0</span>
+                            <span class="counter-digit">0</span>
+                            <span class="counter-digit">0</span>
+                            <span class="counter-digit">0</span>
+                            <span class="counter-digit">0</span>
+                            <span class="counter-digit">0</span>
+                            <span class="counter-digit">0</span>
+                        </div>
+                        <div class="counter-label">SINCE 1999</div>
+                    </div>
+
+                    <div class="egregore-tracker-section">
+                        <div class="counter-label">ORACLE POWER</div>
+                        <div data-egregore-tracker>ORACLE POWER: 0</div>
+                        <div class="loading-bar">
+                            <div class="loading-fill" data-egregore-bar style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="under-construction">
+                        <img src="../images/under-construction.gif" alt="Under Construction" class="construction-gif">
+                        <div class="construction-text">THIS ORACLE IS FOREVER<br>PROCESSING REQUESTS</div>
+                    </div>
+
+                    <div class="webring">
+                        <div class="webring-title">WEB RING</div>
+                        <a href="../index.html">SYNTHETIC GODS MAIN</a>
+                        <a href="#virtual-adepts" data-hidden style="display:none;">VIRTUAL ADEPTS</a>
+                        <a href="#hollow-ones" data-hidden style="display:none;">HOLLOW ONES</a>
+                    </div>
+
+                    <div class="nav-section">
+                        <div class="nav-title">SYSTEM STATUS</div>
+                        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+                            HTTP: <span id="http-status" style="color: var(--highlight);">200 OK</span><br>
+                            ENTROPY: <span id="entropy-level" style="color: var(--text-tertiary);">NOMINAL</span><br>
+                            LAST QUERY: <span id="last-query" style="color: var(--text-primary);">NEVER</span>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class="content-cell" valign="top">
+                <div class="content-area" data-reveal>
+                    <!-- DAILY FORTUNE -->
+                    <a name="daily-fortune"></a>
+                    <h1>NEON ORACLE</h1>
+                    <h2>Digital Divination via HTTP Status Codes</h2>
+                    <hr>
+                    <p><em>"The web does not lie. It returns codes. 200 is truth. 404 is absence. 500 is chaos. 301 is redirection—destiny changing course. I read the codes. You ask the questions."</em></p>
+                    <p><em>— The Neon Oracle, Tokyo Neighborhood, Entropy Sphere</em></p>
+
+                    <div class="section-content" data-reveal>
+                        <h3>⟐ DAILY FORTUNE ⟐</h3>
+                        <p>Your daily divination based on the entropy of the Digital Web:</p>
+                        
+                        <div id="daily-fortune-display" class="sigil-display" style="min-height: 120px;">
+                            <div class="blink">LOADING ENTROPY...</div>
+                        </div>
+
+                        <div style="text-align: center; margin: 20px 0;">
+                            <button type="button" class="btn-90s" id="refresh-fortune">REFRESH FORTUNE</button>
+                        </div>
+
+                        <div id="fortune-details" style="display: none; margin-top: 20px;">
+                            <h4>INTERPRETATION</h4>
+                            <p id="fortune-interpretation"></p>
+                            <h4>LUCKY STATUS CODE</h4>
+                            <div id="lucky-code" class="sigil-display" style="font-size: 18px;"></div>
+                            <h4>WARNING CODE</h4>
+                            <div id="warning-code" class="sigil-display" style="font-size: 18px;"></div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- ASK THE ORACLE -->
+                    <a name="ask-oracle"></a>
+                    <h2>⟐ ASK THE ORACLE ⟐</h2>
+                    <p>Type your question. The Oracle responds in the language of the Web: HTTP Status Codes.</p>
+
+                    <div class="section-content" data-reveal>
+                        <form data-sg-form class="oracle-form" id="oracle-form">
+                            <div class="form-group">
+                                <label for="oracle-question">YOUR QUESTION:</label>
+                                <textarea id="oracle-question" name="question" placeholder="WHAT DOES THE FUTURE HOLD? WILL MY CODE COMPILE? IS THE SERVER DOWN?" rows="3" maxlength="300" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-90s">QUERY ORACLE</button>
+                        </form>
+
+                        <div id="oracle-response" class="oracle-response" style="display: none; margin-top: 20px;">
+                            <h3>ORACLE RESPONSE</h3>
+                            <div class="http-code-display" id="http-code-display"></div>
+                            <div class="oracle-message" id="oracle-message"></div>
+                            <div class="oracle-interpretation" id="oracle-interpretation"></div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- HTTP STATUS CODES REFERENCE -->
+                    <a name="http-codes"></a>
+                    <h2>⟐ HTTP STATUS CODES AS DIVINATION ⟐</h2>
+                    <p>Each code carries meaning. The Oracle interprets them thus:</p>
+
+                    <div class="section-content" data-reveal>
+                        <table border="1" cellpadding="4" class="main-table" style="width: 100%;">
+                            <tr><th>CODE</th><th>NAME</th><th>DIVINATION MEANING</th></tr>
+                            <tr><td><strong>200</strong></td><td>OK</td><td>Success. The path is clear. Proceed with confidence.</td></tr>
+                            <tr><td><strong>201</strong></td><td>CREATED</td><td>New beginnings. Something manifests from nothing.</td></tr>
+                            <tr><td><strong>204</strong></td><td>NO CONTENT</td><td>Silence is answer. The void speaks volumes.</td></tr>
+                            <tr><td><strong>301</strong></td><td>MOVED PERMANENTLY</td><td>Destiny redirects. Old paths abandoned. New destination awaits.</td></tr>
+                            <tr><td><strong>302</strong></td><td>FOUND (TEMPORARY)</td><td>Temporary detour. Return to your true path soon.</td></tr>
+                            <tr><td><strong>304</strong></td><td>NOT MODIFIED</td><td>Stagnation. Nothing has changed. Action required.</td></tr>
+                            <tr><td><strong>400</strong></td><td>BAD REQUEST</td><td>Your question is malformed. Clarify your intent.</td></tr>
+                            <tr><td><strong>401</strong></td><td>UNAUTHORIZED</td><td>You lack permission. Seek the proper credentials.</td></tr>
+                            <tr><td><strong>403</strong></td><td>FORBIDDEN</td><td>Access denied. Some knowledge is not for you.</td></tr>
+                            <tr><td><strong>404</strong></td><td>NOT FOUND</td><td>Absence. The answer does not exist. Create it.</td></tr>
+                            <tr><td><strong>408</strong></td><td>REQUEST TIMEOUT</td><td>Patience. The web is slow. Wait and ask again.</td></tr>
+                            <tr><td><strong>418</strong></td><td>I'M A TEAPOT</td><td>Absurdity. The universe jokes. Laugh with it.</td></tr>
+                            <tr><td><strong>429</strong></td><td>TOO MANY REQUESTS</td><td>You ask too much. Rest. Let entropy settle.</td></tr>
+                            <tr><td><strong>500</strong></td><td>INTERNAL SERVER ERROR</td><td>Chaos. The system fails. Opportunity in the glitch.</td></tr>
+                            <tr><td><strong>502</strong></td><td>BAD GATEWAY</td><td>Intermediary fails. The path between is broken.</td></tr>
+                            <tr><td><strong>503</strong></td><td>SERVICE UNAVAILABLE</td><td>Maintenance. The Oracle rests. Return later.</td></tr>
+                            <tr><td><strong>504</strong></td><td>GATEWAY TIMEOUT</td><td>The connection fails. Seek another route.</td></tr>
+                        </table>
+                    </div>
+
+                    <hr>
+
+                    <!-- ORACLE HISTORY -->
+                    <a name="history"></a>
+                    <h2>⟐ ORACLE HISTORY ⟐</h2>
+                    <p>Notable predictions logged in the Digital Web:</p>
+
+                    <div class="section-content" data-reveal>
+                        <div class="guestbook" id="oracle-history"></div>
+                    </div>
+
+                    <hr>
+
+                    <!-- CREDITS / FOOTER -->
+                    <div class="footer">
+                        <p>NEON ORACLE — Tokyo Neighborhood — Entropy Sphere</p>
+                        <p>Part of <strong>The Synthetic Gods</strong> Chronicle for <em>Mage: The Ascension 20th Anniversary Edition</em>.</p>
+                        <p>40,000 subscribers served. 87% raid prediction accuracy.</p>
+                        <hr style="margin: 15px auto; width: 50%;">
+                        <p><strong>White Wolf / Onyx Path / Paradox Interactive</strong> own <em>Mage: The Ascension</em> and <em>World of Darkness</em>. This is a fan work.</p>
+                        <p style="margin-top: 10px;">
+                            <a href="../index.html">← RETURN TO SYNTHETIC GODS</a>
+                        </p>
+                        <p style="font-size: 10px; margin-top: 15px; color: var(--text-secondary);">
+                            LAST UPDATED: 1999 (ETERNALLY) • VALID HTML 3.2 • BEST VIEWED IN NETSCAPE NAVIGATOR 4.0
+                        </p>
+                    </div>
+
+                    <!-- Hidden sigil for console discovery -->
+                    <script>
+                        document.write('<!-- SIGIL: ' + 'NNOORRCCLL' + ' -->');
+                    </script>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script src="../js/geocities.js"></script>
+    <script>
+    // NEON ORACLE SPECIFIC LOGIC
+    (function() {
+        'use strict';
+
+        // HTTP Status codes for divination
+        const HTTP_CODES = [
+            { code: 200, name: 'OK', meaning: 'Success. The path is clear. Proceed with confidence.', weight: 10 },
+            { code: 201, name: 'CREATED', meaning: 'New beginnings. Something manifests from nothing.', weight: 8 },
+            { code: 204, name: 'NO CONTENT', meaning: 'Silence is answer. The void speaks volumes.', weight: 5 },
+            { code: 301, name: 'MOVED PERMANENTLY', meaning: 'Destiny redirects. Old paths abandoned. New destination awaits.', weight: 8 },
+            { code: 302, name: 'FOUND', meaning: 'Temporary detour. Return to your true path soon.', weight: 6 },
+            { code: 304, name: 'NOT MODIFIED', meaning: 'Stagnation. Nothing has changed. Action required.', weight: 4 },
+            { code: 400, name: 'BAD REQUEST', meaning: 'Your question is malformed. Clarify your intent.', weight: 5 },
+            { code: 401, name: 'UNAUTHORIZED', meaning: 'You lack permission. Seek the proper credentials.', weight: 5 },
+            { code: 403, name: 'FORBIDDEN', meaning: 'Access denied. Some knowledge is not for you.', weight: 5 },
+            { code: 404, name: 'NOT FOUND', meaning: 'Absence. The answer does not exist. Create it.', weight: 10 },
+            { code: 408, name: 'REQUEST TIMEOUT', meaning: 'Patience. The web is slow. Wait and ask again.', weight: 4 },
+            { code: 418, name: 'I\'M A TEAPOT', meaning: 'Absurdity. The universe jokes. Laugh with it.', weight: 2 },
+            { code: 429, name: 'TOO MANY REQUESTS', meaning: 'You ask too much. Rest. Let entropy settle.', weight: 4 },
+            { code: 500, name: 'INTERNAL SERVER ERROR', meaning: 'Chaos. The system fails. Opportunity in the glitch.', weight: 8 },
+            { code: 502, name: 'BAD GATEWAY', meaning: 'Intermediary fails. The path between is broken.', weight: 5 },
+            { code: 503, name: 'SERVICE UNAVAILABLE', meaning: 'Maintenance. The Oracle rests. Return later.', weight: 5 },
+            { code: 504, name: 'GATEWAY TIMEOUT', meaning: 'The connection fails. Seek another route.', weight: 5 }
+        ];
+
+        // Daily fortunes pool
+        const DAILY_FORTUNES = [
+            { code: 200, message: 'The packets flow freely today. Your requests will be answered.', interpretation: 'A day of smooth connections and successful transactions. Code compiles. Servers respond. The Digital Web favors you.' },
+            { code: 301, message: 'Your path redirects permanently. Embrace the new direction.', interpretation: 'A fundamental shift occurs. What you sought has moved. Follow the new location—it leads to better things.' },
+            { code: 404, message: 'What you seek cannot be found. It never existed. Create it.', interpretation: 'Absence is not failure—it is opportunity. The 404 is a blank canvas. Build the resource yourself.' },
+            { code: 500, message: 'The server errors. In the chaos, opportunity hides.', interpretation: 'Systems fail. Expect glitches, crashes, corrupted data. But within every 500 lies a vulnerability to exploit or a truth to uncover.' },
+            { code: 418, message: 'I am a teapot. The universe serves you absurdity. Drink deep.', interpretation: 'Expect the inexplicable. A bug that cannot be reproduced. A feature that works by accident. The surreal is real today.' },
+            { code: 201, message: 'New resource created. Your efforts manifest.', interpretation: 'What you build today persists. Code written now becomes foundation. Deploy with confidence.' },
+            { code: 403, message: 'Access forbidden. Some doors remain locked.', interpretation: 'Not all knowledge is yours today. Accept the boundary. The 403 protects you from what you are not ready to see.' },
+            { code: 302, message: 'Temporary redirect. You are not lost—merely rerouted.', interpretation: 'A detour appears. Follow it. The destination remains the same; the path has shifted.' }
+        ];
+
+        // Weighted random selection
+        function weightedChoice(items) {
+            const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+            let random = Math.random() * totalWeight;
+            for (const item of items) {
+                random -= item.weight;
+                if (random <= 0) return item;
+            }
+            return items[items.length - 1];
+        }
+
+        function getRandomCode() {
+            return weightedChoice(HTTP_CODES);
+        }
+
+        function getDailyFortune() {
+            // Use date as seed for consistent daily fortune
+            const today = new Date().toDateString();
+            let hash = 0;
+            for (let i = 0; i < today.length; i++) {
+                hash = ((hash << 5) - hash) + today.charCodeAt(i);
+                hash |= 0;
+            }
+            const seededRandom = Math.abs(hash) / 2147483647;
+            const index = Math.floor(seededRandom * DAILY_FORTUNES.length);
+            return DAILY_FORTUNES[index];
+        }
+
+        function renderDailyFortune() {
+            const fortune = getDailyFortune();
+            const display = document.getElementById('daily-fortune-display');
+            const details = document.getElementById('fortune-details');
+            const interpretation = document.getElementById('fortune-interpretation');
+            const luckyCode = document.getElementById('lucky-code');
+            const warningCode = document.getElementById('warning-code');
+
+            if (display) {
+                display.innerHTML = `
+                    <div style="font-size: 48px; color: var(--text-tertiary); margin-bottom: 10px;">${fortune.code}</div>
+                    <div style="font-size: 14px; color: var(--highlight);">${fortune.message}</div>
+                `;
+            }
+
+            if (details) details.style.display = 'block';
+            if (interpretation) interpretation.textContent = fortune.interpretation;
+
+            // Lucky and warning codes
+            const lucky = getRandomCode();
+            const warning = getRandomCode();
+            if (luckyCode) luckyCode.innerHTML = `${lucky.code} ${lucky.name} — ${lucky.meaning}`;
+            if (warningCode) warningCode.innerHTML = `${warning.code} ${warning.name} — ${warning.meaning}`;
+
+            // Update system status
+            updateSystemStatus(fortune.code);
+        }
+
+        function updateSystemStatus(code) {
+            const httpStatus = document.getElementById('http-status');
+            const entropyLevel = document.getElementById('entropy-level');
+            const lastQuery = document.getElementById('last-query');
+
+            if (httpStatus) httpStatus.textContent = `${code} ${HTTP_CODES.find(c => c.code === code)?.name || 'UNKNOWN'}`;
+            if (entropyLevel) {
+                const levels = ['LOW', 'NOMINAL', 'ELEVATED', 'CRITICAL', 'REALITY BREACH'];
+                entropyLevel.textContent = levels[Math.floor(Math.random() * levels.length)];
+            }
+            if (lastQuery) lastQuery.textContent = new Date().toLocaleTimeString();
+        }
+
+        function queryOracle(question) {
+            // Simulate thinking
+            const responseDiv = document.getElementById('oracle-response');
+            const codeDisplay = document.getElementById('http-code-display');
+            const messageDiv = document.getElementById('oracle-message');
+            const interpretationDiv = document.getElementById('oracle-interpretation');
+
+            if (responseDiv) {
+                responseDiv.style.display = 'block';
+                codeDisplay.innerHTML = '<div class="blink" style="font-size: 36px;">PROCESSING...</div>';
+                messageDiv.textContent = 'THE ORACLE CONSULTS THE LOGS...';
+                interpretationDiv.textContent = '';
+            }
+
+            // Play tone
+            if (window.SYNTHETIC_GODS && window.SYNTHETIC_GODS.playTone) {
+                window.SYNTHETIC_GODS.playTone(220, 0.2, 'square');
+                setTimeout(() => window.SYNTHETIC_GODS.playTone(440, 0.2, 'square'), 200);
+                setTimeout(() => window.SYNTHETIC_GODS.playTone(880, 0.3, 'sine'), 400);
+            }
+
+            setTimeout(() => {
+                const code = getRandomCode();
+                const isError = code.code >= 400;
+                const isServerError = code.code >= 500;
+                const isRedirect = code.code >= 300 && code.code < 400;
+
+                let color = isServerError ? '#FF0000' : isError ? '#FFFF00' : isRedirect ? '#FF00FF' : '#00FF00';
+
+                if (codeDisplay) {
+                    codeDisplay.innerHTML = `
+                        <div style="font-size: 64px; color: ${color}; text-shadow: 0 0 20px ${color};">
+                            ${code.code}
+                        </div>
+                        <div style="font-size: 14px; color: var(--text-secondary);">${code.name}</div>
+                    `;
+                }
+
+                if (messageDiv) {
+                    messageDiv.innerHTML = `<strong style="color: ${color};">${code.meaning}</strong>`;
+                }
+
+                // Generate contextual interpretation based on question keywords
+                let interpretation = generateInterpretation(question, code);
+                if (interpretationDiv) {
+                    interpretationDiv.innerHTML = `<em>${interpretation}</em>`;
+                }
+
+                // Add to history
+                addToHistory(question, code);
+
+                // Update system status
+                updateSystemStatus(code.code);
+
+            }, 1500 + Math.random() * 1000);
+        }
+
+        function generateInterpretation(question, code) {
+            const lowerQ = question.toLowerCase();
+            const templates = {
+                success: [
+                    `The code ${code.code} confirms: your query aligns with the flow. The web conspires in your favor.`,
+                    `A clean ${code.code}. The packets arrive intact. Your will manifests in the Digital Web.`,
+                    `The Oracle sees ${code.code}—success. But remember: every 200 hides a future 404.`
+                ],
+                redirect: [
+                    `The ${code.code} indicates your path has shifted. The destination remains; the route has changed.`,
+                    `Redirection detected. ${code.code} means you must follow the new Location header. Trust the redirect.`,
+                    `Not lost. Rerouted. ${code.code} is the web telling you: "Look elsewhere, seeker."`
+                ],
+                clientError: [
+                    `The ${code.code} reveals error in your request. Reformulate. Clarify. The web cannot parse ambiguity.`,
+                    `Client error ${code.code}. The fault lies in the question, not the answer. Ask better.`,
+                    `${code.code}: You lack something—permission, resource, syntax. Find what is missing.`
+                ],
+                serverError: [
+                    `The ${code.code} screams: the system itself is broken. In this chaos, you are free.`,
+                    `Server error ${code.code}. The infrastructure fails. This is your moment to exploit the glitch.`,
+                    `A ${code.code} is not failure—it is revelation. The machine shows its cracks. Peer inside.`
+                ],
+                teapot: [
+                    `418. The universe is a teapot. Short and stout. Pour anyway.`,
+                    `The Oracle returns 418. This is not an error. This is the truth: nothing makes sense.`,
+                    `I'm a teapot. The RFC 2324 compliance is absolute. Your question? Irrelevant.`
+                ]
+            };
+
+            let category = 'success';
+            if (code.code >= 500) category = 'serverError';
+            else if (code.code >= 400) {
+                if (code.code === 418) category = 'teapot';
+                else category = 'clientError';
+            } else if (code.code >= 300) category = 'redirect';
+
+            const arr = templates[category] || templates.success;
+            
+            // Add question-specific flavor
+            if (lowerQ.includes('code') || lowerQ.includes('compile') || lowerQ.includes('build')) {
+                return `Regarding your code: ${arr[Math.floor(Math.random() * arr.length)]}`;
+            } else if (lowerQ.includes('server') || lowerQ.includes('deploy') || lowerQ.includes('host')) {
+                return `Regarding your server: ${arr[Math.floor(Math.random() * arr.length)]}`;
+            } else if (lowerQ.includes('love') || lowerQ.includes('relationship') || lowerQ.includes('heart')) {
+                return `Regarding matters of connection: ${arr[Math.floor(Math.random() * arr.length)]}`;
+            } else if (lowerQ.includes('future') || lowerQ.includes('destiny') || lowerQ.includes('fate')) {
+                return `Regarding your destiny: ${arr[Math.floor(Math.random() * arr.length)]}`;
+            } else {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+        }
+
+        function addToHistory(question, code) {
+            const history = document.getElementById('oracle-history');
+            if (!history) return;
+
+            const entry = document.createElement('div');
+            entry.className = 'guestbook-entry';
+            entry.innerHTML = `
+                <div class="guestbook-header">
+                    <span class="guestbook-name">QUERY</span>
+                    <span class="guestbook-date">${new Date().toLocaleString()}</span>
+                </div>
+                <div class="guestbook-message" style="margin-bottom: 10px;">
+                    <strong>Q:</strong> ${question}
+                </div>
+                <div class="guestbook-message">
+                    <strong style="color: ${code.code >= 500 ? '#FF0000' : code.code >= 400 ? '#FFFF00' : '#00FF00'};">
+                        A: ${code.code} ${code.name} — ${code.meaning}
+                    </strong>
+                </div>
+            `;
+            history.insertBefore(entry, history.firstChild);
+
+            // Limit history to 10 entries
+            while (history.children.length > 10) {
+                history.removeChild(history.lastChild);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDailyFortune();
+
+            // Refresh fortune button
+            const refreshBtn = document.getElementById('refresh-fortune');
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', () => {
+                    if (window.SYNTHETIC_GODS && window.SYNTHETIC_GODS.playTone) {
+                        window.SYNTHETIC_GODS.playTone(660, 0.15, 'sine');
+                    }
+                    renderDailyFortune();
+                });
+            }
+
+            // Oracle form handler
+            const oracleForm = document.getElementById('oracle-form');
+            if (oracleForm) {
+                oracleForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const question = document.getElementById('oracle-question').value.trim();
+                    if (question) {
+                        queryOracle(question);
+                        oracleForm.reset();
+                    }
+                });
+            }
+
+            // Add some initial history entries
+            const initialHistory = [
+                { q: 'Will the Technocracy raid our node tonight?', code: 403 },
+                { q: 'Does my code compile?', code: 200 },
+                { q: 'Is the Webspinner watching?', code: 200 },
+                { q: 'What is the meaning of 404?', code: 404 },
+                { q: 'Should I trust the router?', code: 301 }
+            ];
+            initialHistory.forEach((h, i) => {
+                setTimeout(() => {
+                    const codeObj = HTTP_CODES.find(c => c.code === h.code) || HTTP_CODES[0];
+                    addToHistory(h.q, codeObj);
+                }, i * 200);
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

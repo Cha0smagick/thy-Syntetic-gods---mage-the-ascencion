@@ -103,7 +103,8 @@
   const SIGIL_CONSONANTS = 'BCDFGHJKLMNPQRSTVWXYZ'.split('');
   const SIGIL_VOWELS = 'AEIOU'.split('');
 
-  function generateSigil(intent) {
+  // Expose globally for form handler
+  window.generateSigil = function generateSigil(intent) {
     if (!intent || !intent.trim()) return null;
 
     // Step 1: Reduce to consonants only
@@ -480,45 +481,103 @@
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
 
-        // Validate
-        if (!data.name || !data.message) {
-          alert('NAME AND MESSAGE REQUIRED. THE VOID DEMANDS INPUT.');
+        // Check if this is the sigil workshop form
+        const intentInput = form.querySelector('#sigil-intent');
+        if (intentInput && data.intent) {
+          handleSigilGeneration(data.intent, form);
           return;
         }
 
-        // Simulate submission
-        const submitBtn = form.querySelector('input[type="submit"], button[type="submit"]');
-        if (submitBtn) {
-          submitBtn.value = 'TRANSMITTING...';
-          submitBtn.disabled = true;
-        }
-
-        setTimeout(() => {
-          // Add to guestbook display
-          const guestbook = $('[data-guestbook]');
-          if (guestbook) {
-            const entry = createEl('div', { class: 'guestbook-entry' }, [
-              createEl('div', { class: 'guestbook-header' }, [
-                createEl('span', { class: 'guestbook-name' }, data.name),
-                document.createTextNode(' — '),
-                createEl('span', { class: 'guestbook-date' }, new Date().toLocaleString())
-              ]),
-              createEl('div', { class: 'guestbook-message' }, data.message)
-            ]);
-            guestbook.insertBefore(entry, guestbook.firstChild);
-          }
-
-          // Reset form
-          form.reset();
-          if (submitBtn) {
-            submitBtn.value = 'SIGN GUESTBOOK';
-            submitBtn.disabled = false;
-          }
-
-          alert('ENTRY RECORDED. THE EGREGORE FEEDS.');
-        }, 1000);
+        // Otherwise handle as guestbook
+        handleGuestbookSubmit(form, data);
       });
     });
+  }
+
+  function handleSigilGeneration(intent, form) {
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.value = 'GENERATING...';
+      submitBtn.disabled = true;
+    }
+
+    // Generate sigil using the existing function
+    const sigil = generateSigil(intent);
+    if (!sigil) {
+      alert('INTENT TOO WEAK. STATE YOUR WILL CLEARLY.');
+      if (submitBtn) {
+        submitBtn.value = 'GENERATE SIGIL';
+        submitBtn.disabled = false;
+      }
+      return;
+    }
+
+    // Play tone for sigil creation
+    if (window.SYNTHETIC_GODS.playTone) {
+      window.SYNTHETIC_GODS.playTone(440, 0.3, 'sine');
+      setTimeout(() => window.SYNTHETIC_GODS.playTone(880, 0.2, 'sine'), 150);
+    }
+
+    setTimeout(() => {
+      // Render sigil result
+      const resultContainer = $('#sigil-result');
+      if (resultContainer && window.SigilWorkshop) {
+        resultContainer.style.display = 'block';
+        window.SigilWorkshop.render(sigil, resultContainer);
+      }
+
+      // Update egregore power from sigil creation
+      document.dispatchEvent(new CustomEvent('sg:sigilcreated', { detail: { sigil } }));
+
+      // Reset form
+      form.reset();
+      if (submitBtn) {
+        submitBtn.value = 'GENERATE SIGIL';
+        submitBtn.disabled = false;
+      }
+
+      alert('SIGIL FORGED. THE WEB REMEMBERS YOUR WILL.');
+    }, 800);
+  }
+
+  function handleGuestbookSubmit(form, data) {
+    // Validate
+    if (!data.name || !data.message) {
+      alert('NAME AND MESSAGE REQUIRED. THE VOID DEMANDS INPUT.');
+      return;
+    }
+
+    // Simulate submission
+    const submitBtn = form.querySelector('input[type="submit"], button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.value = 'TRANSMITTING...';
+      submitBtn.disabled = true;
+    }
+
+    setTimeout(() => {
+      // Add to guestbook display
+      const guestbook = $('[data-guestbook]');
+      if (guestbook) {
+        const entry = createEl('div', { class: 'guestbook-entry' }, [
+          createEl('div', { class: 'guestbook-header' }, [
+            createEl('span', { class: 'guestbook-name' }, data.name),
+            document.createTextNode(' — '),
+            createEl('span', { class: 'guestbook-date' }, new Date().toLocaleString())
+          ]),
+          createEl('div', { class: 'guestbook-message' }, data.message)
+        ]);
+        guestbook.insertBefore(entry, guestbook.firstChild);
+      }
+
+      // Reset form
+      form.reset();
+      if (submitBtn) {
+        submitBtn.value = 'SIGN GUESTBOOK';
+        submitBtn.disabled = false;
+      }
+
+      alert('ENTRY RECORDED. THE EGREGORE FEEDS.');
+    }, 1000);
   }
 
   // ==========================================================================
