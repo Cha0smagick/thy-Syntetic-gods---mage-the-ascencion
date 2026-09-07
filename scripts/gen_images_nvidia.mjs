@@ -12,8 +12,8 @@ import https from 'https';
 // Configuration
 const API_ENDPOINT = 'https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.2-klein-4b';
 const PROJECT_ROOT = process.cwd();
-const PROMPTS_FILE = path.join(PROJECT_ROOT, 'public', 'image_prompts.json');
-const OUTPUT_DIR = path.join(PROJECT_ROOT, 'public', 'images');
+const PROMPTS_FILE = path.join(PROJECT_ROOT, 'docs', 'image_prompts.json');
+const OUTPUT_DIR = path.join(PROJECT_ROOT, 'docs', 'images');
 const ENV_FILE = path.join('D:', 'Videos', 'Crear_videos', '.env');
 
 // Load API key from .env
