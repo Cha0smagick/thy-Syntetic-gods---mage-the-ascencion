@@ -660,57 +660,6 @@ node scripts/gen_images_nvidia.mjs synthetic-gods --resume
 
 ---
 
-## 🛡️ SECURITY INCIDENT LOG — THE NODE_MODULES FIASCO
-
-### What Happened
-
-**Commit `e4151566`** accidentally committed the entire `node_modules/` folder (47,000+ files). Inside was `node_modules/request/tests/test-s3.js` containing **real AWS credentials** from the `request` package's test suite:
-
-```javascript
-// EXPOSED IN COMMIT e4151566
-{ 
-  key: 'AKIAI6KIQRRVMGK3WK5Q',
-  secret: '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'
-}
-```
-
-### GitHub Alert Triggered
-
-> "Anyone with read access can view exposed secrets. Consider rotating and revoking each valid secret."
-
-### Resolution (Commit `63ec8c89`)
-
-```bash
-# 1. Remove from tracking (keep locally)
-git rm -r --cached node_modules
-
-# 2. Add .gitignore
-echo "node_modules/" > .gitignore
-
-# 3. Commit + Force Push (rewrites history)
-git commit -m "chore: remove node_modules from tracking, add .gitignore"
-git push origin main --force
-```
-
-### Result
-
-- ✅ `node_modules/` removed from git history
-- ✅ `.gitignore` protects future commits
-- ✅ Force push completed: `e4151566..63ec8c89`
-- ✅ **Verify:** `git ls-files node_modules/request/tests/test-s3.js` → no output
-
-### Required Action (You Must Do)
-
-1. **Go to AWS Console → IAM → Access Keys**
-2. **Find key `AKIAI6KIQRRVMGK3WK5Q`**
-3. **Click "Make Inactive" → "Delete"**
-4. **Create new key if needed**
-5. **Check CloudTrail** for any usage between commit and revocation
-
-> **Note:** These keys belonged to the `request` package maintainers, not you. But they're **real AWS keys** that GitHub correctly flagged.
-
----
-
 ## 🛠️ DEVELOPMENT & DEPLOYMENT
 
 ### Local Development
