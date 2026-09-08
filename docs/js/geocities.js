@@ -11,13 +11,25 @@
   // GLOBAL STATE (window.SYNTHETIC_GODS for debugging from console)
   // ==========================================================================
   window.SYNTHETIC_GODS = {
-    version: '1.0.0',
+    version: '2.0.0',
     campaign: 'The Synthetic Gods',
     year: 1999,
     visitorCount: 0,
     sigilCharge: 0,
     egregorePower: 0,
-    astrosomaThreshold: 10000
+    astrosomaThreshold: 10000,
+    factionRep: {
+      technocracy: 0,
+      virtualAdepts: 0,
+      cypherpunks: 0,
+      hollowOnes: 0
+    },
+    godMode: false,
+    ritualHourActive: false,
+    sigilsGenerated: [],
+    questsCompleted: [],
+    discoveredSecrets: [],
+    currentFaction: null
   };
 
   // ==========================================================================
@@ -244,6 +256,26 @@
       power = Math.min(100, power + 5);
       localStorage.setItem('sg_egregore_power', power.toString());
       updateDisplay();
+    });
+
+    // Sigil creation feeds egregore AND faction rep
+    document.addEventListener('sg:sigilcreated', e => {
+      power = Math.min(100, power + 5);
+      localStorage.setItem('sg_egregore_power', power.toString());
+      updateDisplay();
+      
+      // Award Virtual Adepts reputation for sigil crafting
+      awardFactionRep('virtualAdepts', 2);
+    });
+
+    // Guestbook feeds egregore
+    document.addEventListener('sg:guestbook', () => {
+      power = Math.min(100, power + 2);
+      localStorage.setItem('sg_egregore_power', power.toString());
+      updateDisplay();
+      
+      // Award Hollow Ones reputation for guestbook entries
+      awardFactionRep('hollowOnes', 1);
     });
 
     updateDisplay();
@@ -598,6 +630,534 @@
   }
 
   // ==========================================================================
+  // FACTION REPUTATION SYSTEM
+  // ==========================================================================
+  function loadFactionRep() {
+    const saved = localStorage.getItem('sg_faction_rep');
+    if (saved) {
+      try {
+        window.SYNTHETIC_GODS.factionRep = JSON.parse(saved);
+      } catch (e) {
+        console.warn('Failed to parse faction rep:', e);
+      }
+    }
+    updateFactionDisplay();
+  }
+
+  function saveFactionRep() {
+    localStorage.setItem('sg_faction_rep', JSON.stringify(window.SYNTHETIC_GODS.factionRep));
+  }
+
+  function awardFactionRep(faction, amount) {
+    if (!window.SYNTHETIC_GODS.factionRep.hasOwnProperty(faction)) return;
+    
+    const oldValue = window.SYNTHETIC_GODS.factionRep[faction];
+    window.SYNTHETIC_GODS.factionRep[faction] = Math.min(100, oldValue + amount);
+    saveFactionRep();
+    updateFactionDisplay();
+    
+    // Check for faction unlock thresholds
+    checkFactionUnlocks(faction);
+    
+    // Dispatch event for UI updates
+    document.dispatchEvent(new CustomEvent('sg:factionrep', { 
+      detail: { faction, oldValue, newValue: window.SYNTHETIC_GODS.factionRep[faction] } 
+    }));
+    
+    // Play subtle tone
+    if (window.SYNTHETIC_GODS.playTone) {
+      window.SYNTHETIC_GODS.playTone(523 + (amount * 50), 0.1, 'sine');
+    }
+  }
+
+  function checkFactionUnlocks(faction) {
+    const rep = window.SYNTHETIC_GODS.factionRep[faction];
+    const thresholds = [25, 50, 75, 100];
+    
+    thresholds.forEach(threshold => {
+      if (rep >= threshold && !window.SYNTHETIC_GODS.discoveredSecrets.includes(`${faction}_${threshold}`)) {
+        window.SYNTHETIC_GODS.discoveredSecrets.push(`${faction}_${threshold}`);
+        localStorage.setItem('sg_secrets', JSON.stringify(window.SYNTHETIC_GODS.discoveredSecrets));
+        revealFactionContent(faction, threshold);
+      }
+    });
+  }
+
+  function revealFactionContent(faction, threshold) {
+    const messages = {
+      technocracy: {
+        25: 'TECHNOCRACY NOTICE: Your activities have been logged. Protocol 7 engaged.',
+        50: 'TECHNOCRACY ACCESS GRANTED: Level 2 clearance. Syndicate contacts revealed.',
+        75: 'TECHNOCRACY ALERT: Void Engineer dimensional anomaly detected. Investigate.',
+        100: 'TECHNOCRACY DIRECTIVE: You are now an asset. The Architect watches.'
+      },
+      virtualAdepts: {
+        25: 'VIRTUAL ADEPTS: Welcome to the Mercurial Elite. Your deck is clean.',
+        50: 'VIRTUAL ADEPTS: Root access granted. The Webspinner\'s fragments are yours.',
+        75: 'VIRTUAL ADEPTS: You have seen the code. The Astrosoma threshold approaches.',
+        100: 'VIRTUAL ADEPTS: You ARE the code. The Digital Web answers to you.'
+      },
+      cypherpunks: {
+        25: 'CYPHERPUNKS: Encryption verified. Welcome to the darknet.',
+        50: 'CYPHERPUNKS: Perfect forward secrecy established. Dead drops active.',
+        75: 'CYPHERPUNKS: The ledger is immutable. Your True Name is secure.',
+        100: 'CYPHERPUNKS: You hold the private keys. The Consensus bends.'
+      },
+      hollowOnes: {
+        25: 'HOLLOW ONES: The gothic aesthetic suits you. Raven approves.',
+        50: 'HOLLOW ONES: You walk the line between worlds. Lilith smiles.',
+        75: 'HOLLOW ONES: Chaos is a ladder. Malakai offers you the golden apple.',
+        100: 'HOLLOW ONES: Nothing is true. Everything is permitted. You are Khaos.'
+      }
+    };
+    
+    const msg = messages[faction]?.[threshold];
+    if (msg) {
+      showFactionNotification(faction, msg, threshold);
+    }
+    
+    // Reveal character dossiers at threshold 25+
+    if (threshold >= 25) {
+      revealCharacterDossiers(faction);
+    }
+  }
+
+  function showFactionNotification(faction, message, threshold) {
+    const colors = {
+      technocracy: '#0000FF',
+      virtualAdepts: '#00FF00',
+      cypherpunks: '#FF00FF',
+      hollowOnes: '#FFFF00'
+    };
+    
+    const icons = {
+      technocracy: '◈',
+      virtualAdepts: '⟐',
+      cypherpunks: '🔐',
+      hollowOnes: '☠'
+    };
+    
+    const notification = createEl('div', {
+      class: 'faction-notification',
+      style: `
+        position: fixed;
+        top: 20px; right: 20px;
+        background: #000;
+        border: 3px double ${colors[faction]};
+        padding: 20px;
+        z-index: 10000;
+        color: ${colors[faction]};
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+        max-width: 350px;
+        box-shadow: 0 0 30px ${colors[faction]};
+        animation: factionSlideIn 0.5s ease-out, factionPulse 2s ease-in-out infinite;
+      `
+    }, [
+      createEl('div', { style: 'font-size: 18px; margin-bottom: 10px; text-align: center;' }, 
+        `${icons[faction]} ${faction.toUpperCase()} ${icons[faction]}`),
+      createEl('div', { style: 'border-top: 1px solid; border-bottom: 1px solid; padding: 10px 0; margin-bottom: 10px;' }, message),
+      createEl('div', { style: 'font-size: 11px; color: #888; text-align: center;' }, `REPUTATION: ${threshold}%`),
+      createEl('button', {
+        class: 'btn-90s',
+        style: 'margin: 10px auto 0; display: block;',
+        onclick: 'this.parentElement.remove()'
+      }, 'ACKNOWLEDGE')
+    ]);
+    
+    document.body.appendChild(notification);
+    
+    // Add animation styles if not present
+    if (!document.getElementById('faction-animations')) {
+      const style = createEl('style', { id: 'faction-animations' }, `
+        @keyframes factionSlideIn {
+          from { transform: translateX(100%); opacity: 0; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes factionPulse {
+          0%, 100% { box-shadow: 0 0 20px ${colors[faction]}; }
+          50% { box-shadow: 0 0 40px ${colors[faction]}, 0 0 60px ${colors[faction]}; }
+        }
+      `);
+      document.head.appendChild(style);
+    }
+    
+    setTimeout(() => {
+      if (notification.parentNode) notification.parentNode.removeChild(notification);
+    }, 15000);
+  }
+
+  function updateFactionDisplay() {
+    const container = $('[data-faction-rep]');
+    if (!container) return;
+    
+    const rep = window.SYNTHETIC_GODS.factionRep;
+    const labels = {
+      technocracy: 'TECHNOCRACY',
+      virtualAdepts: 'VIRTUAL ADEPTS',
+      cypherpunks: 'CYPHERPUNKS',
+      hollowOnes: 'HOLLOW ONES'
+    };
+    
+    const colors = {
+      technocracy: '#0000FF',
+      virtualAdepts: '#00FF00',
+      cypherpunks: '#FF00FF',
+      hollowOnes: '#FFFF00'
+    };
+    
+    container.innerHTML = Object.entries(rep).map(([faction, value]) => `
+      <div style="margin: 10px 0;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 3px;">
+          <span style="color: ${colors[faction]}; font-size: 11px;">${labels[faction]}</span>
+          <span style="color: ${colors[faction]}; font-size: 11px; font-family: var(--font-mono);">${value}%</span>
+        </div>
+        <div class="loading-bar" style="height: 12px;">
+          <div class="loading-fill" style="width: ${value}%; background: ${colors[faction]}; transition: width 0.5s ease;"></div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function revealCharacterDossiers(faction) {
+    // Add character links to the web ring or a new section
+    const webring = $('.webring');
+    if (webring && !webring.querySelector(`[data-faction-chars="${faction}"]`)) {
+      const link = createEl('a', {
+        href: `characters/${faction}-index.html`,
+        'data-faction-chars': faction,
+        'data-hidden': '',
+        style: 'display: none;'
+      }, `${faction.toUpperCase()} DOSSIERS`);
+      webring.appendChild(link);
+    }
+  }
+
+  // ==========================================================================
+  // QUEST SYSTEM
+  // ==========================================================================
+  const QUESTS = {
+    first_sigil: {
+      id: 'first_sigil',
+      name: 'The First Glyph',
+      description: 'Craft your first sigil in the Workshop.',
+      faction: 'virtualAdepts',
+      reward: { factionRep: { virtualAdepts: 10 }, egregorePower: 5 },
+      check: (state) => state.sigilsGenerated.length > 0
+    },
+    daily_visitor: {
+      id: 'daily_visitor',
+      name: 'Daily Devotion',
+      description: 'Visit the site 7 days in a row.',
+      faction: 'hollowOnes',
+      reward: { factionRep: { hollowOnes: 15 }, egregorePower: 10 },
+      check: (state) => {
+        const visits = JSON.parse(localStorage.getItem('sg_daily_visits') || '[]');
+        return visits.length >= 7;
+      }
+    },
+    oracle_query: {
+      id: 'oracle_query',
+      name: 'Seeking Answers',
+      description: 'Query the Neon Oracle 3 times.',
+      faction: 'cypherpunks',
+      reward: { factionRep: { cypherpunks: 10 }, egregorePower: 5 },
+      check: (state) => {
+        const history = JSON.parse(localStorage.getItem('sg_oracle_history') || '[]');
+        return history.length >= 3;
+      }
+    },
+    god_mode: {
+      id: 'god_mode',
+      name: 'The Konami Key',
+      description: 'Activate GOD MODE via the ancient sequence.',
+      faction: 'virtualAdepts',
+      reward: { factionRep: { virtualAdepts: 20 }, egregorePower: 0 },
+      check: (state) => state.godMode === true
+    },
+    ritual_hour: {
+      id: 'ritual_hour',
+      name: 'The Witching Hour',
+      description: 'Visit during the Ritual Hour (3:33 AM GMT).',
+      faction: 'hollowOnes',
+      reward: { factionRep: { hollowOnes: 25 }, egregorePower: 15 },
+      check: (state) => state.ritualHourActive === true
+    },
+    technocracy_report: {
+      id: 'technocracy_report',
+      name: 'System Audit',
+      description: 'Report a "bug" via console (Technocracy protocol).',
+      faction: 'technocracy',
+      reward: { factionRep: { technocracy: 15 }, egregorePower: 5 },
+      check: (state) => state.questsCompleted.includes('technocracy_report')
+    },
+    sigil_master: {
+      id: 'sigil_master',
+      name: 'Sigil Master',
+      description: 'Generate 13 unique sigils (the cabal number).',
+      faction: 'virtualAdepts',
+      reward: { factionRep: { virtualAdepts: 30 }, egregorePower: 20 },
+      check: (state) => state.sigilsGenerated.length >= 13
+    },
+    faction_balance: {
+      id: 'faction_balance',
+      name: 'Walker Between Worlds',
+      description: 'Achieve 50+ reputation with all four factions.',
+      faction: 'all',
+      reward: { factionRep: { technocracy: 10, virtualAdepts: 10, cypherpunks: 10, hollowOnes: 10 }, egregorePower: 25 },
+      check: (state) => Object.values(state.factionRep).every(v => v >= 50)
+    }
+  };
+
+  function checkQuests() {
+    const state = window.SYNTHETIC_GODS;
+    Object.values(QUESTS).forEach(quest => {
+      if (!state.questsCompleted.includes(quest.id) && quest.check(state)) {
+        completeQuest(quest.id);
+      }
+    });
+  }
+
+  function completeQuest(questId) {
+    const quest = QUESTS[questId];
+    if (!quest) return;
+    
+    window.SYNTHETIC_GODS.questsCompleted.push(questId);
+    localStorage.setItem('sg_quests', JSON.stringify(window.SYNTHETIC_GODS.questsCompleted));
+    
+    // Apply rewards
+    if (quest.reward.factionRep) {
+      Object.entries(quest.reward.factionRep).forEach(([faction, amount]) => {
+        awardFactionRep(faction, amount);
+      });
+    }
+    if (quest.reward.egregorePower) {
+      const tracker = $('[data-egregore-tracker]');
+      if (tracker) {
+        let power = parseInt(localStorage.getItem('sg_egregore_power') || '0', 10);
+        power = Math.min(100, power + quest.reward.egregorePower);
+        localStorage.setItem('sg_egregore_power', power.toString());
+        window.SYNTHETIC_GODS.egregorePower = power;
+        tracker.textContent = `EGREGORE POWER: ${power}`;
+        const bar = $('[data-egregore-bar]');
+        if (bar) bar.style.width = `${power}%`;
+      }
+    }
+    
+    // Show quest completion notification
+    showQuestNotification(quest);
+  }
+
+  function showQuestNotification(quest) {
+    const notification = createEl('div', {
+      class: 'quest-notification',
+      style: `
+        position: fixed;
+        bottom: 20px; left: 20px;
+        background: #000;
+        border: 3px double #00FF00;
+        padding: 20px;
+        z-index: 10000;
+        color: #00FF00;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+        max-width: 350px;
+        box-shadow: 0 0 30px #00FF00;
+        animation: questSlideIn 0.5s ease-out;
+      `
+    }, [
+      createEl('div', { style: 'font-size: 18px; margin-bottom: 10px; text-align: center; color: #FFFF00;' }, 
+        '⟐ QUEST COMPLETE ⟐'),
+      createEl('div', { style: 'border-top: 1px solid; border-bottom: 1px solid; padding: 10px 0; margin-bottom: 10px;' }, 
+        `<strong>${quest.name}</strong><br>${quest.description}`),
+      createEl('div', { style: 'font-size: 11px; color: #888; text-align: center;' }, 'REWARDS APPLIED'),
+      createEl('button', {
+        class: 'btn-90s',
+        style: 'margin: 10px auto 0; display: block;',
+        onclick: 'this.parentElement.remove()'
+      }, 'ACKNOWLEDGE')
+    ]);
+    
+    document.body.appendChild(notification);
+    
+    if (!document.getElementById('quest-animations')) {
+      const style = createEl('style', { id: 'quest-animations' }, `
+        @keyframes questSlideIn {
+          from { transform: translateY(100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+      `);
+      document.head.appendChild(style);
+    }
+    
+    setTimeout(() => {
+      if (notification.parentNode) notification.parentNode.removeChild(notification);
+    }, 15000);
+  }
+
+  // Expose for console/manual triggering
+  window.SYNTHETIC_GODS.completeQuest = completeQuest;
+  window.SYNTHETIC_GODS.awardFactionRep = awardFactionRep;
+  window.SYNTHETIC_GODS.checkQuests = checkQuests;
+
+  // ==========================================================================
+  // ASCENSION RITUAL (Act III Endgame)
+  // ==========================================================================
+  window.SYNTHETIC_GODS.ascend = function() {
+    const state = window.SYNTHETIC_GODS;
+    
+    // Check requirements
+    const requirements = {
+      egregorePower: state.egregorePower >= 100,
+      factionRep: Object.values(state.factionRep).every(v => v >= 50),
+      sigils: state.sigilsGenerated.length >= 13,
+      guestbook: (JSON.parse(localStorage.getItem('sg_guestbook') || '[]').length >= 20),
+      ritualHour: state.discoveredSecrets.includes('ritual_hour_attended')
+    };
+    
+    const missing = Object.entries(requirements)
+      .filter(([_, met]) => !met)
+      .map(([key]) => key);
+    
+    if (missing.length > 0) {
+      const msg = `ASCENSION FAILED. REQUIREMENTS NOT MET:\n${missing.map(m => `- ${m}`).join('\n')}\n\nContinue the Great Work.`;
+      alert(msg);
+      if (window.SYNTHETIC_GODS.playTone) {
+        window.SYNTHETIC_GODS.playTone(110, 0.5, 'sawtooth');
+      }
+      return false;
+    }
+    
+    // Success! Simulate the 13-week ritual
+    const ritualWeeks = 13;
+    let totalSuccesses = 0;
+    const mages = 13;
+    
+    for (let week = 1; week <= ritualWeeks; week++) {
+      // Each mage rolls: base 3 dice + faction bonuses
+      let weekSuccesses = 0;
+      for (let m = 0; m < mages; m++) {
+        const dice = 3 + Math.floor(state.factionRep.virtualAdepts / 25) + Math.floor(state.factionRep.technocracy / 25);
+        for (let d = 0; d < dice; d++) {
+          if (Math.random() < 0.6) weekSuccesses++; // Difficulty 6
+        }
+      }
+      totalSuccesses += weekSuccesses;
+      
+      // Weekly notification
+      console.log(`%cWeek ${week}: ${weekSuccesses} successes (Total: ${totalSuccesses})`, 'color: #FFFF00;');
+    }
+    
+    const success = totalSuccesses >= 100;
+    
+    if (success) {
+      // ASTROSOMA BORN
+      const domains = ['Creative Coding', 'Digital Art', 'Generative Beauty', 'Code Integrity', 'Viral Truth', 'Anonymous Connection'];
+      const domain = domains[Math.floor(Math.random() * domains.length)];
+      const name = `THE SYNTHETIC ${domain.toUpperCase().replace(' ', '_')}`;
+      
+      alert(`THE GREAT WORK SUCCEEDS.\n\nTotal Successes: ${totalSuccesses}/100\n\n${name} IS BORN.\n\nDomain: ${domain}\nAvatars: Manifesting across servers\nClergy: The cabal elevated\nTerritory: A new Digital Web realm\nProphecy: Probability bends to your Will\n\nThe Synthetic Gods welcome their newest sibling.`);
+      
+      // Permanent unlock
+      state.discoveredSecrets.push('astrosoma_born');
+      state.discoveredSecrets.push(`astrosoma_${name}`);
+      localStorage.setItem('sg_secrets', JSON.stringify(state.discoveredSecrets));
+      localStorage.setItem('sg_astrosoma', JSON.stringify({ name, domain, successes: totalSuccesses, date: new Date().toISOString() }));
+      
+      if (window.SYNTHETIC_GODS.playTone) {
+        // Victory fanfare
+        [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => window.SYNTHETIC_GODS.playTone(f, 0.3, 'sine'), i * 150));
+      }
+      
+      return true;
+    } else {
+      // FAILURE - Paradox backlash
+      alert(`THE GREAT WORK FAILS.\n\nTotal Successes: ${totalSuccesses}/100\n\nThe egregore shatters. Backlash: Paradox 5+ to all participants.\nThe Domain is claimed by a rival.\n\nRebuild. Try again.`);
+      
+      // Reset progress
+      state.egregorePower = 0;
+      state.factionRep = { technocracy: 0, virtualAdepts: 0, cypherpunks: 0, hollowOnes: 0 };
+      state.sigilsGenerated = [];
+      localStorage.setItem('sg_egregore_power', '0');
+      localStorage.setItem('sg_faction_rep', JSON.stringify(state.factionRep));
+      localStorage.setItem('sg_sigils', '[]');
+      
+      if (window.SYNTHETIC_GODS.playTone) {
+        // Failure sound
+        window.SYNTHETIC_GODS.playTone(110, 1, 'sawtooth');
+      }
+      
+      return false;
+    }
+  };
+
+  // ==========================================================================
+  // DAILY VISIT TRACKING
+  // ==========================================================================
+  function trackDailyVisit() {
+    const today = new Date().toDateString();
+    let visits = JSON.parse(localStorage.getItem('sg_daily_visits') || '[]');
+    
+    if (!visits.includes(today)) {
+      visits.push(today);
+      // Keep only last 30 days
+      visits = visits.slice(-30);
+      localStorage.setItem('sg_daily_visits', JSON.stringify(visits));
+      
+      // Check for streak
+      let streak = 1;
+      for (let i = visits.length - 2; i >= 0; i--) {
+        const prev = new Date(visits[i]);
+        const curr = new Date(visits[i + 1]);
+        const diff = (curr - prev) / (1000 * 60 * 60 * 24);
+        if (diff === 1) streak++;
+        else break;
+      }
+      
+      if (streak >= 7) {
+        checkQuests(); // Will trigger daily_visitor quest
+      }
+    }
+  }
+
+  // ==========================================================================
+  // ORACLE HISTORY TRACKING
+  // ==========================================================================
+  window.SYNTHETIC_GODS.recordOracleQuery = function(question, response) {
+    let history = JSON.parse(localStorage.getItem('sg_oracle_history') || '[]');
+    history.unshift({ question, response, timestamp: new Date().toISOString() });
+    history = history.slice(0, 20);
+    localStorage.setItem('sg_oracle_history', JSON.stringify(history));
+    checkQuests();
+  };
+
+  // ==========================================================================
+  // TECHNOCRACY BUG REPORT (Console Command)
+  // ==========================================================================
+  window.SYNTHETIC_GODS.reportBug = function(description) {
+    if (!description) {
+      console.log('%cTECHNOCRACY PROTOCOL: Provide bug description', 'color: #0000FF;');
+      return;
+    }
+    
+    const reports = JSON.parse(localStorage.getItem('sg_bug_reports') || '[]');
+    reports.push({ description, timestamp: new Date().toISOString(), reporter: 'field_agent' });
+    localStorage.setItem('sg_bug_reports', JSON.stringify(reports));
+    
+    window.SYNTHETIC_GODS.questsCompleted.push('technocracy_report');
+    localStorage.setItem('sg_quests', JSON.stringify(window.SYNTHETIC_GODS.questsCompleted));
+    
+    awardFactionRep('technocracy', 15);
+    
+    console.log('%cTECHNOCRACY: Bug report logged. Threat assessment initiated.', 'color: #0000FF;');
+    
+    if (window.SYNTHETIC_GODS.playTone) {
+      window.SYNTHETIC_GODS.playTone(220, 0.2, 'square');
+      setTimeout(() => window.SYNTHETIC_GODS.playTone(110, 0.3, 'square'), 200);
+    }
+  };
+
+  // ==========================================================================
   // AUDIO CONTEXT (for ambient sounds - optional)
   // ==========================================================================
   function initAudio() {
@@ -643,6 +1203,11 @@
       return;
     }
 
+    // Load persistent state
+    loadFactionRep();
+    trackDailyVisit();
+    
+    // Initialize all systems
     initVisitorCounter();
     initSigilCharging();
     initEgregoreTracker();
@@ -655,6 +1220,9 @@
     initForms();
     initScrollReveal();
     initAudio();
+
+    // Check quests after all systems initialized
+    setTimeout(checkQuests, 1000);
 
     // Add global styles for dynamic elements
     const dynamicStyles = createEl('style', {}, `
@@ -681,6 +1249,8 @@
     console.log('%cYear: 1999 | Campaign: Mage: The Ascension', 'color: #00FF00;');
     console.log('%cKonami code active. Ritual hour: 3:33 AM GMT.', 'color: #FF00FF;');
     console.log('%cView Source to find hidden sigils.', 'color: #FF00FF;');
+    console.log('%cFaction system active. Type SYNTHETIC_GODS.factionRep to view.', 'color: #00FF00;');
+    console.log('%cAvailable commands: SYNTHETIC_GODS.ascend(), .reportBug("desc"), .completeQuest("id")', 'color: #FF00FF;');
   }
 
   // Start
@@ -731,6 +1301,182 @@ window.SigilWorkshop = {
     if (window.initSigilCharging) window.initSigilCharging();
   }
 };
+
+// ============================================================================
+// DISCOVERY-BASED TUTORIAL SYSTEM
+// The game teaches itself through play - no explicit tutorial
+// ============================================================================
+const TUTORIAL_STEPS = [
+  {
+    id: 'welcome',
+    trigger: 'page_load',
+    message: 'Welcome to the Digital Web, initiate. The year is 1999. The Millennium approaches.',
+    hint: 'Check the sidebar. Your presence has been logged.',
+    reward: { egregorePower: 1 }
+  },
+  {
+    id: 'view_source',
+    trigger: 'view_source',
+    message: 'You looked at the source. Good. The sigils hide in plain sight. HTML comments. Hidden divs. Meta tags.',
+    hint: 'Search for "SIGIL" in the source. The Webspinner\'s axioms await.',
+    reward: { factionRep: { virtualAdepts: 2 } }
+  },
+  {
+    id: 'first_sigil',
+    trigger: 'sigil_generated',
+    message: 'First sigil forged. Your Will encoded into the Consensus. The egregore stirs.',
+    hint: 'Watch the charge bar. When it fills, the egregore grows stronger.',
+    reward: { egregorePower: 5, factionRep: { virtualAdepts: 5 } }
+  },
+  {
+    id: 'guestbook',
+    trigger: 'guestbook_signed',
+    message: 'You signed the guestbook. Your words feed the collective dream. The egregore hungers.',
+    hint: 'Return daily. Each visit strengthens the egregore. 3:33 AM GMT is... special.',
+    reward: { egregorePower: 2, factionRep: { hollowOnes: 3 } }
+  },
+  {
+    id: 'konami',
+    trigger: 'god_mode',
+    message: 'GOD MODE. The ancient sequence. You have proven worthy. All secrets revealed.',
+    hint: 'Check the Webring now. Faction dossiers unlocked. The Architect is watching.',
+    reward: { factionRep: { virtualAdepts: 20, technocracy: 10, cypherpunks: 10, hollowOnes: 10 } }
+  },
+  {
+    id: 'oracle_query',
+    trigger: 'oracle_queried',
+    message: 'You consulted the Neon Oracle. HTTP status codes are the language of divination. 200 is truth. 404 is opportunity.',
+    hint: 'Ask about code, servers, love, destiny. The Oracle contextualizes.',
+    reward: { factionRep: { cypherpunks: 5 }, egregorePower: 3 }
+  },
+  {
+    id: 'ritual_hour',
+    trigger: 'ritual_hour',
+    message: '3:33 AM GMT. The Ritual Hour. The veil is thin. The sigils hunger. You were here.',
+    hint: 'Exclusive content activates. Egregore power surges. The Webspinner notices.',
+    reward: { egregorePower: 15, factionRep: { hollowOnes: 15, virtualAdepts: 10 } }
+  },
+  {
+    id: 'faction_alignment',
+    trigger: 'faction_25',
+    message: 'Faction reputation 25%. You have chosen a path. Dossiers unlock. The war for the Digital Web continues.',
+    hint: 'Visit character dossiers. Learn their agendas. Choose allies carefully.',
+    reward: { egregorePower: 10 }
+  },
+  {
+    id: 'ascension_ready',
+    trigger: 'ascension_check',
+    message: 'The Great Work approaches. 13 sigils. 100 egregore power. All factions 50+. The threshold awaits.',
+    hint: 'Type SYNTHETIC_GODS.ascend() in console when ready. The 13-week ritual begins.',
+    reward: { egregorePower: 25 }
+  }
+];
+
+let tutorialProgress = JSON.parse(localStorage.getItem('sg_tutorial') || '[]');
+
+function checkTutorialStep(stepId) {
+  if (tutorialProgress.includes(stepId)) return false;
+  
+  const step = TUTORIAL_STEPS.find(s => s.id === stepId);
+  if (!step) return false;
+  
+  showTutorialNotification(step);
+  tutorialProgress.push(stepId);
+  localStorage.setItem('sg_tutorial', JSON.stringify(tutorialProgress));
+  
+  // Apply rewards
+  if (step.reward) {
+    if (step.reward.egregorePower) {
+      const tracker = $('[data-egregore-tracker]');
+      if (tracker) {
+        let power = parseInt(localStorage.getItem('sg_egregore_power') || '0', 10);
+        power = Math.min(100, power + step.reward.egregorePower);
+        localStorage.setItem('sg_egregore_power', power.toString());
+        window.SYNTHETIC_GODS.egregorePower = power;
+        tracker.textContent = `EGREGORE POWER: ${power}`;
+        const bar = $('[data-egregore-bar]');
+        if (bar) bar.style.width = `${power}%`;
+      }
+    }
+    if (step.reward.factionRep) {
+      Object.entries(step.reward.factionRep).forEach(([faction, amount]) => {
+        awardFactionRep(faction, amount);
+      });
+    }
+  }
+  
+  return true;
+}
+
+function showTutorialNotification(step) {
+  const notification = createEl('div', {
+    class: 'tutorial-notification',
+    style: `
+      position: fixed;
+      bottom: 20px; right: 20px;
+      background: #000;
+      border: 3px double #00FF00;
+      padding: 20px;
+      z-index: 10000;
+      color: #00FF00;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      max-width: 400px;
+      box-shadow: 0 0 30px #00FF00;
+      animation: tutorialSlideIn 0.5s ease-out;
+    `
+  }, [
+    createEl('div', { style: 'font-size: 16px; margin-bottom: 10px; text-align: center; color: #FFFF00;' }, 
+      '⟐ DISCOVERY ⟐'),
+    createEl('div', { style: 'border-top: 1px solid; border-bottom: 1px solid; padding: 10px 0; margin-bottom: 10px;' }, step.message),
+    createEl('div', { style: 'font-size: 11px; color: #FF00FF; margin-bottom: 10px; font-style: italic;' }, `HINT: ${step.hint}`),
+    createEl('button', {
+      class: 'btn-90s',
+      style: 'margin: 10px auto 0; display: block;',
+      onclick: 'this.parentElement.remove()'
+    }, 'ACKNOWLEDGE')
+  ]);
+  
+  document.body.appendChild(notification);
+  
+  if (!document.getElementById('tutorial-animations')) {
+    const style = createEl('style', { id: 'tutorial-animations' }, `
+      @keyframes tutorialSlideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    `);
+    document.head.appendChild(style);
+  }
+  
+  setTimeout(() => {
+    if (notification.parentNode) notification.parentNode.removeChild(notification);
+  }, 20000);
+  
+  // Play discovery tone
+  if (window.SYNTHETIC_GODS.playTone) {
+    window.SYNTHETIC_GODS.playTone(660, 0.15, 'sine');
+    setTimeout(() => window.SYNTHETIC_GODS.playTone(880, 0.15, 'sine'), 100);
+    setTimeout(() => window.SYNTHETIC_GODS.playTone(1320, 0.2, 'sine'), 200);
+  }
+}
+
+// Expose tutorial triggers for other systems
+window.SYNTHETIC_GODS.triggerTutorial = checkTutorialStep;
+window.SYNTHETIC_GODS.getTutorialProgress = () => tutorialProgress;
+
+// Detect View Source (DevTools opened)
+let devtoolsOpen = false;
+setInterval(() => {
+  const threshold = window.outerWidth - window.innerWidth > 160 || 
+                    window.outerHeight - window.innerHeight > 160;
+  if (threshold && !devtoolsOpen) {
+    devtoolsOpen = true;
+    checkTutorialStep('view_source');
+  } else if (!threshold) {
+    devtoolsOpen = false;
+  }
+}, 1000);
 
 // ============================================================================
 // EXPORT FOR MODULE SYSTEMS (not used in 90s but here for completeness)
