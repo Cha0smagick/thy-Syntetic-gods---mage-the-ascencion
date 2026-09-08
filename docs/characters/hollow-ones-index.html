@@ -6,6 +6,132 @@
     <meta name="description" content="Hollow Ones Dossiers Index">
     <title>HOLLOW ONES DOSSIERS - The Synthetic Gods</title>
     <link rel="stylesheet" href="../css/geocities.css">
+
+    <meta property="og:title" content="The Synthetic Gods - Mage: The Ascension Chronicle">
+    <meta property="og:description" content="A Mage: The Ascension Chronicle of Digital Divinity - Geocities 1999 Aesthetic">
+    <meta property="og:image" content="https://los-dioses-sinteticos.github.io/images/characters/hollow-ones-raven.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Synthetic Gods">
+    <meta name="twitter:description" content="A Mage: The Ascension Chronicle of Digital Divinity">
+    <meta name="twitter:image" content="https://los-dioses-sinteticos.github.io/images/characters/hollow-ones-raven.png">
+  
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
+    img-src 'self' data: https:;
+    connect-src 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Hollow Ones Dossiers - The Beautiful Decay",
+        "description": "Dossiers for Hollow Ones operatives: Raven, Lilith, Malakai, Vesper, and more",
+        "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-index.html",
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Person",
+                "name": "Raven",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-raven.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Person",
+                "name": "Lilith",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-lilith.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Person",
+                "name": "Malakai",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-malakai.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@type": "Person",
+                "name": "Vesper",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-vesper.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@type": "Person",
+                "name": "Crowley",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-crowley.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "item": {
+                "@type": "Person",
+                "name": "Spare",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-spare.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "item": {
+                "@type": "Person",
+                "name": "Baphomet",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-baphomet.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "item": {
+                "@type": "Person",
+                "name": "Eris",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-eris.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 9,
+              "item": {
+                "@type": "Person",
+                "name": "Nyx",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-nyx.html"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 10,
+              "item": {
+                "@type": "Person",
+                "name": "Khaos",
+                "url": "https://los-dioses-sinteticos.github.io/characters/hollow-ones-khaos.html"
+              }
+            }
+          ]
+        }
+      }
+    </script>
 </head>
 <body>
     <table class="main-table" cellpadding="0" cellspacing="0" border="0">
@@ -102,5 +228,32 @@
         </tr>
     </table>
     <script src="../js/geocities.js"></script>
+
+                <!-- Service Worker Registration -->
+                <script>
+                    if ('serviceWorker' in navigator) {
+                        window.addEventListener('load', () => {
+                            navigator.serviceWorker.register('/sw.js')
+                                .then((registration) => {
+                                    console.log('[SW] Registered:', registration.scope);
+                                    setInterval(() => registration.update(), 60 * 60 * 1000);
+                                })
+                                .catch((error) => {
+                                    console.log('[SW] Registration failed:', error);
+                                });
+                        });
+                        
+                        navigator.serviceWorker.addEventListener('message', (event) => {
+                            if (event.data?.type === 'DAILY_MAINTENANCE') {
+                                console.log('[SW] Daily maintenance triggered');
+                                if (window.GeocitiesGrimoire?.dailyVisit?.checkVisit) {
+                                    window.GeocitiesGrimoire.dailyVisit.checkVisit(
+                                        new Date().toISOString().split('T')[0]
+                                    );
+                                }
+                            }
+                        });
+                    }
+                </script>
 </body>
 </html>

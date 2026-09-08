@@ -1,0 +1,13 @@
+# The Synthetic Gods - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://los-dioses-sinteticos.github.io/sitemap.xml
+
+# Crawl-delay (be nice to server)
+Crawl-delay: 1
+
+# Disallow admin/private areas (none in static site)
+# Disallow: /scripts/
+# Disallow: /node_modules/

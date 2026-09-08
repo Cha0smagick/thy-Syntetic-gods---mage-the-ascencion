@@ -11,6 +11,51 @@
     <title>NEON ORACLE - The Synthetic Gods</title>
     <link rel="stylesheet" href="../css/geocities.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+
+    <meta property="og:title" content="The Synthetic Gods - Mage: The Ascension Chronicle">
+    <meta property="og:description" content="A Mage: The Ascension Chronicle of Digital Divinity - Geocities 1999 Aesthetic">
+    <meta property="og:image" content="https://los-dioses-sinteticos.github.io/images/sigil-workshop.gif">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Synthetic Gods">
+    <meta name="twitter:description" content="A Mage: The Ascension Chronicle of Digital Divinity">
+    <meta name="twitter:image" content="https://los-dioses-sinteticos.github.io/images/sigil-workshop.gif">
+  
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
+    img-src 'self' data: https:;
+    connect-src 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Neon Oracle",
+        "description": "HTTP Divination System - Daily fortunes and query-based divination in Geocities 1999 aesthetic",
+        "url": "https://los-dioses-sinteticos.github.io/pages/neon-oracle.html",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "The Synthetic Gods"
+        },
+        "datePublished": "1999-01-01",
+        "dateModified": "2026-09-08"
+      }
+    </script>
 </head>
 <body>
     <!-- Hidden sigils for View Source discovery -->
@@ -70,7 +115,7 @@
                     </div>
 
                     <div class="under-construction">
-                        <img src="../images/under-construction.gif" alt="Under Construction" class="construction-gif">
+                        <img  width="200"src="../images/under-construction.gif" alt="Under Construction" class="construction-gif" height="200">
                         <div class="construction-text">THIS ORACLE IS FOREVER<br>PROCESSING REQUESTS</div>
                     </div>
 
@@ -505,5 +550,32 @@
         });
     })();
     </script>
+
+                <!-- Service Worker Registration -->
+                <script>
+                    if ('serviceWorker' in navigator) {
+                        window.addEventListener('load', () => {
+                            navigator.serviceWorker.register('/sw.js')
+                                .then((registration) => {
+                                    console.log('[SW] Registered:', registration.scope);
+                                    setInterval(() => registration.update(), 60 * 60 * 1000);
+                                })
+                                .catch((error) => {
+                                    console.log('[SW] Registration failed:', error);
+                                });
+                        });
+                        
+                        navigator.serviceWorker.addEventListener('message', (event) => {
+                            if (event.data?.type === 'DAILY_MAINTENANCE') {
+                                console.log('[SW] Daily maintenance triggered');
+                                if (window.GeocitiesGrimoire?.dailyVisit?.checkVisit) {
+                                    window.GeocitiesGrimoire.dailyVisit.checkVisit(
+                                        new Date().toISOString().split('T')[0]
+                                    );
+                                }
+                            }
+                        });
+                    }
+                </script>
 </body>
 </html>

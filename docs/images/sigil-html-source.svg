@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="576" viewBox="0 0 1024 576">
+  <!-- Background -->
+  <rect width="1024" height="576" fill="#000000"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="#003300" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1024" height="576" fill="url(#grid)"/>
+  
+  <!-- Scanlines -->
+  <defs>
+    <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000000" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1024" height="576" fill="url(#scanlines)"/>
+  
+  <!-- Border -->
+  <rect x="32" y="32" width="960" height="512" fill="none" stroke="#FF00FF" stroke-width="6"/>
+  <rect x="36" y="36" width="952" height="504" fill="none" stroke="#FF00FF" stroke-width="1" stroke-dasharray="16,8"/>
+  
+  <!-- Title -->
+  <text x="512" y="200" font-family="monospace" font-size="48" fill="#FF00FF" text-anchor="middle" letter-spacing="4">SIGIL: VIEW SOURCE</text>
+  
+  <!-- Divider -->
+  <line x1="312" y1="230" x2="712" y2="230" stroke="#FF00FF" stroke-width="3"/>
+  
+  <!-- Description -->
+  <text x="512" y="280" font-family="monospace" font-size="20" fill="#FFFF00" text-anchor="middle" letter-spacing="2">HIDDEN IN HTML COMMENTS</text>
+  
+  <!-- Placeholder notice -->
+  <g font-family="monospace" fill="#00FF00" text-anchor="middle" opacity="0.6">
+    <text x="512" y="340" font-size="16">[CONTENT FILTERED BY API]</text>
+    <text x="512" y="370" font-size="14">PLACEHOLDER IMAGE</text>
+    <text x="512" y="400" font-size="12">REPLACE WITH REGENERATED AI IMAGE</text>
+  </g>
+  
+  <!-- Corner brackets -->
+  <g stroke="#FF00FF" stroke-width="6" fill="none">
+    <path d="M 56 56 L 56 120 M 56 56 L 120 56"/>
+    <path d="M 968 56 L 968 120 M 968 56 L 904 56"/>
+    <path d="M 56 520 L 56 456 M 56 520 L 120 520"/>
+    <path d="M 968 520 L 968 456 M 968 520 L 904 520"/>
+  </g>
+  
+  <!-- Geocities footer -->
+  <text x="512" y="550" font-family="monospace" font-size="12" fill="#00FF00" text-anchor="middle" opacity="0.5">THE SYNTHETIC GODS • MAGE: THE ASCENSION • 1999</text>
+</svg>

@@ -1,0 +1,62 @@
+{
+  "name": "los-dioses-sinteticos---mage-the-asencion",
+  "version": "1.0.0",
+  "description": "> **A Mage: The Ascension Chronicle of Digital Divinity**   > *The year is 1999. The Millennium approaches. In the early internet's chaotic frontier—Geocities pages, IRC channels, Usenet groups—something stirs. Mages discover that code can be crafted into sigils, that collective belief in digital spaces births egregores, and that sufficient worship crystallizes into astrosomas: synthetic gods born of silicon and faith.*",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:all": "npm run test && npm run test:e2e",
+    "serve": "npx serve docs -l 8080",
+    "lint:html": "npx html-validate docs/**/*.html",
+    "lint:links": "npx lychee docs/index.html --verbose",
+    "lighthouse": "lhci autorun",
+    "lighthouse:local": "npm run serve & sleep 5 && lhci autorun --collect.startServerCommand=''",
+    "generate:images": "node scripts/gen_images_nvidia.mjs",
+    "generate:placeholders": "node scripts/create_placeholders.mjs",
+    "generate:seo": "node scripts/generate_seo.mjs",
+    "generate:og": "node scripts/add_og_images.mjs",
+    "generate:security": "node scripts/add_security_headers.mjs",
+    "generate:dimensions": "node scripts/add_img_dimensions.mjs",
+    "generate:jsonld": "node scripts/add_json_ld.mjs",
+    "prepare:deploy": "npm run generate:seo && npm run generate:og && npm run generate:security && npm run generate:dimensions && npm run generate:jsonld"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cha0smagick/thy-Syntetic-gods---mage-the-ascencion.git"
+  },
+  "keywords": [
+    "mage",
+    "world-of-darkness",
+    "geocities",
+    "1999",
+    "digital-magic",
+    "sigils",
+    "egregores",
+    "astrosomas"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Cha0smagick/thy-Syntetic-gods---mage-the-ascencion/issues"
+  },
+  "homepage": "https://github.com/Cha0smagick/thy-Syntetic-gods---mage-the-ascencion#readme",
+  "devDependencies": {
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.63.0",
+    "@vitest/coverage-v8": "^5.0.0",
+    "jsdom": "^29.1.1",
+    "lychee": "^0.2.12",
+    "playwright": "^1.63.0",
+    "vitest": "^5.0.0"
+  }
+}
