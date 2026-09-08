@@ -461,7 +461,16 @@
             createEl('button', {
               class: 'btn-90s',
               style: 'margin-top: 20px;',
-              onclick: 'this.parentElement.remove()'
+              onclick: (function() {
+                this.parentElement.remove();
+                // Mark ritual hour attendance for Ascension requirement
+                const state = window.SYNTHETIC_GODS;
+                if (!state.discoveredSecrets.includes('ritual_hour_attended')) {
+                  state.discoveredSecrets.push('ritual_hour_attended');
+                  localStorage.setItem('sg_secrets', JSON.stringify(state.discoveredSecrets));
+                  console.log('%cRITUAL HOUR ATTENDED - Ascension requirement met', 'color: #FF00FF;');
+                }
+              })
             }, 'ACKNOWLEDGE')
           ]);
           document.body.appendChild(notification);

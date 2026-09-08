@@ -400,6 +400,54 @@ img.gif { border-color: var(--highlight); }
   100% { background-position: 40px 0; }
 }
 
+/* --- Faction Reputation UI --- */
+.faction-rep-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: var(--bg-table);
+  border: 3px double var(--border-color);
+}
+
+.faction-rep-section .counter-label {
+  color: var(--highlight);
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 8px;
+}
+
+.faction-rep-section > div {
+  margin: 10px 0;
+}
+
+.faction-rep-section div > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.faction-rep-section .loading-bar {
+  height: 12px;
+  border: 2px inset var(--border-color);
+}
+
+.faction-rep-section .loading-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  background: repeating-linear-gradient(
+    45deg,
+    currentColor,
+    currentColor 8px,
+    var(--text-secondary) 8px,
+    var(--text-secondary) 16px
+  );
+  animation: loading-move 2s linear infinite;
+}
+
 /* --- Footer --- */
 .footer {
   text-align: center;
