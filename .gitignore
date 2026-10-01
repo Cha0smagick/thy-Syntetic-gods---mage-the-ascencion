@@ -47,3 +47,7 @@ blob-report/
 # Agent harness state (session noise, not part of the site)
 .omo/
 .opencode/
+.lighthouse-cache/
+lighthouse-report*/
+.lighthouserc.js
+.lighthouseci/

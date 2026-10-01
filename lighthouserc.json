@@ -4,7 +4,7 @@
       "numberOfRuns": 3,
       "startServerCommand": "npx serve docs -l 8080",
       "url": [
-        "http://localhost:8080/index.html",
+        "http://localhost:8080/",
         "http://localhost:8080/pages/neon-oracle.html",
         "http://localhost:8080/characters/technocracy-index.html",
         "http://localhost:8080/characters/technocracy-voss.html"
@@ -30,7 +30,8 @@
       }
     },
     "upload": {
-      "target": "temporary-public-storage"
+      "target": "filesystem",
+      "outputDir": "./lighthouse-report"
     }
   }
 }
