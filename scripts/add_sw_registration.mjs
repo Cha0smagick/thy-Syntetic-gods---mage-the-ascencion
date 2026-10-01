@@ -13,7 +13,7 @@ const swScript = `
                 <script>
                     if ('serviceWorker' in navigator) {
                         window.addEventListener('load', () => {
-                            navigator.serviceWorker.register(relSwPath)
+                            navigator.serviceWorker.register('sw.js')
                                 .then((registration) => {
                                     console.log('[SW] Registered:', registration.scope);
                                     setInterval(() => registration.update(), 60 * 60 * 1000);
@@ -37,6 +37,16 @@ const swScript = `
                 </script>`;
 
 function addSWRegistration(html, filePath) {
+  // Repair previously-injected blocks that referenced an undefined `relSwPath`
+  // variable. Those threw a ReferenceError and silently failed to register the SW.
+  if (html.includes('serviceWorker.register(relSwPath)')) {
+    html = html.replace(
+      /serviceWorker\.register\(relSwPath\)/g,
+      "serviceWorker.register('sw.js')"
+    );
+    console.log(`⟳ Repaired undefined relSwPath: ${path.relative(DOCS_DIR, filePath)}`);
+  }
+
   // Check if already has SW registration
   if (html.includes('serviceWorker.register') || html.includes('sw.js')) {
     return html;

@@ -28,7 +28,8 @@
     "generate:dimensions": "node scripts/add_img_dimensions.mjs",
     "generate:jsonld": "node scripts/add_json_ld.mjs",
     "generate:sw": "node scripts/add_sw_registration.mjs",
-    "prepare:deploy": "npm run generate:seo && npm run generate:og && npm run generate:security && npm run generate:dimensions && npm run generate:jsonld && npm run generate:sw"
+    "prepare:deploy": "npm run generate:seo && npm run generate:og && npm run generate:security && npm run generate:dimensions && npm run generate:jsonld && npm run generate:sw && npm run generate:sw:stamp",
+    "generate:sw:stamp": "node scripts/stamp_sw_cache.mjs"
   },
   "repository": {
     "type": "git",

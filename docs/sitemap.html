@@ -146,7 +146,7 @@
                 <script>
                     if ('serviceWorker' in navigator) {
                         window.addEventListener('load', () => {
-                            navigator.serviceWorker.register(relSwPath)
+                            navigator.serviceWorker.register('sw.js')
                                 .then((registration) => {
                                     console.log('[SW] Registered:', registration.scope);
                                     setInterval(() => registration.update(), 60 * 60 * 1000);
