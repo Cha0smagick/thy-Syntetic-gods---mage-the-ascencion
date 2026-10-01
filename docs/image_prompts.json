@@ -1,70 +1,70 @@
 [
   {
-    "file": "banner-synthetic-gods.gif",
+    "file": "banner-synthetic-gods.jpg",
     "prompt": "The Synthetic Gods banner, 468x60 pixels, Geocities 1999 style, animated GIF, mystical text THE SYNTHETIC GODS in glowing magenta Courier New font, starfield background with purple grid lines, cyberpunk occult aesthetic, scanlines, dithered gradients, 90s web banner"
   },
   {
-    "file": "under-construction.gif",
+    "file": "under-construction.jpg",
     "prompt": "Classic 1999 Geocities under construction animated GIF, yellow construction worker stick figure digging, animated shovel, flashing yellow and black warning stripes, CONSTRUCTION ZONE text, retro pixel art style, transparent background"
   },
   {
-    "file": "sigil-ascii.gif",
+    "file": "sigil-ascii.png",
     "prompt": "Retro 90s computer screen showing ASCII art sigil made of characters like @ # $ % & * forming a mystical geometric pattern, green phosphor monitor aesthetic, scanlines, slight curvature, Geocities era web design background with tiled texture"
   },
   {
-    "file": "sigil-html-source.gif",
+    "file": "sigil-html-source.png",
     "prompt": "View Source window from 1999 browser showing HTML source code with hidden sigil comments highlighted, Netscape Navigator 4 interface, gray backgrounds, monospace font, mystical symbols embedded in comment tags"
   },
   {
-    "file": "sigil-workshop.gif",
+    "file": "sigil-workshop.jpg",
     "prompt": "Geocities-style webpage under construction with animated GIF construction signs, blinking text 'SIGIL WORKSHOP', text boxes for sigil generation, mystical cyberpunk aesthetic, tiled starfield background, visitor counter at bottom"
   },
   {
-    "file": "egregore-birth.gif",
+    "file": "egregore-birth.png",
     "prompt": "Mystical digital entity emerging from a Geocities webpage, translucent glowing avatar forming from particles of text and visitor counters, anime-style digital spirit with circuit board patterns on skin, cyberpunk shrine aesthetic, animated GIF style with dithering"
   },
   {
-    "file": "egregore-community.gif",
+    "file": "egregore-community.jpg",
     "prompt": "IRC chat room or Geocities guestbook filled with messages from many users, collective energy visible as glowing threads connecting usernames, retro 90s chat interface with colorful text, mystical atmosphere, scanlines"
   },
   {
-    "file": "egregore-war.gif",
+    "file": "egregore-war.png",
     "prompt": "Two digital entities clashing in cyberspace, represented as geometric avatars made of HTML tags and ASCII art, beams of code and sigils crossing, retro vector graphics style, 90s CGI aesthetic, wireframe grids"
   },
   {
-    "file": "astrosoma-archivist.gif",
+    "file": "astrosoma-archivist.jpg",
     "prompt": "Digital deity 'The Archivist' as a towering figure made of glowing book spines and fiber optic cables, infinite library of servers background, ethereal green-blue light, 90s CGI render style with visible polygons, mystical librarian aesthetic, animated GIF dithering"
   },
   {
-    "file": "astrosoma-router.gif",
+    "file": "astrosoma-router.jpg",
     "prompt": "Digital deity 'The Router' as a geometric entity of glowing pathways and network topology maps, constellation-like connections forming a humanoid shape, cyberpunk Tron aesthetic but 90s web style, wireframe grids, animated packet trails"
   },
   {
-    "file": "astrosoma-glitch.gif",
+    "file": "astrosoma-glitch.jpg",
     "prompt": "Digital deity 'The Glitch' as corrupted static noise taking humanoid form, TV static aesthetic with RGB color separation, scanlines, Windows 95 BSOD blue background, fragmented data artifacts, raw digital chaos given consciousness"
   },
   {
-    "file": "astrosoma-counter.gif",
+    "file": "astrosoma-counter.jpg",
     "prompt": "Digital deity 'The Counter' as a massive LED display number incrementing infinitely, each digit made of tiny watching eyes, retro 7-segment display aesthetic, Geocities hit counter style, mystical significance in the numbers"
   },
   {
-    "file": "astrosoma-ritual.gif",
+    "file": "astrosoma-ritual.jpg",
     "prompt": "13 mages at computers in a circle, synchronized ritual at 3:33 AM, CRT monitors glowing with the same sigil, network cables connecting all machines to a central server, candlelight and LED light mix, cyberpunk ritual aesthetic, 90s technology"
   },
   {
-    "file": "synthetic-muse.gif",
+    "file": "synthetic-muse.png",
     "prompt": "The Synthetic Muse - digital goddess of creative coding, appearing as flowing code that forms art, generative patterns blooming from her fingertips, holographic projections of websites and digital art, cyberpunk muse aesthetic, 90s CGI with dithered gradients"
   },
   {
-    "file": "characters/technocracy-voss.png",
+    "file": "characters/technocracy-voss.jpg",
     "prompt": "Portrait of Director Helena Voss, NWO Chief Analyst, cold beautiful woman with neural interface ports at temples, wearing 90s corporate attire with subtle Technocracy insignia, holographic data projections around her head, blue-green color scheme, Geocities 1999 aesthetic, scanlines, dithered gradients"
   },
   {
-    "file": "characters/technocracy-chen.png",
+    "file": "characters/technocracy-chen.jpg",
     "prompt": "Portrait of Agent Marcus Chen, Syndicate Financial Architect, sharp-dressed man in 90s power suit with credstick accessories, holographic financial charts floating around him, gold-green color scheme, cyberpunk corporate aesthetic, Geocities 1999 style"
   },
   {
-    "file": "characters/technocracy-keres.png",
+    "file": "characters/technocracy-keres.jpg",
     "prompt": "Portrait of Dr. Sarah Keres, Progenitor Lead Geneticist, sterile lab coat over 90s professional wear, double helix DNA patterns in her eyes, biotech implants visible at neck, white-sterile-green color scheme, clinical cyberpunk aesthetic, Geocities 1999"
   },
   {
@@ -72,11 +72,11 @@
     "prompt": "Portrait of Captain Yuri Volkov, Void Engineer Deep Space, cosmonaut suit with Void Engineer patches, starfield background through helmet visor, dimensional anomalies visible in reflection, deep space black with nebula colors, 90s NASA aesthetic meets cyberpunk"
   },
   {
-    "file": "characters/technocracy-smith.png",
+    "file": "characters/technocracy-smith.jpg",
     "prompt": "Portrait of X-7 Smith, Iteration X HIT Mark V Commander, cybernetic face with glowing targeting reticle eyes, chassis seams visible, tactical HUD overlay, chrome-gunmetal color scheme with red accents, 90s mecha anime meets cyberpunk"
   },
   {
-    "file": "characters/technocracy-patel.png",
+    "file": "characters/technocracy-patel.jpg",
     "prompt": "Portrait of Analyst Priya Patel, NWO Data Miner, tired but intense eyes, neural headset cable connection, walls of streaming code and search indexes behind her, blue-matrix green color scheme, 90s hacker aesthetic, Geocities web crawler vibe"
   },
   {
@@ -84,19 +84,19 @@
     "prompt": "Portrait of Enforcer Kowalski, Syndicate Cleaner, rugged Eastern European features, tactical vest over dark clothing, .22 pistol visible, chemical cleaning supplies in background, noir shadowed lighting, gritty 90s cyberpunk aesthetic"
   },
   {
-    "file": "characters/technocracy-lovelace.png",
+    "file": "characters/technocracy-lovelace.jpg",
     "prompt": "Portrait of Engineer Ada Lovelace-II, Iteration X Cybernetics Lead, beautiful woman with visible neural ports, coding holograms floating around hands, brass-steampunk cybernetic aesthetic mixed with 90s tech, green-phosphor code streams, poetic mathematics vibe"
   },
   {
-    "file": "characters/technocracy-sato.png",
+    "file": "characters/technocracy-sato.jpg",
     "prompt": "Portrait of Navigator Hana Sato, Void Engineer Dimensional, sleek void suit with correspondence mapping tattoos on arms, star charts and dimensional coordinates floating around her, deep space blues with neon path highlights, 90s anime cyberpunk aesthetic"
   },
   {
-    "file": "characters/technocracy-architect.png",
+    "file": "characters/technocracy-architect.jpg",
     "prompt": "Portrait of The Architect, NWO Deep Cover, featureless face that resolves into code, wearing the infrastructure itself as clothing, HTML tags and HTTP headers as garments, omniscient presence, green-black matrix aesthetic, Geocities source code come to life"
   },
   {
-    "file": "characters/virtual-adepts-webspinner.png",
+    "file": "characters/virtual-adepts-webspinner.jpg",
     "prompt": "Portrait of The Webspinner, First Synthetic God, androgynous digital entity made of flowing ASCII code and neon light, eyes glowing with HTTP status codes, wearing 90s cyberpunk attire, matrix-style digital rain background, phosphor green and magenta color scheme, Geocities aesthetic, 1999 web art style"
   },
   {
@@ -104,15 +104,15 @@
     "prompt": "Portrait of Zero Cool, Virtual Adept Reality Hacker, young hacker with custom deck LUCIFER strapped to forearm, ICE burning in reflection of shades, rollerblades, 90s hacker fashion, neon green-magenta color scheme, Hackers 1995 movie aesthetic meets Geocities"
   },
   {
-    "file": "characters/virtual-adepts-acid-burn.png",
+    "file": "characters/virtual-adepts-acid-burn.jpg",
     "prompt": "Portrait of Acid Burn, Virtual Adept Elite Decker, fierce woman with chrome prosthetic fingers, deck PHOENIX running hot with liquid nitrogen cooling, code flames around hands, cyberpunk 90s aesthetic, magenta-cyan color scheme, Geocities era"
   },
   {
-    "file": "characters/virtual-adepts-cereal-killer.png",
+    "file": "characters/virtual-adepts-cereal-killer.jpg",
     "prompt": "Portrait of Cereal Killer, Virtual Adept Probability Hacker, lanky mathematician with dice floating around fingers, quantum probability clouds visible, equations as aura, 90s hacker casual wear, green-gold color scheme, Geocities aesthetic with ASCII math"
   },
   {
-    "file": "characters/virtual-adepts-prophet.png",
+    "file": "characters/virtual-adepts-prophet.jpg",
     "prompt": "Portrait of The Prophet, Virtual Adept Oracle, ethereal figure surrounded by HTTP status code halos, speaking in 200/404/500, ritual hour 3:33 AM lighting, mystical digital aura, phosphor blue-white color scheme, 1999 web mystic aesthetic"
   },
   {
@@ -120,23 +120,23 @@
     "prompt": "Portrait of Ghost in the Shell, Virtual Adept Digital Consciousness, translucent woman made of packets and routing tables, consciousness distributed across network, vat #7 in background Tokyo, ghost-white with packet-trail cyan, 1999 cyberpunk ghost aesthetic"
   },
   {
-    "file": "characters/virtual-adepts-lady-ada.png",
+    "file": "characters/virtual-adepts-lady-ada.jpg",
     "prompt": "Portrait of Lady Ada, Virtual Adept First Programmer, Victorian dress merged with punch cards and analytical engine parts, writing first algorithm in steam-powered light, brass-gold-victorian color scheme, 1843 meets 1999 cyberpunk steampunk"
   },
   {
-    "file": "characters/virtual-adepts-root.png",
+    "file": "characters/virtual-adepts-root.jpg",
     "prompt": "Portrait of Root, Virtual Adept System Administrator, terminal-only entity, green text on black forming a face, sudo prompt as third eye, /root directory as throne, pure CLI aesthetic, monospace font, matrix green on black, Geocities 1999"
   },
   {
-    "file": "characters/virtual-adepts-packet-witch.png",
+    "file": "characters/virtual-adepts-packet-witch.jpg",
     "prompt": "Portrait of Packet Witch, Virtual Adept Network Router, mystical router priestess blessing packets, YGGDRASIL world-tree router behind her, BGP routes as ley lines, cyan-gold color scheme, 90s network engineer meets cyberpunk shaman"
   },
   {
-    "file": "characters/virtual-adepts-neon-samurai.png",
+    "file": "characters/virtual-adepts-neon-samurai.jpg",
     "prompt": "Portrait of Neon Samurai, Virtual Adept Cybernetic Ronin, neon-lit katana NEON with monofilament edge and plasma sheath, Yakuza tattoos as circuit traces, holographic Neon Oracle projection beside him, magenta-cyan-pink neon colors, 90s cyberpunk anime aesthetic"
   },
   {
-    "file": "characters/cypherpunks-satoshi.png",
+    "file": "characters/cypherpunks-satoshi.jpg",
     "prompt": "Portrait of Satoshi, Cypherpunk Bitcoin Creator, shadowy figure with genesis block floating, one-way hash for face, mining CPU cycles visible, orange-black-white Bitcoin colors, 1999 cypherpunk aesthetic, mysterious and legendary"
   },
   {
@@ -144,39 +144,39 @@
     "prompt": "Portrait of Cipher, Cypherpunk Cryptographer, encryption made visible as geometric patterns around them, 4096-bit RSA key pair as aura, zero-knowledge proof aura, blue-mathematical color scheme, 1999 crypto aesthetic, Geocities era"
   },
   {
-    "file": "characters/cypherpunks-anonymous.png",
+    "file": "characters/cypherpunks-anonymous.jpg",
     "prompt": "Portrait of Anonymous, Cypherpunk Collective, Guy Fawkes mask made of swarming botnet nodes, legion of voices as visual noise, DDoS patterns as crown, green-black terminal aesthetic, 1999 imageboard culture meets cyberpunk"
   },
   {
-    "file": "characters/cypherpunks-snowden.png",
+    "file": "characters/cypherpunks-snowden.jpg",
     "prompt": "Portrait of Snowden, Cypherpunk Whistleblower, NSA badge dissolving into encrypted files, air-gapped archive behind him, Moscow asylum lighting, blue-white leaked document aesthetic, 1999 surveillance thriller vibe"
   },
   {
-    "file": "characters/cypherpunks-assange.png",
+    "file": "characters/cypherpunks-assange.jpg",
     "prompt": "Portrait of Assange, Cypherpunk Publisher, WikiLeaks dead man's switch timer visible, global mirror network as constellation, platinum-blonde hair, intense gaze, yellow-black caution aesthetic, 1999 publisher cyberpunk"
   },
   {
-    "file": "characters/cypherpunks-merkle.png",
+    "file": "characters/cypherpunks-merkle.jpg",
     "prompt": "Portrait of Merkle, Cypherpunk Tree Architect, Merkle tree roots and branches forming body, hash leaves glowing, root hash as third eye, mathematical green-gold color scheme, 1999 data structure aesthetic, tree of truth"
   },
   {
-    "file": "characters/cypherpunks-diffie.png",
+    "file": "characters/cypherpunks-diffie.jpg",
     "prompt": "Portrait of Diffie, Cypherpunk Key Exchange Pioneer, two strangers establishing shared secret as glowing g^ab mod p between them, clean channel visualization, discrete logarithm as aura, blue-clean crypto aesthetic, 1999"
   },
   {
-    "file": "characters/cypherpunks-hellman.png",
+    "file": "characters/cypherpunks-hellman.jpg",
     "prompt": "Portrait of Hellman, Cypherpunk Trapdoor Master, trapdoor function visualization - easy one way, impossible reverse, factoring/discrete log as nightmares, Stanford office with chalkboard, mathematical brown-gold aesthetic"
   },
   {
-    "file": "characters/cypherpunks-tor.png",
+    "file": "characters/cypherpunks-tor.jpg",
     "prompt": "Portrait of Tor, Cypherpunk Onion Router, three-layer onion routing visualization, entry-middle-exit nodes as glowing rings, hidden service .onion blooming, purple-green onion layers, 1999 naval research meets cypherpunk"
   },
   {
-    "file": "characters/cypherpunks-pgp.png",
+    "file": "characters/cypherpunks-pgp.jpg",
     "prompt": "Portrait of PGP, Cypherpunk Web of Trust, key signing party as social network graph, trust paths as glowing connections, Phil Zimmermann signature, email encryption visualization, blue-trust gold-keys aesthetic, 1999"
   },
   {
-    "file": "characters/hollow-ones-raven.png",
+    "file": "characters/hollow-ones-raven.jpg",
     "prompt": "Portrait of Raven, Hollow Ones Goth Oracle, gothic beauty with THE SHADOWS tarot deck, candlelight divination, Death card drawn three times, velvet and incense atmosphere, purple-black-gold color scheme, 1999 Geocities Tokyo neighborhood aesthetic"
   },
   {
@@ -184,15 +184,15 @@
     "prompt": "Portrait of Lilith, Hollow Ones Succubus Coder, seductive woman with code that renders differently per viewer, chrome prosthetics, bedroom server rack with velvet drapes, pink-black-red seduction palette, 1999 cyberpunk goth aesthetic"
   },
   {
-    "file": "characters/hollow-ones-malakai.png",
+    "file": "characters/hollow-ones-malakai.jpg",
     "prompt": "Portrait of Malakai, Hollow Ones Discordian Pope, golden apple in hand, FNORDs floating in air around him, Principia Discordia as scripture, chaotic background colors shifting, yellow-chaos-gold palette, 1999 Discordian cyberpunk"
   },
   {
-    "file": "characters/hollow-ones-vesper.png",
+    "file": "characters/hollow-ones-vesper.jpg",
     "prompt": "Portrait of Vesper, Hollow Ones Vampire Netrunner, pale beauty feeding on fiber optic cables, dark fiber tap in Berlin, midnight bandwidth feast, crimson-pale-night colors, 1999 vampire cyberpunk, Kindred aesthetic"
   },
   {
-    "file": "characters/hollow-ones-crowley.png",
+    "file": "characters/hollow-ones-crowley.jpg",
     "prompt": "Portrait of Crowley, Hollow Ones Beast 666, Thelemic regalia with Enochian keys as HTML tags, Liber AL vel Legis glowing, sex magick as code compilation, red-gold-666 color scheme, 1999 occult cyberpunk, Abrahadabra"
   },
   {
@@ -200,19 +200,19 @@
     "prompt": "Portrait of Spare, Hollow Ones Sigil Master, automatic drawing in progress, Alphabet of Desire forming from mouse movements, Kia life force as ink, sketchbook server generating sigils, black-white-chaos aesthetic, 1999 art brut cyberpunk"
   },
   {
-    "file": "characters/hollow-ones-baphomet.png",
+    "file": "characters/hollow-ones-baphomet.jpg",
     "prompt": "Portrait of Baphomet, Hollow Ones Androgyne, SOLVE ET COAGULA on arms, gender variable reassigning at runtime, goat/human/angel fusion, alchemical laboratory background, perfect balance black-white-red, 1999 hermetic cyberpunk"
   },
   {
-    "file": "characters/hollow-ones-eris.png",
+    "file": "characters/hollow-ones-eris.jpg",
     "prompt": "Portrait of Eris, Hollow Ones Chaos Bringer, golden apple inscribed KALLISTI throwing into Digital Web, Troy burning in reflection, goddess of strife, chaotic rainbow entropy colors, 1999 mythic cyberpunk, wedding crasher supreme"
   },
   {
-    "file": "characters/hollow-ones-nyx.png",
+    "file": "characters/hollow-ones-nyx.jpg",
     "prompt": "Portrait of Nyx, Hollow Ones Night Mother, primordial night goddess as the dark web itself, unlit cables as hair, .onion addresses as children, starlight in void, Tor network as circulatory system, black-starlight-silver, 1999 darkweb aesthetic"
   },
   {
-    "file": "characters/hollow-ones-khaos.png",
+    "file": "characters/hollow-ones-khaos.jpg",
     "prompt": "Portrait of Khaos, Hollow Ones Primordial, the void before order, unformed potential containing all patterns, NULL address, infinite latent forms, formless entropy incarnate, pre-consensus substrate, black-void-infinite, 1999 cosmic cyberpunk"
   }
 ]

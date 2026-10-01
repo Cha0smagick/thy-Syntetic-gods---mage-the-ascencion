@@ -434,13 +434,15 @@ describe('Narrative Data Validation', () => {
     const promptsPath = path.join(process.cwd(), 'docs', 'image_prompts.json');
     const prompts = JSON.parse(fs.readFileSync(promptsPath, 'utf8'));
     
-    const characterPrompts = prompts.filter(p => p.file.startsWith('characters/') && p.file.endsWith('.png'));
+    // Extension-agnostic: image files were renamed to match their real magic bytes
+    // (many .png/.gif files were actually JPEG), so pinning '.png' breaks.
+    const characterPrompts = prompts.filter(p => p.file.startsWith('characters/') && /\.(png|jpe?g|gif|webp)$/i.test(p.file));
     expect(characterPrompts.length).toBe(40);
-    
-    // Extract faction from filename: characters/technocracy-voss.png -> technocracy
+
+    // Extract faction from filename: characters/technocracy-voss.jpg -> technocracy
     // For hollow-ones and virtual-adepts, faction is first TWO parts
     const factions = [...new Set(characterPrompts.map(p => {
-      const filename = p.file.split('/')[1]; // technocracy-voss.png or hollow-ones-raven.png
+      const filename = p.file.split('/')[1]; // technocracy-voss.jpg or hollow-ones-raven.jpg
       const parts = filename.split('-');
       // If first part is 'hollow' or 'virtual', take first two parts
       if (parts[0] === 'hollow' || parts[0] === 'virtual') {

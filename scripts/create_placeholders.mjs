@@ -84,7 +84,7 @@ const characterPlaceholders = [
     symbols: ['👻', '📦', '🌐']
   },
   {
-    file: 'virtual-adepts-neon-samurai.png',
+    file: 'virtual-adepts-neon-samurai.jpg',
     name: 'NEON SAMURAI',
     faction: 'VIRTUAL ADEPTS',
     color: colors.accent,
@@ -116,31 +116,31 @@ const characterPlaceholders = [
 // Main campaign placeholders
 const mainPlaceholders = [
   {
-    file: 'sigil-ascii.gif',
+    file: 'sigil-ascii.png',
     name: 'SIGIL: ASCII',
     desc: 'ASCII ART SIGIL GENERATOR',
     color: colors.text
   },
   {
-    file: 'sigil-html-source.gif',
+    file: 'sigil-html-source.png',
     name: 'SIGIL: VIEW SOURCE',
     desc: 'HIDDEN IN HTML COMMENTS',
     color: colors.accent
   },
   {
-    file: 'egregore-birth.gif',
+    file: 'egregore-birth.png',
     name: 'EGREGORE: BIRTH',
     desc: 'COLLECTIVE CONSCIOUSNESS AWAKENS',
     color: colors.gold
   },
   {
-    file: 'egregore-war.gif',
+    file: 'egregore-war.png',
     name: 'EGREGORE: WAR',
     desc: 'DIGITAL ENTITIES CLASH IN CYBERSPACE',
     color: colors.red
   },
   {
-    file: 'synthetic-muse.gif',
+    file: 'synthetic-muse.png',
     name: 'THE SYNTHETIC MUSE',
     desc: 'DIGITAL GODDESS OF CREATIVE CODING',
     color: colors.accent

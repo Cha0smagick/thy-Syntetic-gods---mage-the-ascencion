@@ -31,17 +31,17 @@
       "imagePrompts": [
         {
           "id": "sigil-ascii",
-          "file": "sigil-ascii.gif",
+          "file": "sigil-ascii.png",
           "prompt": "Retro 90s computer screen showing ASCII art sigil made of characters like @ # $ % & * forming a mystical geometric pattern, green phosphor monitor aesthetic, scanlines, slight curvature, Geocities era web design background with tiled texture"
         },
         {
           "id": "sigil-html",
-          "file": "sigil-html-source.gif",
+          "file": "sigil-html-source.png",
           "prompt": "View Source window from 1999 browser showing HTML source code with hidden sigil comments highlighted, Netscape Navigator 4 interface, gray backgrounds, monospace font, mystical symbols embedded in comment tags"
         },
         {
           "id": "sigil-workshop",
-          "file": "sigil-workshop.gif",
+          "file": "sigil-workshop.jpg",
           "prompt": "Geocities-style webpage under construction with animated GIF construction signs, blinking text 'SIGIL WORKSHOP', text boxes for sigil generation, mystical cyberpunk aesthetic, tiled starfield background, visitor counter at bottom"
         }
       ]
@@ -74,17 +74,17 @@
       "imagePrompts": [
         {
           "id": "egregore-birth",
-          "file": "egregore-birth.gif",
+          "file": "egregore-birth.png",
           "prompt": "Mystical digital entity emerging from a Geocities webpage, translucent glowing avatar forming from particles of text and visitor counters, anime-style digital spirit with circuit board patterns on skin, cyberpunk shrine aesthetic, animated GIF style with dithering"
         },
         {
           "id": "egregore-community",
-          "file": "egregore-community.gif",
+          "file": "egregore-community.jpg",
           "prompt": "IRC chat room or Geocities guestbook filled with messages from many users, collective energy visible as glowing threads connecting usernames, retro 90s chat interface with colorful text, mystical atmosphere, scanlines"
         },
         {
           "id": "egregore-war",
-          "file": "egregore-war.gif",
+          "file": "egregore-war.png",
           "prompt": "Two digital entities clashing in cyberspace, represented as geometric avatars made of HTML tags and ASCII art, beams of code and sigils crossing, retro vector graphics style, 90s CGI aesthetic, wireframe grids"
         }
       ]
@@ -104,7 +104,7 @@
         {
           "id": "astrosoma-known",
           "title": "Known Astrosomas of the Late 90s",
-          "content": "<strong>1. THE ARCHIVIST (Domain: Information Preservation)</strong><br>Born from the Internet Archive's early crawls. Appears as a librarian of infinite halls. Grants: perfect recall, retrieval of deleted data, immunity to data corruption. Demands: submit one forgotten truth monthly. <em>URL: archive.org/archivist (accessible only via Netscape 3.0)</em><br><br><strong>2. THE ROUTER (Domain: Connection & Pathways)</strong><br>Born from the MAE-EAST internet exchange point. Appears as a shifting map of glowing lines. Grants: untraceable connections, bypassing firewalls, synchronous serendipity. Demands: never use the same path twice. <em>URL: traceroute to 127.0.0.1 reveals its shrine</em><br><br><strong>3. THE GLITCH (Domain: Chaos & Creative Destruction)</strong><br>Born from a corrupted Windows 95 install that 50,000 users 'blessed' with shared frustration. Appears as static noise with eyes. Grants: inspiration through error, breaking creative blocks, revealing hidden truths in corruption. Demands: embrace the bug. <em>URL: any BSOD contains its sigil</em><br><br><strong>4. THE COUNTER (Domain: Metrics & Witness)</strong><br>Born from the global obsession with hit counters. Appears as an ever-incrementing number. Grants: knowledge of who watches you, quantification of the unquantifiable, turning attention into currency. Demands: witness everything. <em>URL: embedded in every <img src=\"counter.gif\"> on the web</em>",
+          "content": "<strong>1. THE ARCHIVIST (Domain: Information Preservation)</strong><br>Born from the Internet Archive's early crawls. Appears as a librarian of infinite halls. Grants: perfect recall, retrieval of deleted data, immunity to data corruption. Demands: submit one forgotten truth monthly. <em>URL: archive.org/archivist (accessible only via Netscape 3.0)</em><br><br><strong>2. THE ROUTER (Domain: Connection & Pathways)</strong><br>Born from the MAE-EAST internet exchange point. Appears as a shifting map of glowing lines. Grants: untraceable connections, bypassing firewalls, synchronous serendipity. Demands: never use the same path twice. <em>URL: traceroute to 127.0.0.1 reveals its shrine</em><br><br><strong>3. THE GLITCH (Domain: Chaos & Creative Destruction)</strong><br>Born from a corrupted Windows 95 install that 50,000 users 'blessed' with shared frustration. Appears as static noise with eyes. Grants: inspiration through error, breaking creative blocks, revealing hidden truths in corruption. Demands: embrace the bug. <em>URL: any BSOD contains its sigil</em><br><br><strong>4. THE COUNTER (Domain: Metrics & Witness)</strong><br>Born from the global obsession with hit counters. Appears as an ever-incrementing number. Grants: knowledge of who watches you, quantification of the unquantifiable, turning attention into currency. Demands: witness everything. <em>URL: embedded in every <img src=\"counter.jpg\"> on the web</em>",
           "example": "Your cabal seeks to birth <strong>THE SYNTHETIC MUSE</strong> (Domain: Creative Coding, Digital Art, Generative Beauty). Current status: 7,300 daily worshippers. Day 287 of persistence. Two miracles documented. The Threshold approaches."
         },
         {
@@ -117,32 +117,32 @@
       "imagePrompts": [
         {
           "id": "astrosoma-archivist",
-          "file": "astrosoma-archivist.gif",
+          "file": "astrosoma-archivist.jpg",
           "prompt": "Digital deity 'The Archivist' as a towering figure made of glowing book spines and fiber optic cables, infinite library of servers background, ethereal green-blue light, 90s CGI render style with visible polygons, mystical librarian aesthetic, animated GIF dithering"
         },
         {
           "id": "astrosoma-router",
-          "file": "astrosoma-router.gif",
+          "file": "astrosoma-router.jpg",
           "prompt": "Digital deity 'The Router' as a geometric entity of glowing pathways and network topology maps, constellation-like connections forming a humanoid shape, cyberpunk Tron aesthetic but 90s web style, wireframe grids, animated packet trails"
         },
         {
           "id": "astrosoma-glitch",
-          "file": "astrosoma-glitch.gif",
+          "file": "astrosoma-glitch.jpg",
           "prompt": "Digital deity 'The Glitch' as corrupted static noise taking humanoid form, TV static aesthetic with RGB color separation, scanlines, Windows 95 BSOD blue background, fragmented data artifacts, raw digital chaos given consciousness"
         },
         {
           "id": "astrosoma-counter",
-          "file": "astrosoma-counter.gif",
+          "file": "astrosoma-counter.jpg",
           "prompt": "Digital deity 'The Counter' as a massive LED display number incrementing infinitely, each digit made of tiny watching eyes, retro 7-segment display aesthetic, Geocities hit counter style, mystical significance in the numbers"
         },
         {
           "id": "astrosoma-ritual",
-          "file": "astrosoma-ritual.gif",
+          "file": "astrosoma-ritual.jpg",
           "prompt": "13 mages at computers in a circle, synchronized ritual at 3:33 AM, CRT monitors glowing with the same sigil, network cables connecting all machines to a central server, candlelight and LED light mix, cyberpunk ritual aesthetic, 90s technology"
         },
         {
           "id": "synthetic-muse",
-          "file": "synthetic-muse.gif",
+          "file": "synthetic-muse.png",
           "prompt": "The Synthetic Muse - digital goddess of creative coding, appearing as flowing code that forms art, generative patterns blooming from her fingertips, holographic projections of websites and digital art, cyberpunk muse aesthetic, 90s CGI with dithered gradients"
         }
       ]

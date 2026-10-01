@@ -128,7 +128,7 @@ function generateSitemapIndex() {
         <tr>
             <td colspan="2" class="header-cell">
                 <div class="header-content">
-                    <img src="images/banner-synthetic-gods.gif" alt="The Synthetic Gods Banner" width="468" height="60" class="banner-img">
+                    <img src="images/banner-synthetic-gods.jpg" alt="The Synthetic Gods Banner" width="468" height="60" class="banner-img">
                 </div>
             </td>
         </tr>

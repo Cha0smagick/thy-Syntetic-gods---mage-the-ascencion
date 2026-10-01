@@ -13,20 +13,20 @@ const IMAGES_DIR = path.join(DOCS_DIR, 'images');
 // Known image dimensions
 const imageDimensions = {
   // Main images
-  'banner-synthetic-gods.gif': { width: 468, height: 60 },
-  'under-construction.gif': { width: 200, height: 200 },
-  'sigil-workshop.gif': { width: 512, height: 512 },
-  'egregore-community.gif': { width: 512, height: 512 },
-  'astrosoma-archivist.gif': { width: 512, height: 512 },
-  'astrosoma-router.gif': { width: 512, height: 512 },
-  'astrosoma-glitch.gif': { width: 512, height: 512 },
-  'astrosoma-counter.gif': { width: 512, height: 512 },
-  'astrosoma-ritual.gif': { width: 512, height: 512 },
-  'sigil-ascii.gif': { width: 512, height: 512 },
-  'sigil-html-source.gif': { width: 512, height: 512 },
-  'egregore-birth.gif': { width: 512, height: 512 },
-  'egregore-war.gif': { width: 512, height: 512 },
-  'synthetic-muse.gif': { width: 512, height: 512 },
+  'banner-synthetic-gods.jpg': { width: 468, height: 60 },
+  'under-construction.jpg': { width: 200, height: 200 },
+  'sigil-workshop.jpg': { width: 512, height: 512 },
+  'egregore-community.jpg': { width: 512, height: 512 },
+  'astrosoma-archivist.jpg': { width: 512, height: 512 },
+  'astrosoma-router.jpg': { width: 512, height: 512 },
+  'astrosoma-glitch.jpg': { width: 512, height: 512 },
+  'astrosoma-counter.jpg': { width: 512, height: 512 },
+  'astrosoma-ritual.jpg': { width: 512, height: 512 },
+  'sigil-ascii.png': { width: 512, height: 512 },
+  'sigil-html-source.png': { width: 512, height: 512 },
+  'egregore-birth.png': { width: 512, height: 512 },
+  'egregore-war.png': { width: 512, height: 512 },
+  'synthetic-muse.png': { width: 512, height: 512 },
   
   // Character portraits (all 512x512 from Flux)
   // We'll set default for any character image

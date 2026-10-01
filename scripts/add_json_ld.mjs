@@ -40,7 +40,7 @@ function getJsonLdForPage(relPath) {
           "publisher": {
             "@type": "Organization",
             "name": "The Synthetic Gods",
-            "logo": `${BASE_URL}/images/banner-synthetic-gods.gif`
+            "logo": `${BASE_URL}/images/banner-synthetic-gods.jpg`
           },
           "potentialAction": {
             "@type": "SearchAction",
