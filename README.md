@@ -980,7 +980,7 @@ IRC chat simulation · Usenet archive browser · interactive webring map · Tech
 ---
 
 <p align="center">
-  <img src="docs/images/banner-synthetic-gods.jpg" alt="The Synthetic Gods Banner" width="468" height="263" style="border: 2px outset #FF00FF;">
+  <img src="docs/images/banner-synthetic-gods.jpg" alt="The Synthetic Gods Banner" width="468" height="263" align="center" class="banner-img">
   <br>
   <span style="font-family: 'Courier New', monospace; color: #00FF00;">
     BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 • 800×600 • 256 COLORS • JAVASCRIPT ENABLED
