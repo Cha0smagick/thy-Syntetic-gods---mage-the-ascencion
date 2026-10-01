@@ -17,13 +17,15 @@
     "test:all": "npm run test && npm run test:e2e",
     "serve": "npx serve docs -l 8080",
     "lint:html": "npx html-validate docs/**/*.html",
-    "lint:links": "node scripts/check_links.mjs && npx lychee docs/index.html --verbose",
+    "lint:links": "node scripts/check_links.mjs",
     "lighthouse": "lhci autorun",
     "lighthouse:local": "node scripts/run_lighthouse.mjs",
     "generate:images": "node scripts/gen_images_nvidia.mjs",
     "generate:placeholders": "node scripts/create_placeholders.mjs",
     "generate:seo": "node scripts/generate_seo.mjs",
     "generate:og": "node scripts/add_og_images.mjs",
+    "generate:og-images": "node scripts/gen_images_nvidia.mjs synthetic-gods --prompts docs/og_prompts.json --out docs/images",
+    "wire_images": "node scripts/wire_images.mjs",
     "generate:security": "node scripts/add_security_headers.mjs",
     "generate:dimensions": "node scripts/add_img_dimensions.mjs",
     "generate:jsonld": "node scripts/add_json_ld.mjs",
@@ -34,7 +36,8 @@
     "lint:assets": "node scripts/check_asset_integrity.mjs",
     "lint:schema": "node scripts/check_structured_data.mjs",
     "generate:a11y": "node scripts/add_landmarks.mjs",
-    "lint:a11y": "node scripts/check_accessibility.mjs"
+    "lint:a11y": "node scripts/check_accessibility.mjs",
+    "lint:links:external": "npx --yes lychee@0.15.1 \"docs/**/*.html\" --verbose"
   },
   "repository": {
     "type": "git",

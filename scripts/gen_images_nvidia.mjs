@@ -12,27 +12,57 @@ import https from 'https';
 // Configuration
 const API_ENDPOINT = 'https://ai.api.nvidia.com/v1/genai/black-forest-labs/flux.2-klein-4b';
 const PROJECT_ROOT = process.cwd();
-const PROMPTS_FILE = path.join(PROJECT_ROOT, 'docs', 'image_prompts.json');
-const OUTPUT_DIR = path.join(PROJECT_ROOT, 'docs', 'images');
-const ENV_FILE = path.join('D:', 'Videos', 'Crear_videos', '.env');
+const DEFAULT_PROMPTS_FILE = path.join(PROJECT_ROOT, 'docs', 'image_prompts.json');
+const DEFAULT_OUTPUT_DIR = path.join(PROJECT_ROOT, 'docs', 'images');
 
-// Load API key from .env
+// Overridable via CLI so one generator serves every image deliverable.
+let PROMPTS_FILE = DEFAULT_PROMPTS_FILE;
+let OUTPUT_DIR = DEFAULT_OUTPUT_DIR;
+// Candidate .env locations, searched in order. The repo-local `.env` is the
+// supported one (git-ignored); the rest are historical locations kept so an
+// existing machine setup keeps working without reconfiguration.
+const ENV_FILES = [
+  path.join(PROJECT_ROOT, '.env'),
+  path.join(process.env.USERPROFILE || '', '.config', 'opencode', '.env'),
+  path.join('D:', 'Paginas web', 'audit-n-make-money', 'business-partner', '.env'),
+  path.join('D:', 'Videos', 'Crear_videos', '.env'),
+];
+
+// Resolve the API key: explicit environment variable wins, then the .env
+// cascade. Never throws - returns null so the caller can report one clear error.
 function loadApiKey() {
-  try {
-    const envContent = fs.readFileSync(ENV_FILE, 'utf8');
-    const match = envContent.match(/NVIDIA_API_KEY\s*=\s*(.+)/);
-    if (match) return match[1].trim();
-  } catch (e) {
-    console.error('Could not read .env file:', e.message);
+  if (process.env.NVIDIA_API_KEY) return process.env.NVIDIA_API_KEY.trim();
+
+  for (const envFile of ENV_FILES) {
+    if (!envFile) continue;
+    let envContent;
+    try {
+      envContent = fs.readFileSync(envFile, 'utf8');
+    } catch {
+      continue; // not present - try the next candidate
+    }
+    const match = envContent.match(/^\s*NVIDIA_API_KEY\s*=\s*(.+)$/m);
+    if (match) {
+      const value = match[1].trim().replace(/^["']|["']$/g, '');
+      if (value) {
+        console.error(`Loaded NVIDIA_API_KEY from ${envFile}`);
+        return value;
+      }
+    }
   }
-  // Fallback to environment variable
-  return process.env.NVIDIA_API_KEY;
+  return null;
 }
 
 const API_KEY = loadApiKey();
 
 if (!API_KEY) {
-  console.error('ERROR: NVIDIA_API_KEY not found in .env or environment');
+  console.error(
+    'ERROR: NVIDIA_API_KEY not found.\n' +
+    `  Set it in the environment:  set NVIDIA_API_KEY=nvapi-...\n` +
+    `  Or create ${path.join(PROJECT_ROOT, '.env')} containing:\n` +
+    '  NVIDIA_API_KEY=nvapi-...\n' +
+    `  Searched: ${ENV_FILES.join(', ')}`
+  );
   process.exit(1);
 }
 
@@ -50,12 +80,13 @@ function loadPrompts() {
 // Generate image via NVIDIA API
 function generateImage(prompt, outputPath, options = {}) {
   return new Promise((resolve, reject) => {
-    // Flux.2 Klein 4B API only accepts: prompt, width, height, seed
+    // Flux.2 Klein 4B accepts: prompt, width, height, seed, steps
     const payload = JSON.stringify({
       prompt: prompt,
       width: options.width || 1024,
       height: options.height || 1024,
-      seed: options.seed || Math.floor(Math.random() * 2147483647)
+      seed: options.seed || Math.floor(Math.random() * 2147483647),
+      steps: options.steps || 4
     });
 
     const reqOptions = {
@@ -116,6 +147,17 @@ function generateImage(prompt, outputPath, options = {}) {
 // Main generation function
 async function main() {
   const projectName = process.argv[2] || 'synthetic-gods';
+
+  // Optional overrides: --prompts <file> --out <dir>
+  const argi = process.argv.indexOf('--prompts');
+  if (argi !== -1 && process.argv[argi + 1]) {
+    PROMPTS_FILE = path.resolve(process.cwd(), process.argv[argi + 1]);
+  }
+  const argo = process.argv.indexOf('--out');
+  if (argo !== -1 && process.argv[argo + 1]) {
+    OUTPUT_DIR = path.resolve(process.cwd(), process.argv[argo + 1]);
+  }
+
   const prompts = loadPrompts();
 
   // Ensure output directory exists
@@ -143,14 +185,25 @@ async function main() {
     console.log(`🎨 Generating: ${prompt.file}`);
     console.log(`   Prompt: ${prompt.prompt.slice(0, 80)}...`);
 
+    // Prompts may use nested paths (e.g. "characters/x.jpg"), so make sure the
+    // parent directory exists before writing.
+    const parentDir = path.dirname(outputPath);
+    if (!fs.existsSync(parentDir)) {
+      fs.mkdirSync(parentDir, { recursive: true });
+    }
+
     try {
-      // Flux.2 Klein 4B requires dimensions that are multiples of 16
-      // Use 1024x1024 for square, 1024x576 for 16:9, 1280x720 for 16:9 HD
+      // Flux.2 Klein 4B requires dimensions that are multiples of 16.
+      // An explicit width/height on the prompt entry always wins, so
+      // non-square deliverables (e.g. 1200x630 social cards) are possible.
       const isBanner = prompt.file.startsWith('banner-');
       const isBackground = prompt.file.startsWith('bg-');
-      
+
       let width, height;
-      if (isBanner) {
+      if (Number.isInteger(prompt.width) && Number.isInteger(prompt.height)) {
+        width = prompt.width;
+        height = prompt.height;
+      } else if (isBanner) {
         width = 1024;
         height = 576; // 16:9 compatible
       } else if (isBackground) {

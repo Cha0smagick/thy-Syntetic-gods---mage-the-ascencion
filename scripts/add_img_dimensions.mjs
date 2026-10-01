@@ -11,42 +11,82 @@ const DOCS_DIR = path.join(process.cwd(), 'docs');
 const IMAGES_DIR = path.join(DOCS_DIR, 'images');
 
 // Known image dimensions
+// Only used as an OVERRIDE / fallback for files we cannot probe on disk.
+// Real dimensions are read from the file's magic bytes first (see probeDimensions)
+// so newly generated images never inherit a stale guess.
 const imageDimensions = {
   // Main images
   'banner-synthetic-gods.jpg': { width: 468, height: 60 },
   'under-construction.jpg': { width: 200, height: 200 },
-  'sigil-workshop.jpg': { width: 512, height: 512 },
-  'egregore-community.jpg': { width: 512, height: 512 },
-  'astrosoma-archivist.jpg': { width: 512, height: 512 },
-  'astrosoma-router.jpg': { width: 512, height: 512 },
-  'astrosoma-glitch.jpg': { width: 512, height: 512 },
-  'astrosoma-counter.jpg': { width: 512, height: 512 },
-  'astrosoma-ritual.jpg': { width: 512, height: 512 },
-  'sigil-ascii.png': { width: 512, height: 512 },
-  'sigil-html-source.png': { width: 512, height: 512 },
-  'egregore-birth.png': { width: 512, height: 512 },
-  'egregore-war.png': { width: 512, height: 512 },
-  'synthetic-muse.png': { width: 512, height: 512 },
-  
-  // Character portraits (all 512x512 from Flux)
-  // We'll set default for any character image
 };
+
+/**
+ * Read intrinsic dimensions straight from the file header.
+ * Supports PNG (IHDR) and JPEG (SOFn markers). Returns null when the format
+ * is unknown, the file is missing, or the header is unparseable.
+ */
+function probeDimensions(absPath) {
+  let buf;
+  try {
+    buf = fs.readFileSync(absPath);
+  } catch {
+    return null;
+  }
+  if (buf.length < 24) return null;
+
+  // PNG: 8-byte signature, then an IHDR chunk with width/height at 16..24
+  if (buf.readUInt32BE(0) === 0x89504e47 && buf.readUInt32BE(4) === 0x0d0a1a0a) {
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+
+  // JPEG: walk the marker segments looking for a Start-Of-Frame
+  if (buf.readUInt16BE(0) === 0xffd8) {
+    let offset = 2;
+    while (offset + 9 < buf.length) {
+      if (buf[offset] !== 0xff) {
+        offset++;
+        continue;
+      }
+      const marker = buf[offset + 1];
+      // SOF0..SOF15, excluding DHT (c4), JPG (c8) and DAC (cc)
+      if (
+        marker >= 0xc0 &&
+        marker <= 0xcf &&
+        marker !== 0xc4 &&
+        marker !== 0xc8 &&
+        marker !== 0xcc
+      ) {
+        return { height: buf.readUInt16BE(offset + 5), width: buf.readUInt16BE(offset + 7) };
+      }
+      const segmentLength = buf.readUInt16BE(offset + 2);
+      if (segmentLength < 2) return null;
+      offset += 2 + segmentLength;
+    }
+  }
+
+  return null;
+}
 
 // Get dimensions for an image file
 function getImageDimensions(imagePath) {
   const filename = path.basename(imagePath);
-  
-  // Check known dimensions
+
+  // 1. Truth first: whatever the file on disk actually says
+  const probed = probeDimensions(imagePath);
+  if (probed && probed.width > 0 && probed.height > 0) {
+    return probed;
+  }
+
+  // 2. Explicit override for assets that have no readable header (e.g. .svg)
   if (imageDimensions[filename]) {
     return imageDimensions[filename];
   }
-  
-  // Default for character portraits
-  if (imagePath.includes('characters/') && (filename.endsWith('.png') || filename.endsWith('.svg'))) {
+
+  // 3. Fallbacks
+  if (imagePath.includes(path.join('characters', '')) && filename.endsWith('.svg')) {
     return { width: 256, height: 256 }; // Display size in dossiers
   }
-  
-  // Default for other images
+
   return { width: 512, height: 512 };
 }
 
@@ -58,11 +98,6 @@ function addDimensionsToImages(html, filePath) {
   const imgRegex = /<img\s+([^>]*?)src=["']([^"']+)["']([^>]*?)>/gi;
   
   const updatedHtml = html.replace(imgRegex, (match, beforeSrc, src, afterSrc) => {
-    // Skip if already has width and height
-    if (/\bwidth\s*=/i.test(match) && /\bheight\s*=/i.test(match)) {
-      return match;
-    }
-    
     // Resolve relative path
     let fullImagePath = src;
     if (src.startsWith('../')) {
@@ -74,18 +109,42 @@ function addDimensionsToImages(html, filePath) {
     }
     
     const dims = getImageDimensions(fullImagePath);
+
+    const declaredWidth = /\bwidth=["']?(\d+)/i.exec(match);
+    const declaredHeight = /\bheight=["']?(\d+)/i.exec(match);
+
+    if (declaredWidth && declaredHeight) {
+      // Both attributes present. They are presentational hints that act as the
+      // display size, but the browser also derives the placeholder aspect ratio
+      // from them — so a ratio that disagrees with the real file causes a layout
+      // shift on load. Keep the intended display width, repair the height.
+      const wantedRatio = dims.width / dims.height;
+      const currentRatio = Number(declaredWidth[1]) / Number(declaredHeight[1]);
+      if (Math.abs(currentRatio - wantedRatio) / wantedRatio < 0.02) {
+        return match; // already correct
+      }
+      const repairedHeight = Math.max(1, Math.round(Number(declaredWidth[1]) / wantedRatio));
+      if (repairedHeight === Number(declaredHeight[1])) {
+        return match;
+      }
+      updated = true;
+      return match.replace(
+        /\bheight\s*=\s*["']?\d+["']?/i,
+        `height="${repairedHeight}"`
+      );
+    }
     
     // Build new attributes
     let newBeforeSrc = beforeSrc;
     let newAfterSrc = afterSrc;
     
     // Add width if missing
-    if (!/\bwidth\s*=/i.test(match)) {
+    if (!declaredWidth) {
       newBeforeSrc += ` width="${dims.width}"`;
     }
     
     // Add height if missing
-    if (!/\bheight\s*=/i.test(match)) {
+    if (!declaredHeight) {
       newAfterSrc += ` height="${dims.height}"`;
     }
     
