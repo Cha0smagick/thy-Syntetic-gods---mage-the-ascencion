@@ -528,8 +528,24 @@ img.gif { border-color: var(--highlight); }
      wrapping <div class="sidebar"> (nav-section + table.nav-table), next to
      <td class="content-area">. That sidebar carries ALL navigation -- the act
      anchors, the dossier roster and the web ring -- so hiding it left phones
-     with a page they could not navigate at all. Stack the table instead. */
-  .sidebar-cell, .content-area { display: block; width: 100%; float: none; }
+     with a page they could not navigate at all.
+
+     Setting display:block on the <td>s alone is NOT enough: the cells keep
+     table-cell semantics, so Chromium wraps each one in its own anonymous
+     cell and lays them out side by side (measured 116px + 277px at 393px,
+     which also produced a 20px horizontal overflow). Collapse the table
+     itself to blocks first so the two cells become normal-flow siblings. */
+  .main-table,
+  .main-table tbody,
+  .main-table tr { display: block; width: 100%; }
+
+  .sidebar-cell, .content-area, .content-cell {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    float: none;
+    box-sizing: border-box;
+  }
   .sidebar { display: block; width: auto; margin: 0 0 12px 0; }
   .sidebar-cell { height: auto !important; }
   .nav-table { width: 100%; }
