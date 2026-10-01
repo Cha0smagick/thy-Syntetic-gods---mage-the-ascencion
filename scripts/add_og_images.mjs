@@ -83,15 +83,18 @@ function addOgTags(html, filePath) {
   const relPath = path.relative(DOCS_DIR, filePath).replace(/\\/g, '/');
   const ogImage = ogImageMap[relPath];
   
-  if (!ogImage) {
-    console.log(`⚠ No og:image mapping for: ${relPath}`);
-    return html;
-  }
-  
+  // Every legacy image in this repo is a real JPEG or PNG wearing the wrong
+  // extension (.gif/.png files holding JPEG bytes). Browsers content-sniff so
+  // <img> is fine, but GitHub Pages sends Content-Type by extension, and strict
+  // link-preview scrapers (Reddit, Facebook) reject a .gif that decodes as JPEG.
+  // og-cover.png is a genuine 1200x630 PNG, so it is always a valid preview.
+  const OG_IMAGE = 'images/og-cover.png';
+  const pageUrl = `${BASE_URL}/${relPath}`;
+
   // Calculate relative path from this HTML file to the image
-  const imagePath = getRelativePath(filePath, path.join(DOCS_DIR, ogImage));
-  const fullImageUrl = `${BASE_URL}/${ogImage}`;
-  
+  const imagePath = getRelativePath(filePath, path.join(DOCS_DIR, OG_IMAGE));
+  const fullImageUrl = `${BASE_URL}/${OG_IMAGE}`;
+
   // Check if og:image already exists
   if (html.includes('property="og:image"') || html.includes("property='og:image'")) {
     console.log(`⊘ Already has og:image: ${relPath}`);
@@ -103,6 +106,8 @@ function addOgTags(html, filePath) {
     <meta property="og:title" content="The Synthetic Gods - Mage: The Ascension Chronicle">
     <meta property="og:description" content="A Mage: The Ascension Chronicle of Digital Divinity - Geocities 1999 Aesthetic">
     <meta property="og:image" content="${fullImageUrl}">
+    <meta property="og:url" content="${pageUrl}">
+    <link rel="canonical" href="${pageUrl}" />
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Synthetic Gods">

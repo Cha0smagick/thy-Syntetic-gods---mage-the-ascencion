@@ -524,7 +524,16 @@ img.gif { border-color: var(--highlight); }
 
 /* --- Responsive (minimal, for modern viewing) --- */
 @media (max-width: 768px) {
-  .sidebar { display: none; }
+  /* The Geocities layout is a two-cell <table>: <td class="sidebar-cell">
+     wrapping <div class="sidebar"> (nav-section + table.nav-table), next to
+     <td class="content-area">. That sidebar carries ALL navigation -- the act
+     anchors, the dossier roster and the web ring -- so hiding it left phones
+     with a page they could not navigate at all. Stack the table instead. */
+  .sidebar-cell, .content-area { display: block; width: 100%; float: none; }
+  .sidebar { display: block; width: auto; margin: 0 0 12px 0; }
+  .sidebar-cell { height: auto !important; }
+  .nav-table { width: 100%; }
+  .nav-table td { display: block; padding: 2px 0; }
   .content-area { padding: 0 10px; }
   h1 { font-size: 24px; }
   h2 { font-size: 20px; }
