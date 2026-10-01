@@ -51,3 +51,6 @@ blob-report/
 lighthouse-report*/
 .lighthouserc.js
 .lighthouseci/
+
+# Temp scratch dirs created by art scripts in the repo root
+.banner-text-*/
