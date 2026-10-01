@@ -801,7 +801,7 @@
 
   function showFactionNotification(faction, message, threshold) {
     const colors = {
-      technocracy: '#0000FF',
+      technocracy: '#66CCFF',
       virtualAdepts: '#00FF00',
       cypherpunks: '#FF00FF',
       hollowOnes: '#FFFF00'
@@ -877,7 +877,7 @@
     };
     
     const colors = {
-      technocracy: '#0000FF',
+      technocracy: '#66CCFF',
       virtualAdepts: '#00FF00',
       cypherpunks: '#FF00FF',
       hollowOnes: '#FFFF00'

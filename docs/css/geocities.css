@@ -12,8 +12,13 @@
   --text-primary: #FFFF00;
   --text-secondary: #00FF00;
   --text-tertiary: #FF00FF;
-  --link-normal: #0000FF;
-  --link-visited: #800080;
+  /* Link colours are the authentic 1996 values EXCEPT where they failed WCAG AA
+     on a black/navy background. Measured with scripts/check_contrast.mjs:
+       #0000FF on #000066 -> 2.05:1  FAIL  -> #66CCFF -> 9.77:1  PASS
+       #800080 on #000066 -> 1.87:1  FAIL  -> #CC99FF -> 8.03:1  PASS
+     Same 90s light-blue-link / visited-purple look, now legible. */
+  --link-normal: #66CCFF;
+  --link-visited: #CC99FF;
   --link-active: #FF0000;
   --border-color: #FF00FF;
   --highlight: #FFFF00;
@@ -87,8 +92,28 @@ a {
 }
 
 a:visited { color: var(--link-visited); }
-a:hover { color: var(--link-active); background: var(--highlight); }
+/* Red on the yellow highlight measured only 3.72:1. Black on the same
+   yellow is ~19.6:1 and still reads as the authentic highlighted link. */
+a:hover { color: #000000; background: var(--highlight); }
 a:active { color: var(--link-active); }
+
+/* --- Skip to content (WCAG 2.4.1 Bypass Blocks) ---
+   Hidden until it receives keyboard focus, then pinned top-left. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 8px 14px;
+  background: var(--highlight);
+  color: #000000;
+  font-weight: bold;
+  font-family: var(--font-mono);
+  text-decoration: underline;
+}
+.skip-link:focus {
+  left: 0;
+}
 
 /* --- Horizontal Rules --- */
 hr {

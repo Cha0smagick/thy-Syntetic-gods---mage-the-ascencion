@@ -28,10 +28,12 @@
     "generate:dimensions": "node scripts/add_img_dimensions.mjs",
     "generate:jsonld": "node scripts/add_json_ld.mjs",
     "generate:sw": "node scripts/add_sw_registration.mjs",
-    "prepare:deploy": "npm run generate:seo && npm run generate:og && npm run generate:security && npm run generate:dimensions && npm run generate:jsonld && npm run generate:sw && npm run generate:sw:stamp",
+    "prepare:deploy": "npm run generate:seo && npm run generate:og && npm run generate:security && npm run generate:dimensions && npm run generate:jsonld && npm run generate:a11y && npm run generate:sw && npm run generate:sw:stamp",
     "generate:sw:stamp": "node scripts/stamp_sw_cache.mjs",
     "lint:assets": "node scripts/check_asset_integrity.mjs",
-    "lint:schema": "node scripts/check_structured_data.mjs"
+    "lint:schema": "node scripts/check_structured_data.mjs",
+    "generate:a11y": "node scripts/add_landmarks.mjs",
+    "lint:a11y": "node scripts/check_accessibility.mjs"
   },
   "repository": {
     "type": "git",

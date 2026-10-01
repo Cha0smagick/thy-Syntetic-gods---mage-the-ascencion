@@ -90,6 +90,7 @@
     </script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <!-- Hidden sigils for View Source discovery -->
     <div style="display:none" id="sigil-main">THSSYNTHTCGDS</div>
     <div style="display:none" id="sigil-webspinner">WBSPNNRFRGSMNT</div>
@@ -111,7 +112,7 @@
         </tr>
         <tr>
             <td class="sidebar-cell" valign="top">
-                <div class="sidebar">
+                <nav aria-label="Primary navigation" class="sidebar">
                     <div class="nav-section">
                         <div class="nav-title">THE SYNTHETIC GODS</div>
                         <div class="nav-subtitle">Mage: The Ascension Chronicle</div>
@@ -170,12 +171,12 @@
 
                     <div class="nav-section">
                         <div class="nav-title">COUNTER</div>
-                        <div class="blink" style="font-size: 12px; color: #FF0000;">YOU ARE VISITOR #<span data-counter>0000000</span></div>
+                        <div class="blink" style="font-size: 12px; color: #FF8080;">YOU ARE VISITOR #<span data-counter>0000000</span></div>
                     </div>
-                </div>
+                </nav>
             </td>
             <td class="content-cell" valign="top">
-                <div class="content-area" data-reveal>
+                <main id="main-content" class="content-area" data-reveal>
                     <!-- ACT I -->
                     <a id="act1" name="act1"></a>
                     <h1>The Synthetic Gods</h1>
@@ -526,7 +527,7 @@
                         });
                     }
                 </script>
-            </div>
+            </main>
         </td>
     </tr>
 </table>
