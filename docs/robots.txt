@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://los-dioses-sinteticos.github.io/sitemap.xml
+Sitemap: https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/sitemap.xml
 
 # Crawl-delay (be nice to server)
 Crawl-delay: 1

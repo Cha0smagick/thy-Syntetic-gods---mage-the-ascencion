@@ -5,10 +5,24 @@
  */
 
 import fs from 'fs';
+// Technocracy sub-factions share one index page. The dossier JSON-LD must
+// therefore always resolve "sameAs" to technocracy-index.html, never to a
+// slug derived from the in-world sub-faction name.
+const TECHNOCRACY_INDEX_ALIASES = new Set([
+  'new-world-order-index.html',
+  'syndicate-index.html',
+  'progenitors-index.html',
+  'void-engineers-index.html',
+  'iteration-x-index.html',
+]);
+
+function canonicalFactionIndex(slug) {
+  return TECHNOCRACY_INDEX_ALIASES.has(slug) ? 'technocracy-index.html' : slug;
+}
 import path from 'path';
 
 const DOCS_DIR = path.join(process.cwd(), 'docs');
-const BASE_URL = 'https://los-dioses-sinteticos.github.io';
+const BASE_URL = 'https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion';
 
 function getJsonLdForPage(relPath) {
   const today = new Date().toISOString().split('T')[0];
@@ -255,7 +269,7 @@ function getJsonLdForPage(relPath) {
         ...char.spheres
       ],
       "sameAs": [
-        `${BASE_URL}/characters/${char.faction.toLowerCase().replace(/\s+/g, '-')}-index.html`
+        `${BASE_URL}/characters/${canonicalFactionIndex(char.faction.toLowerCase().replace(/\s+/g, '-') + '-index.html')}`
       ]
     };
   }

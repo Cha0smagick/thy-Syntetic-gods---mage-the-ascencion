@@ -7,6 +7,33 @@
 import fs from 'fs';
 import path from 'path';
 
+/**
+ * Never clobber a real raster image.
+ *
+ * The previous implementation called copyFileSync(svgPath, pngPath) with no
+ * guard, which silently replaced genuine portraits with SVG text wearing a
+ * .png filename. Browsers refuse to decode that: image sniffing recognises
+ * PNG / JPEG / GIF / WebP magic bytes, but SVG is not a binary image format,
+ * so the file renders as a broken image.
+ *
+ * @param {string} filePath
+ * @returns {boolean} true when the file exists and holds real raster bytes
+ */
+function isRasterImage(filePath) {
+  if (!fs.existsSync(filePath)) return false;
+  const fd = fs.openSync(filePath, 'r');
+  try {
+    const buf = Buffer.alloc(12);
+    const n = fs.readSync(fd, buf, 0, 12, 0);
+    if (n < 4) return false;
+    const m = buf.slice(0, 4).toString('hex').toUpperCase();
+    return m === '89504E47' || m === 'FFD8FF' || m === '47494638' ||
+           (m === '52494646' && buf.slice(8, 12).toString('ascii') === 'WEBP');
+  } finally {
+    fs.closeSync(fd);
+  }
+}
+
 const OUTPUT_DIR = path.join(process.cwd(), 'docs', 'images');
 const CHAR_DIR = path.join(OUTPUT_DIR, 'characters');
 
@@ -263,6 +290,7 @@ for (const data of characterPlaceholders) {
   // Copy SVG content to .png file (browsers will render SVG even with .png extension if content-type is correct)
   // But better to just copy the file - we'll use a simple approach: create a 1x1 transparent PNG as fallback
   // Actually, let's just copy the SVG and rename to PNG for now
+  if (isRasterImage(pngPath)) { continue; }
   fs.copyFileSync(svgPath, pngPath);
   console.log(`✓ Created PNG reference: ${data.file}`);
 }
@@ -270,6 +298,7 @@ for (const data of characterPlaceholders) {
 for (const data of mainPlaceholders) {
   const svgPath = path.join(OUTPUT_DIR, data.file.replace('.gif', '.svg'));
   const gifPath = path.join(OUTPUT_DIR, data.file);
+  if (isRasterImage(gifPath)) { continue; }
   fs.copyFileSync(svgPath, gifPath);
   console.log(`✓ Created GIF reference: ${data.file}`);
 }

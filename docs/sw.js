@@ -5,76 +5,75 @@
  */
 
 const CACHE_NAME = 'synthetic-gods-v1';
-const OFFLINE_URL = '/index.html';
+const OFFLINE_URL = 'index.html';
 
 // Assets to cache on install
 const PRECACHE_ASSETS = [
-  '/index.html',
-  '/pages/neon-oracle.html',
-  '/css/geocities.css',
-  '/js/geocities.js',
-  '/js/oracle.js',
-  '/images/banner-synthetic-gods.gif',
-  '/images/under-construction.gif',
-  '/images/sigil-workshop.gif',
-  '/images/egregore-community.gif',
-  '/images/astrosoma-archivist.gif',
-  '/images/astrosoma-router.gif',
-  '/images/astrosoma-glitch.gif',
-  '/images/astrosoma-counter.gif',
-  '/images/astrosoma-ritual.gif',
-  '/images/sigil-ascii.gif',
-  '/images/sigil-html-source.gif',
-  '/images/egregore-birth.gif',
-  '/images/egregore-war.gif',
-  '/images/synthetic-muse.gif',
-  '/sitemap.xml',
-  '/robots.txt',
-  '/sitemap.html',
+  'index.html',
+  'pages/neon-oracle.html',
+  'css/geocities.css',
+  'js/geocities.js',
+  'images/banner-synthetic-gods.gif',
+  'images/under-construction.gif',
+  'images/sigil-workshop.gif',
+  'images/egregore-community.gif',
+  'images/astrosoma-archivist.gif',
+  'images/astrosoma-router.gif',
+  'images/astrosoma-glitch.gif',
+  'images/astrosoma-counter.gif',
+  'images/astrosoma-ritual.gif',
+  'images/sigil-ascii.gif',
+  'images/sigil-html-source.gif',
+  'images/egregore-birth.gif',
+  'images/egregore-war.gif',
+  'images/synthetic-muse.gif',
+  'sitemap.xml',
+  'robots.txt',
+  'sitemap.html',
 ];
 
 // Character portraits (cached on first visit)
 const CHARACTER_PORTRAITS = [
-  '/images/characters/technocracy-voss.png',
-  '/images/characters/technocracy-chen.png',
-  '/images/characters/technocracy-keres.png',
-  '/images/characters/technocracy-volkov.png',
-  '/images/characters/technocracy-smith.png',
-  '/images/characters/technocracy-patel.png',
-  '/images/characters/technocracy-kowalski.png',
-  '/images/characters/technocracy-lovelace.png',
-  '/images/characters/technocracy-sato.png',
-  '/images/characters/technocracy-architect.png',
-  '/images/characters/virtual-adepts-webspinner.png',
-  '/images/characters/virtual-adepts-zero-cool.png',
-  '/images/characters/virtual-adepts-acid-burn.png',
-  '/images/characters/virtual-adepts-cereal-killer.png',
-  '/images/characters/virtual-adepts-prophet.png',
-  '/images/characters/virtual-adepts-ghost.png',
-  '/images/characters/virtual-adepts-lady-ada.png',
-  '/images/characters/virtual-adepts-root.png',
-  '/images/characters/virtual-adepts-packet-witch.png',
-  '/images/characters/virtual-adepts-neon-samurai.png',
-  '/images/characters/cypherpunks-satoshi.png',
-  '/images/characters/cypherpunks-cipher.png',
-  '/images/characters/cypherpunks-anonymous.png',
-  '/images/characters/cypherpunks-snowden.png',
-  '/images/characters/cypherpunks-assange.png',
-  '/images/characters/cypherpunks-merkle.png',
-  '/images/characters/cypherpunks-diffie.png',
-  '/images/characters/cypherpunks-hellman.png',
-  '/images/characters/cypherpunks-tor.png',
-  '/images/characters/cypherpunks-pgp.png',
-  '/images/characters/hollow-ones-raven.png',
-  '/images/characters/hollow-ones-lilith.png',
-  '/images/characters/hollow-ones-malakai.png',
-  '/images/characters/hollow-ones-vesper.png',
-  '/images/characters/hollow-ones-crowley.png',
-  '/images/characters/hollow-ones-spare.png',
-  '/images/characters/hollow-ones-baphomet.png',
-  '/images/characters/hollow-ones-eris.png',
-  '/images/characters/hollow-ones-nyx.png',
-  '/images/characters/hollow-ones-khaos.png',
+  'images/characters/technocracy-voss.png',
+  'images/characters/technocracy-chen.png',
+  'images/characters/technocracy-keres.png',
+  'images/characters/technocracy-volkov.png',
+  'images/characters/technocracy-smith.png',
+  'images/characters/technocracy-patel.png',
+  'images/characters/technocracy-kowalski.png',
+  'images/characters/technocracy-lovelace.png',
+  'images/characters/technocracy-sato.png',
+  'images/characters/technocracy-architect.png',
+  'images/characters/virtual-adepts-webspinner.png',
+  'images/characters/virtual-adepts-zero-cool.png',
+  'images/characters/virtual-adepts-acid-burn.png',
+  'images/characters/virtual-adepts-cereal-killer.png',
+  'images/characters/virtual-adepts-prophet.png',
+  'images/characters/virtual-adepts-ghost.png',
+  'images/characters/virtual-adepts-lady-ada.png',
+  'images/characters/virtual-adepts-root.png',
+  'images/characters/virtual-adepts-packet-witch.png',
+  'images/characters/virtual-adepts-neon-samurai.png',
+  'images/characters/cypherpunks-satoshi.png',
+  'images/characters/cypherpunks-cipher.png',
+  'images/characters/cypherpunks-anonymous.png',
+  'images/characters/cypherpunks-snowden.png',
+  'images/characters/cypherpunks-assange.png',
+  'images/characters/cypherpunks-merkle.png',
+  'images/characters/cypherpunks-diffie.png',
+  'images/characters/cypherpunks-hellman.png',
+  'images/characters/cypherpunks-tor.png',
+  'images/characters/cypherpunks-pgp.png',
+  'images/characters/hollow-ones-raven.png',
+  'images/characters/hollow-ones-lilith.png',
+  'images/characters/hollow-ones-malakai.png',
+  'images/characters/hollow-ones-vesper.png',
+  'images/characters/hollow-ones-crowley.png',
+  'images/characters/hollow-ones-spare.png',
+  'images/characters/hollow-ones-baphomet.png',
+  'images/characters/hollow-ones-eris.png',
+  'images/characters/hollow-ones-nyx.png',
+  'images/characters/hollow-ones-khaos.png',
 ];
 
 // Install event - precache core assets
@@ -174,7 +173,7 @@ self.addEventListener('fetch', (event) => {
               // Offline fallback for images
               if (request.destination === 'image') {
                 return new Response(
-                  '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect fill="#000" width="512" height="512"/><text x="256" y="256" font-family="monospace" font-size="16" fill="#0F0" text-anchor="middle">IMAGE UNAVAILABLE OFFLINE</text></svg>',
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect fill="#000" width="512" height="512"><text x="256" y="256" font-family="monospace" font-size="16" fill="#0F0" text-anchor="middle">IMAGE UNAVAILABLE OFFLINE</text></svg>',
                   { headers: { 'Content-Type': 'image/svg+xml' } }
                 );
               }
@@ -212,11 +211,11 @@ self.addEventListener('push', (event) => {
   const data = event.data.json();
   const options = {
     body: data.body || 'The Synthetic Gods stir...',
-    icon: '/images/banner-synthetic-gods.gif',
-    badge: '/images/banner-synthetic-gods.gif',
+    icon: new URL('images/banner-synthetic-gods.gif', self.registration.scope).href,
+    badge: new URL('images/banner-synthetic-gods.gif', self.registration.scope).href,
     vibrate: [100, 50, 100],
     data: {
-      url: data.url || '/index.html'
+      url: data.url || self.registration.scope
     },
     actions: [
       { action: 'open', title: 'Enter the Grimoire' },
@@ -234,7 +233,7 @@ self.addEventListener('notificationclick', (event) => {
 
   if (event.action === 'open' || !event.action) {
     event.waitUntil(
-      clients.openWindow(event.notification.data.url || '/index.html')
+      clients.openWindow(event.notification.data.url || self.registration.scope)
     );
   }
 });

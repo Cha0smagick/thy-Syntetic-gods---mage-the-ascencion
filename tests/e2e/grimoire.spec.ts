@@ -13,6 +13,10 @@ test.describe('Main Grimoire (index.html)', () => {
 
   test('should load without console errors', async ({ page }) => {
     const errors = [];
+    page.on('dialog', dialog => { dialog.dismiss().catch(() => {}); });
+    page.on('pageerror', err => {
+      errors.push('Uncaught: ' + (err && err.message ? err.message : String(err)));
+    });
     page.on('console', msg => {
       if (msg.type() === 'error') errors.push(msg.text());
     });
@@ -57,22 +61,31 @@ test.describe('Main Grimoire (index.html)', () => {
   });
 
   test('should have faction links in webring', async ({ page }) => {
-    await expect(page.locator('a[href="characters/technocracy-index.html"]')).toBeVisible();
-    await expect(page.locator('a[href="characters/virtual-adepts-index.html"]')).toBeVisible();
-    await expect(page.locator('a[href="characters/cypherpunks-index.html"]')).toBeVisible();
-    await expect(page.locator('a[href="characters/hollow-ones-index.html"]')).toBeVisible();
+    // The four faction links are data-hidden by design (Konami-code unlock), so they must
+    // never be visible on load. Assert the link EXISTS and is HIDDEN rather than visible.
+    for (const f of ['technocracy', 'virtual-adepts', 'cypherpunks', 'hollow-ones']) {
+      const link = page.locator(`a[href="characters/${f}-index.html"][data-hidden]`);
+      await expect(link).toHaveCount(1);
+      await expect(link).toBeHidden();
+      await expect(link).toHaveAttribute('href', `characters/${f}-index.html`);
+    }
   });
 
   test('should have neon oracle link', async ({ page }) => {
-    await expect(page.locator('a[href="pages/neon-oracle.html"]')).toBeVisible();
+    await expect(page.locator('a[href="pages/neon-oracle.html"]').first()).toBeVisible();
   });
 
   test('should have sigil workshop section', async ({ page }) => {
-    await expect(page.locator('#sigil-workshop, [id*="sigil"]')).toBeVisible();
+    await expect(page.locator('h3#sigil-workshop')).toBeVisible();
+    await expect(page.locator('form.sigil-form')).toBeVisible();
+    await expect(page.locator('#sigil-intent')).toBeVisible();
   });
 
   test('should have guestbook', async ({ page }) => {
-    await expect(page.locator('#guestbook, [id*="guestbook"]')).toBeVisible();
+    await expect(page.locator('a#guestbook')).toHaveCount(1);
+    await expect(page.locator('form.guestbook-form')).toBeVisible();
+    await expect(page.locator('#gb-name')).toBeVisible();
+    await expect(page.locator('#gb-message')).toBeVisible();
   });
 
   test('should be responsive on mobile', async ({ page }) => {
@@ -93,6 +106,10 @@ test.describe('Neon Oracle (neon-oracle.html)', () => {
 
   test('should load without console errors', async ({ page }) => {
     const errors = [];
+    page.on('dialog', dialog => { dialog.dismiss().catch(() => {}); });
+    page.on('pageerror', err => {
+      errors.push('Uncaught: ' + (err && err.message ? err.message : String(err)));
+    });
     page.on('console', msg => {
       if (msg.type() === 'error') errors.push(msg.text());
     });
@@ -109,7 +126,7 @@ test.describe('Neon Oracle (neon-oracle.html)', () => {
   });
 
   test('should have daily fortune section', async ({ page }) => {
-    await expect(page.locator('#daily-fortune, [id*="fortune"]')).toBeVisible();
+    await expect(page.locator('#daily-fortune-display')).toBeVisible();
   });
 
   test('should have query input', async ({ page }) => {
@@ -117,14 +134,16 @@ test.describe('Neon Oracle (neon-oracle.html)', () => {
   });
 
   test('should have history panel', async ({ page }) => {
-    await expect(page.locator('#history, [id*="history"]')).toBeVisible();
+    await expect(page.locator('#oracle-history')).toBeVisible();
   });
 
   test('should navigate back to main grimoire', async ({ page }) => {
     const link = page.locator('a[href="../index.html"]').first();
     await expect(link).toBeVisible();
     await link.click();
-    await expect(page).toHaveURL(/index\.html/);
+    // Accept either the explicit /index.html or the canonical "/" that static
+  // dev servers (npx serve) 301-normalise to. Both resolve to the main grimoire.
+  await expect(page).toHaveURL(/(\/index\.html|\/)$/);
   });
 });
 
@@ -145,6 +164,10 @@ test.describe('Faction Index Pages', () => {
 
       test('should load without console errors', async ({ page }) => {
         const errors = [];
+    page.on('dialog', dialog => { dialog.dismiss().catch(() => {}); });
+    page.on('pageerror', err => {
+      errors.push('Uncaught: ' + (err && err.message ? err.message : String(err)));
+    });
         page.on('console', msg => {
           if (msg.type() === 'error') errors.push(msg.text());
         });
@@ -161,7 +184,7 @@ test.describe('Faction Index Pages', () => {
       });
 
       test('should display faction title', async ({ page }) => {
-        await expect(page.locator('h1, .nav-title')).toContainText(faction.name);
+        await expect(page.locator('h1').first()).toContainText(new RegExp(faction.name, 'i'));
       });
 
       test('should have character cards', async ({ page }) => {
@@ -170,7 +193,7 @@ test.describe('Faction Index Pages', () => {
       });
 
       test('should have back to grimoire link', async ({ page }) => {
-        await expect(page.locator('a[href="../../index.html"], a[href="../index.html"]')).toBeVisible();
+        await expect(page.locator('a[href="../../index.html"], a[href="../index.html"]').first()).toBeVisible();
       });
     });
   }
@@ -193,6 +216,10 @@ test.describe('Character Dossiers', () => {
 
       test('should load without console errors', async ({ page }) => {
         const errors = [];
+    page.on('dialog', dialog => { dialog.dismiss().catch(() => {}); });
+    page.on('pageerror', err => {
+      errors.push('Uncaught: ' + (err && err.message ? err.message : String(err)));
+    });
         page.on('console', msg => {
           if (msg.type() === 'error') errors.push(msg.text());
         });
@@ -216,19 +243,19 @@ test.describe('Character Dossiers', () => {
       });
 
       test('should have stats table', async ({ page }) => {
-        await expect(page.locator('table')).toBeVisible();
+        await expect(page.locator('table').first()).toBeVisible();
       });
 
       test('should have spheres table', async ({ page }) => {
-        await expect(page.locator('text=/Sphere/i')).toBeVisible();
+        await expect(page.locator('text=/Sphere/i').first()).toBeVisible();
       });
 
       test('should have navigation sidebar', async ({ page }) => {
-        await expect(page.locator('.sidebar, .nav-table')).toBeVisible();
+        await expect(page.locator('.sidebar, .nav-table').first()).toBeVisible();
       });
 
       test('should link back to faction index', async ({ page }) => {
-        await expect(page.locator('a[href*="index.html"]')).toBeVisible();
+        await expect(page.locator('a[href*="index.html"]').first()).toBeVisible();
       });
     });
   }
@@ -295,7 +322,13 @@ test.describe('SEO & Meta Tags', () => {
 
   test('should have CSP meta tag', async ({ page }) => {
     await page.goto('/index.html');
-    await expect(page.locator('meta[http-equiv="Content-Security-Policy"]')).toBeTruthy();
+    const cspMeta = page.locator('meta[http-equiv="Content-Security-Policy"]');
+    await expect(cspMeta).toHaveCount(1);
+    const cspValue = await cspMeta.getAttribute('content');
+    expect(cspValue).toBeTruthy();
+    expect(cspValue).toContain('default-src');
+    expect(cspValue).toContain("object-src 'none'");
+    expect(cspValue).not.toContain('frame-ancestors');
   });
 
   test('should have referrer policy', async ({ page }) => {
@@ -320,7 +353,7 @@ test.describe('Interactive Systems', () => {
     await page.goto('/index.html');
     await page.waitForLoadState('networkidle');
     
-    const counter = page.locator('[data-counter] .counter-digit').first();
+    const counter = page.locator('[data-counter]').first();
     const initial = await counter.textContent();
     
     // Reload should increment (uses localStorage)
@@ -349,19 +382,22 @@ test.describe('Interactive Systems', () => {
     await page.waitForLoadState('networkidle');
     
     // Scroll to sigil workshop
-    await page.locator('#sigil-workshop, [id*="sigil"]').first().scrollIntoViewIfNeeded();
-    await expect(page.locator('#sigil-workshop, [id*="sigil"]')).toBeVisible();
+    await page.locator('form.sigil-form').scrollIntoViewIfNeeded();
+    await expect(page.locator('h3#sigil-workshop')).toBeVisible();
+    await expect(page.locator('form.sigil-form')).toBeVisible();
+    await expect(page.locator('#sigil-intent')).toBeVisible();
   });
 
   test('guestbook should accept entries', async ({ page }) => {
     await page.goto('/index.html');
     await page.waitForLoadState('networkidle');
     
-    await page.locator('#guestbook, [id*="guestbook"]').first().scrollIntoViewIfNeeded();
+    await page.locator('form.guestbook-form').scrollIntoViewIfNeeded();
     
-    const nameInput = page.locator('input[name="name"], input[id*="name"]').first();
-    const messageInput = page.locator('textarea[name="message"], textarea[id*="message"]').first();
-    const submitBtn = page.locator('button[type="submit"], input[type="submit"]').first();
+    const gbForm = page.locator('form.guestbook-form');
+    const nameInput = gbForm.locator('#gb-name');
+    const messageInput = gbForm.locator('#gb-message');
+    const submitBtn = gbForm.locator('button[type="submit"]');
     
     if (await nameInput.isVisible()) {
       await nameInput.fill('Test User');

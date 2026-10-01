@@ -38,3 +38,12 @@ coverage/
 # Misc
 *.tgz
 *.tar.gz
+# Test artifacts
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+
+# Agent harness state (session noise, not part of the site)
+.omo/
+.opencode/

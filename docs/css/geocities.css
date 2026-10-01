@@ -30,9 +30,17 @@
   box-sizing: border-box;
 }
 
+/* Pure-CSS starfield: no HTTP request, no 404, tiles seamlessly at 340x260. */
 html {
   background-color: var(--bg-primary);
-  background-image: url('../images/bg-starfield.gif');
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 70px 160px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 200px 40px, rgba(180, 220, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 260px 190px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 310px 120px, rgba(255, 200, 150, 0.7), transparent);
+  background-size: 340px 260px;
   background-repeat: repeat;
   background-attachment: fixed;
 }
@@ -528,4 +536,50 @@ img.gif { border-color: var(--highlight); }
   body { background: white; color: black; }
   .blink, .marquee, .construction-gif { display: none; }
   a { text-decoration: none; color: black; }
+}
+
+/* --- Reduced Motion (WCAG 2.3.3 / vestibular safety) --- */
+@media (prefers-reduced-motion: reduce) {
+  /* Kill every infinite animation & transition site-wide. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html, body {
+    background-attachment: scroll !important;
+  }
+
+  /* Specific offenders - freeze rather than animate. */
+  .blink,
+  .construction-gif,
+  .glitching,
+  [data-glitch]::before,
+  [data-glitch]::after,
+  .mouse-trail-symbol {
+    animation: none !important;
+  }
+
+  .marquee {
+    animation: none !important;
+    overflow: visible;
+  }
+
+  /* Keep reveal content visible without the IntersectionObserver transition. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  /* Sigil + oracle UIs. */
+  .sigil-container svg,
+  .oracle-response {
+    animation: none !important;
+    transition: none !important;
+  }
 }

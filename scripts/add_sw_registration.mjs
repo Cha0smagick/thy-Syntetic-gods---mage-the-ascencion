@@ -13,7 +13,7 @@ const swScript = `
                 <script>
                     if ('serviceWorker' in navigator) {
                         window.addEventListener('load', () => {
-                            navigator.serviceWorker.register('/sw.js')
+                            navigator.serviceWorker.register(relSwPath)
                                 .then((registration) => {
                                     console.log('[SW] Registered:', registration.scope);
                                     setInterval(() => registration.update(), 60 * 60 * 1000);

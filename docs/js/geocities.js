@@ -46,7 +46,16 @@
   function createEl(tag, attrs, children) {
     const el = document.createElement(tag);
     if (attrs) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
-    if (children) children.forEach(c => el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c));
+    if (children != null) {
+    // Normalise: accept a single node, a NodeList/HTMLCollection, or an array.
+    const nodes = Array.isArray(children)
+      ? children
+      : (typeof children.length === 'number' && typeof children !== 'string' ? Array.from(children) : [children]);
+    nodes.forEach(c => {
+      if (c === null || c === undefined) return;
+      el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+  }
     return el;
   }
 
@@ -84,11 +93,23 @@
     counterEls.forEach(el => {
       if (el.tagName === 'INPUT') {
         el.value = formatted;
-      } else {
-        el.textContent = formatted;
-        // Add animated digit flip effect
-        animateCounterDigits(el, formatted);
+        return;
       }
+      // Build the 7-segment markup when this element does not already carry it.
+      // Assigning el.textContent outright destroyed the .counter-digit spans, which
+      // made animateCounterDigits() a no-op and silently killed the flip animation.
+      if (!el.querySelector('.counter-digit')) {
+        const frag = document.createDocumentFragment();
+        formatted.split('').forEach(d => {
+          const span = document.createElement('span');
+          span.className = 'counter-digit';
+          span.textContent = d;
+          frag.appendChild(span);
+        });
+        el.textContent = '';
+        el.appendChild(frag);
+      }
+      animateCounterDigits(el, formatted);
     });
 
     // Update global for other scripts
@@ -303,19 +324,65 @@
   // RANDOM BACKGROUND SHIFT (simulates Geocities "dynamic" backgrounds)
   // ==========================================================================
   function initBackgroundShifts() {
+    // Geocities-style "dynamic" backgrounds. Pure CSS gradients so there are no
+    // external assets to 404 and the tile scales to any viewport.
+    const TILE = '340px 260px';
+    const star = (c, x, y, r, a) => 'radial-gradient(' + r + 'px ' + r + 'px at ' + x + 'px ' + y + 'px, ' + c + ' ' + a + ', transparent)';
     const backgrounds = [
-      'url(../images/bg-starfield.gif)',
-      'url(../images/bg-circuit.gif)',
-      'url(../images/bg-runes.gif)',
-      'url(../images/bg-static.gif)'
+      // 0 - Starfield (default)
+      [
+        star('rgba(255,255,255,0.9)', 20, 30, 1),
+        star('rgba(255,255,255,0.7)', 130, 80, 1),
+        star('rgba(255,255,255,0.8)', 70, 160, 1.5),
+        star('rgba(180,220,255,0.6)', 200, 40, 1),
+        star('rgba(255,255,255,0.5)', 260, 190, 1),
+        star('rgba(255,200,150,0.7)', 310, 120, 1.5)
+      ].join(', '),
+      // 1 - Circuit (cyan / green nodes)
+      [
+        star('rgba(53,196,217,0.85)', 40, 50, 1),
+        star('rgba(74,222,128,0.7)', 180, 30, 1),
+        star('rgba(53,196,217,0.5)', 90, 200, 1.5),
+        star('rgba(74,222,128,0.6)', 300, 150, 1),
+        star('rgba(53,196,217,0.45)', 250, 90, 1),
+        star('rgba(180,240,255,0.55)', 20, 230, 1)
+      ].join(', '),
+      // 2 - Runes (violet / magenta)
+      [
+        star('rgba(167,139,250,0.9)', 60, 40, 1.5),
+        star('rgba(255,176,58,0.7)', 150, 120, 1),
+        star('rgba(167,139,250,0.6)', 320, 60, 1),
+        star('rgba(255,120,190,0.55)', 240, 210, 1),
+        star('rgba(167,139,250,0.5)', 110, 235, 1),
+        star('rgba(255,176,58,0.5)', 280, 165, 1.5)
+      ].join(', '),
+      // 3 - Static (amber interference)
+      [
+        star('rgba(255,176,58,0.8)', 25, 25, 1),
+        star('rgba(255,255,255,0.55)', 145, 75, 1),
+        star('rgba(248,113,113,0.6)', 75, 175, 1),
+        star('rgba(255,176,58,0.5)', 195, 35, 1.5),
+        star('rgba(255,255,255,0.45)', 265, 195, 1),
+        star('rgba(248,113,113,0.5)', 315, 125, 1)
+      ].join(', ')
     ];
 
     let currentBg = 0;
+    const paint = (i) => {
+      document.body.style.backgroundImage = backgrounds[i];
+      document.body.style.backgroundSize = TILE;
+      document.body.style.backgroundRepeat = 'repeat';
+      document.body.style.transition = 'background-image 2s ease';
+    };
+
+    paint(0);
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     setInterval(() => {
-      if (Math.random() < 0.005) { // Very rare
+      if (Math.random() < 0.005) { // Very rare - the gods barely stir
         currentBg = (currentBg + 1) % backgrounds.length;
-        document.body.style.backgroundImage = backgrounds[currentBg];
-        document.body.style.transition = 'background-image 2s ease';
+        paint(currentBg);
       }
     }, 30000);
   }
@@ -404,6 +471,7 @@
     // Unlock all sigils, max egregore, reveal hidden content
     window.SYNTHETIC_GODS.visitorCount = 9999999;
     window.SYNTHETIC_GODS.egregorePower = 100;
+    window.SYNTHETIC_GODS.godMode = true;
     localStorage.setItem('sg_visitor_count', '9999999');
     localStorage.setItem('sg_egregore_power', '100');
 
@@ -1247,7 +1315,18 @@
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
       }
-      .ritual-hour { background-image: url(../images/bg-ritual.gif) !important; }
+      .ritual-hour {
+        background-image:
+          radial-gradient(1px 1px at 20% 30%, rgba(255,0,255,0.9), transparent),
+          radial-gradient(1px 1px at 130px 80px, rgba(255,255,0,0.8), transparent),
+          radial-gradient(1px 1px at 70px 160px, rgba(255,0,255,0.7), transparent),
+          radial-gradient(1px 1px at 200px 40px, rgba(255,255,0,0.8), transparent),
+          radial-gradient(1px 1px at 260px 190px, rgba(255,0,255,0.7), transparent),
+          radial-gradient(1px 1px at 310px 120px, rgba(255,255,0,0.8), transparent),
+          linear-gradient(160deg, #1a0033 0%, #33003f 50%, #0d001a 100%) !important;
+        background-size: 340px 260px, 340px 260px, 340px 260px, 340px 260px, 340px 260px, 340px 260px, 100% 100% !important;
+        background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, no-repeat !important;
+      }
       .ritual-notification { animation: ritualPulse 2s ease-in-out infinite; }
       @keyframes ritualPulse { 0%, 100% { box-shadow: 0 0 30px #FF00FF; } 50% { box-shadow: 0 0 60px #FFFF00, 0 0 100px #FF00FF; } }
       .mouse-trail { will-change: transform, opacity; }

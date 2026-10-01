@@ -9,12 +9,12 @@
 
     <meta property="og:title" content="The Synthetic Gods - Mage: The Ascension Chronicle">
     <meta property="og:description" content="A Mage: The Ascension Chronicle of Digital Divinity - Geocities 1999 Aesthetic">
-    <meta property="og:image" content="https://los-dioses-sinteticos.github.io/images/characters/cypherpunks-satoshi.png">
+    <meta property="og:image" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/images/characters/cypherpunks-satoshi.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Synthetic Gods">
     <meta name="twitter:description" content="A Mage: The Ascension Chronicle of Digital Divinity">
-    <meta name="twitter:image" content="https://los-dioses-sinteticos.github.io/images/characters/cypherpunks-satoshi.png">
+    <meta name="twitter:image" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/images/characters/cypherpunks-satoshi.png">
   
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -23,9 +23,9 @@
     font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
     img-src 'self' data: https:;
     connect-src 'self';
-    frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';
+    object-src 'none';
   ">
         <meta name="referrer" content="strict-origin-when-cross-origin">
     <script type="application/ld+json">
@@ -34,8 +34,8 @@
         "@type": "Person",
         "name": "Satoshi",
         "description": "Cypherpunks operative - Bitcoin Creator. Arete 5. Spheres: Entropy 5, Correspondence 4, Mind 3, Prime 2.",
-        "url": "https://los-dioses-sinteticos.github.io/characters/cypherpunks-satoshi.html",
-        "image": "https://los-dioses-sinteticos.github.io/images/characters/cypherpunks-satoshi.png",
+        "url": "https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/characters/cypherpunks-satoshi.html",
+        "image": "https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/images/characters/cypherpunks-satoshi.png",
         "affiliation": {
           "@type": "Organization",
           "name": "Cypherpunks",
@@ -52,7 +52,7 @@
           "Prime 2"
         ],
         "sameAs": [
-          "https://los-dioses-sinteticos.github.io/characters/cypherpunks-index.html"
+          "https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/characters/cypherpunks-index.html"
         ]
       }
     </script>
@@ -210,9 +210,9 @@
                 <script>
                     if ('serviceWorker' in navigator) {
                         window.addEventListener('load', () => {
-                            navigator.serviceWorker.register('/sw.js')
+                            navigator.serviceWorker.register(('../sw.js') /* scope: site root */)
                                 .then((registration) => {
-                                    console.log('[SW] Registered:', registration.scope);
+                                    console.log('[SW] Registered:', registration.scope).catch(function () {});
                                     setInterval(() => registration.update(), 60 * 60 * 1000);
                                 })
                                 .catch((error) => {

@@ -8,7 +8,7 @@ import fs from 'fs';
 import path from 'path';
 
 const DOCS_DIR = path.join(process.cwd(), 'docs');
-const BASE_URL = 'https://los-dioses-sinteticos.github.io'; // Update with actual GitHub Pages URL
+const BASE_URL = 'https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion'; // Update with actual GitHub Pages URL
 
 // Map each HTML file to its appropriate og:image
 const ogImageMap = {

@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Map - The Synthetic Gods</title>
+    <meta name="description" content="Complete navigation index for The Synthetic Gods - a Geocities-styled interactive grimoire for the Mage: The Ascension Chronicle of Digital Divinity. Jump to Acts, factions, dossiers and the Neon Oracle.">
+    <meta name="keywords" content="site map, navigation, index, grimoire, Mage the Ascension, Synthetic Gods">
     <link rel="stylesheet" href="css/geocities.css">
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -12,9 +14,9 @@
     font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
     img-src 'self' data: https:;
     connect-src 'self';
-    frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';
+    object-src 'none';
   ">
         <meta name="referrer" content="strict-origin-when-cross-origin">
     <script type="application/ld+json">
@@ -23,7 +25,7 @@
         "@type": "SiteNavigationElement",
         "name": "Site Map",
         "description": "Complete navigation map for The Synthetic Gods grimoire",
-        "url": "https://los-dioses-sinteticos.github.io/sitemap.html"
+        "url": "https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/sitemap.html"
       }
     </script>
 </head>
@@ -132,9 +134,9 @@
                 <script>
                     if ('serviceWorker' in navigator) {
                         window.addEventListener('load', () => {
-                            navigator.serviceWorker.register('/sw.js')
+                            navigator.serviceWorker.register(('sw.js') /* scope: site root */)
                                 .then((registration) => {
-                                    console.log('[SW] Registered:', registration.scope);
+                                    console.log('[SW] Registered:', registration.scope).catch(function () {});
                                     setInterval(() => registration.update(), 60 * 60 * 1000);
                                 })
                                 .catch((error) => {

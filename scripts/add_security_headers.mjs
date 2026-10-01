@@ -25,9 +25,9 @@ function addSecurityHeaders(html, filePath) {
     font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
     img-src 'self' data: https:;
     connect-src 'self';
-    frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';
+    object-src 'none';
   ">`;
   
   const referrerPolicy = `    <meta name="referrer" content="strict-origin-when-cross-origin">`;

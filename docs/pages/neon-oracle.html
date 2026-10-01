@@ -14,12 +14,12 @@
 
     <meta property="og:title" content="The Synthetic Gods - Mage: The Ascension Chronicle">
     <meta property="og:description" content="A Mage: The Ascension Chronicle of Digital Divinity - Geocities 1999 Aesthetic">
-    <meta property="og:image" content="https://los-dioses-sinteticos.github.io/images/sigil-workshop.gif">
+    <meta property="og:image" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/images/sigil-workshop.gif">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Synthetic Gods">
     <meta name="twitter:description" content="A Mage: The Ascension Chronicle of Digital Divinity">
-    <meta name="twitter:image" content="https://los-dioses-sinteticos.github.io/images/sigil-workshop.gif">
+    <meta name="twitter:image" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/images/sigil-workshop.gif">
   
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
@@ -28,9 +28,9 @@
     font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
     img-src 'self' data: https:;
     connect-src 'self';
-    frame-ancestors 'none';
     base-uri 'self';
     form-action 'self';
+    object-src 'none';
   ">
         <meta name="referrer" content="strict-origin-when-cross-origin">
     <script type="application/ld+json">
@@ -39,7 +39,7 @@
         "@type": "WebApplication",
         "name": "Neon Oracle",
         "description": "HTTP Divination System - Daily fortunes and query-based divination in Geocities 1999 aesthetic",
-        "url": "https://los-dioses-sinteticos.github.io/pages/neon-oracle.html",
+        "url": "https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/pages/neon-oracle.html",
         "applicationCategory": "EntertainmentApplication",
         "operatingSystem": "Web Browser",
         "offers": {
@@ -122,8 +122,8 @@
                     <div class="webring">
                         <div class="webring-title">WEB RING</div>
                         <a href="../index.html">SYNTHETIC GODS MAIN</a>
-                        <a href="#virtual-adepts" data-hidden style="display:none;">VIRTUAL ADEPTS</a>
-                        <a href="#hollow-ones" data-hidden style="display:none;">HOLLOW ONES</a>
+                        <a href="../characters/virtual-adepts-index.html" data-hidden style="display:none;">VIRTUAL ADEPTS</a>
+                        <a href="../characters/hollow-ones-index.html" data-hidden style="display:none;">HOLLOW ONES</a>
                     </div>
 
                     <div class="nav-section">
@@ -139,7 +139,7 @@
             <td class="content-cell" valign="top">
                 <div class="content-area" data-reveal>
                     <!-- DAILY FORTUNE -->
-                    <a name="daily-fortune"></a>
+                    <a id="daily-fortune" name="daily-fortune"></a>
                     <h1>NEON ORACLE</h1>
                     <h2>Digital Divination via HTTP Status Codes</h2>
                     <hr>
@@ -171,7 +171,7 @@
                     <hr>
 
                     <!-- ASK THE ORACLE -->
-                    <a name="ask-oracle"></a>
+                    <a id="ask-oracle" name="ask-oracle"></a>
                     <h2>⟐ ASK THE ORACLE ⟐</h2>
                     <p>Type your question. The Oracle responds in the language of the Web: HTTP Status Codes.</p>
 
@@ -195,7 +195,7 @@
                     <hr>
 
                     <!-- HTTP STATUS CODES REFERENCE -->
-                    <a name="http-codes"></a>
+                    <a id="http-codes" name="http-codes"></a>
                     <h2>⟐ HTTP STATUS CODES AS DIVINATION ⟐</h2>
                     <p>Each code carries meaning. The Oracle interprets them thus:</p>
 
@@ -225,7 +225,7 @@
                     <hr>
 
                     <!-- ORACLE HISTORY -->
-                    <a name="history"></a>
+                    <a id="history" name="history"></a>
                     <h2>⟐ ORACLE HISTORY ⟐</h2>
                     <p>Notable predictions logged in the Digital Web:</p>
 
@@ -555,9 +555,9 @@
                 <script>
                     if ('serviceWorker' in navigator) {
                         window.addEventListener('load', () => {
-                            navigator.serviceWorker.register('/sw.js')
+                            navigator.serviceWorker.register(('../sw.js') /* scope: site root */)
                                 .then((registration) => {
-                                    console.log('[SW] Registered:', registration.scope);
+                                    console.log('[SW] Registered:', registration.scope).catch(function () {});
                                     setInterval(() => registration.update(), 60 * 60 * 1000);
                                 })
                                 .catch((error) => {

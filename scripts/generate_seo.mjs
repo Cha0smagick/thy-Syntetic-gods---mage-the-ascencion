@@ -7,7 +7,7 @@ import fs from 'fs';
 import path from 'path';
 
 const DOCS_DIR = path.join(process.cwd(), 'docs');
-const BASE_URL = 'https://los-dioses-sinteticos.github.io'; // Update with actual URL
+const BASE_URL = 'https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion'; // Update with actual URL
 
 // All HTML pages to include in sitemap
 const pages = [
