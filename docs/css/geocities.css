@@ -633,3 +633,71 @@ img.gif { border-color: var(--highlight); }
     transition: none !important;
   }
 }
+
+/* --- Extracted Utilities ---------------------------------------------
+   Replaces inline style="" declarations and the legacy presentational
+   attributes (cellpadding / cellspacing / border / valign) that only
+   Netscape-era browsers honoured. Compound selectors keep specificity
+   above the base component rules declared earlier in this file, so the
+   rendered result is identical to the markup they came from. */
+
+/* Fixed-width layout cell */
+.cell-w300 { width: 300px; }
+
+/* Fluid images inside a coloured 90s frame */
+.img-fluid { width: 100%; }
+.frame-magenta { border-color: var(--border-color); }
+.frame-yellow  { border-color: var(--highlight); }
+.frame-blue    { border-color: #0000FF; }
+.frame-green   { border-color: #00FF00; }
+
+/* Visitor-counter colour variants (base .counter is #FF0000) */
+.counter.counter-magenta { color: var(--text-tertiary); }
+.counter.counter-yellow  { color: var(--highlight); }
+.counter.counter-cyan    { color: var(--link-normal); }
+.counter.counter-green   { color: var(--text-secondary); }
+
+/* Visibility / fill state.
+   NO !important on purpose: geocities.js reveals these nodes with
+   el.style.display = 'block' (activateGodMode / sigil results), and an
+   inline style outranks a class rule, so the reveal still works.
+   The selector is doubled purely to outrank the component rules that set
+   display at (0,1,1) -- .webring a and .nav-table a. */
+.is-hidden.is-hidden { display: none; }
+.is-empty  { width: 0%; }
+
+/* Spacing */
+.mt-sm { margin-top: 10px; }
+.mt-lg { margin-top: 20px; }
+
+/* Rules and typographic detail */
+.rule-half { margin: 15px auto; width: 50%; }
+.fine-print { font-size: 10px; margin-top: 15px; color: var(--text-secondary); }
+.ritual-line {
+  text-align: center;
+  border: 2px dashed #FF00FF;
+  padding: 12px;
+  margin: 14px 0;
+  letter-spacing: 2px;
+}
+.epigraph {
+  border-left: 3px solid var(--border-color);
+  padding-left: 15px;
+  margin: 20px 0;
+  font-style: italic;
+  color: var(--text-tertiary);
+}
+.mono-dim { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+.micro { font-size: 11px; letter-spacing: 1px; }
+.center-block { text-align: center; margin: 20px 0; }
+
+/* Sigil / oracle readouts */
+.sigil-display.sigil-sm { font-size: 18px; }
+.sigil-display.sigil-tall { min-height: 120px; }
+.blink.blink-sm { font-size: 12px; color: #FF8080; }
+.blink.blink-xs { font-size: 10px; color: #FF8080; margin-top: 5px; }
+
+/* Colour hooks for the JS-written status spans */
+.c-highlight { color: var(--highlight); }
+.c-tertiary  { color: var(--text-tertiary); }
+.c-primary   { color: var(--text-primary); }
