@@ -1,462 +1,540 @@
 # 🌌 The Synthetic Gods — Complete Walkthrough & Developer's Grimoire
 
-> **A Mage: The Ascension Chronicle of Digital Divinity**  
-> *The year is 1999. The Millennium approaches. In the early internet's chaotic frontier—Geocities pages, IRC channels, Usenet groups—something stirs. Mages discover that code can be crafted into sigils, that collective belief in digital spaces births egregores, and that sufficient worship crystallizes into astrosomas: synthetic gods born of silicon and faith.*
+> **A Mage: The Ascension Chronicle of Digital Divinity**
+>
+> *The year is 1999. The Millennium approaches. In the early internet's chaotic frontier — GeoCities pages, IRC channels, Usenet groups — something stirs. Mages discover that code can be crafted into sigils, that collective belief in digital spaces births egregores, and that sufficient worship crystallizes into astrosomas: synthetic gods born of silicon and faith.*
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-FF00FF?style=for-the-badge&logo=internet-explorer&logoColor=FFFF00)](https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/)
-[![Mage: The Ascension](https://img.shields.io/badge/Mage%3A%20The%20Ascension-20th%20Anniversary-800080?style=for-the-badge&logo=dndbeyond&logoColor=FFFF00)](https://www.onyxpath.com/mage-the-ascension-20th-anniversary-edition/)
-[![Geocities Aesthetic](https://img.shields.io/badge/Aesthetic-Geocities%201996--1999-00FF00?style=for-the-badge&logo=html5&logoColor=000000)](https://en.wikipedia.org/wiki/GeoCities)
-[![Vanilla JS](https://img.shields.io/badge/JavaScript-Vanilla%20ES6-FFD700?style=for-the-badge&logo=javascript&logoColor=000000)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![NVIDIA Flux](https://img.shields.io/badge/Images-NVIDIA%20Flux.2%20Klein%204B-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://build.nvidia.com/black-forest-labs/flux-2-klein-4b)
-[![License: MIT](https://img.shields.io/badge/Code-MIT-blue?style=for-the-badge)](LICENSE)
-[![Status: Active](https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge)]()
+[![Live Site](https://img.shields.io/badge/Live%20Site-Visit-FF00FF?style=for-the-badge&logo=internet-explorer&logoColor=FFFF00)](https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/)
+[![Mage: The Ascension](https://img.shields.io/badge/Mage%3A%20The%20Ascension-20th%20Anniversary-800080?style=for-the-badge&logoColor=FFFF00)](https://www.onyxpath.com/mage-the-ascension-20th-anniversary-edition/)
+[![GeoCities Aesthetic](https://img.shields.io/badge/Aesthetic-GeoCities%201996%E2%80%931999-00FF00?style=for-the-badge&logoColor=000000)](https://en.wikipedia.org/wiki/GeoCities)
+[![Zero Dependencies](https://img.shields.io/badge/Runtime%20Dependencies-0-FFD700?style=for-the-badge&logo=javascript&logoColor=000000)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Images: NVIDIA Flux](https://img.shields.io/badge/Images-NVIDIA%20Flux.2%20Klein%204B-76B900?style=for-the-badge&logo=nvidia&logoColor=white)](https://build.nvidia.com/black-forest-labs/flux-2-klein-4b)
+[![Pages](https://img.shields.io/badge/HTML%20Pages-47-brightgreen?style=for-the-badge)](docs/sitemap.html)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue?style=for-the-badge)](package.json)
 
 ---
 
-## 🌐 Live Deployment & Quick Access
+## 📑 Contents
 
-| What | URL |
-|------|-----|
-| **Primary Site** | https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/ |
+1. [What this is — and what it is for](#-what-this-is--and-what-it-is-for)
+2. [Live deployment](#-live-deployment)
+3. [Complete site map — every page, hyperlinked](#-complete-site-map--every-page-hyperlinked)
+4. [Faction hubs — every roster, hyperlinked](#-faction-hubs--every-roster-hyperlinked)
+5. [All 40 character dossiers — hyperlinked](#-all-40-character-dossiers--hyperlinked)
+6. [Complete playthrough: first visit to Ascension](#-complete-playthrough-first-visit-to-ascension)
+7. [Secrets & easter eggs catalog](#-secrets--easter-eggs-catalog)
+8. [NPC deep dive — all 40 characters](#-npc-deep-dive--all-40-characters)
+9. [Lore: the sigil-to-astrosoma framework](#-lore-the-sigil-to-astrosoma-framework)
+10. [Technical architecture](#-technical-architecture)
+11. [Image generation with NVIDIA Flux](#-image-generation-with-nvidia-flux)
+12. [Development, generators & deployment](#-development-generators--deployment)
+13. [Testing & quality gates](#-testing--quality-gates)
+14. [Project status — honest assessment](#-project-status--honest-assessment)
+15. [Contributing](#-contributing)
+16. [Legal, inspiration & credits](#-legal-inspiration--credits)
+
+---
+
+## 🎯 WHAT THIS IS — AND WHAT IT IS FOR
+
+**The Synthetic Gods** is an interactive, GeoCities-styled **digital grimoire** for a *Mage: The Ascension* tabletop campaign. It fuses 1990s internet culture, chaos magic, and the World of Darkness — presented as an authentic 1996–1999 personal website that **is itself a magical artifact**.
+
+It serves **three simultaneous purposes**:
+
+| Purpose | What it gives you |
+|---------|-------------------|
+| **Campaign resource** | Three acts of lore, mechanics, and story hooks — see [Act I](docs/index.html#act1), [Act II](docs/index.html#act2), [Act III](docs/index.html#act3) |
+| **Playable artifact** | A working sigil generator, egregore tracker, visitor counter, the [Neon Oracle](docs/pages/neon-oracle.html), guestbook, quest log, faction reputation system, and 40 full NPC dossiers |
+| **Meta-game** | The site *teaches you how to play it* through exploration and discovery |
+
+> **There is no tutorial. The web IS the tutorial.**
+> Well — almost. There is a lightweight onboarding nudge system (`sg_tutorial` in `localStorage`) that surfaces hints as you go. Nothing more.
+
+### How to read this README
+
+| You are… | Start here |
+|----------|-----------|
+| A **Storyteller or player** | [Playthrough](#-complete-playthrough-first-visit-to-ascension) → [NPCs](#-npc-deep-dive--all-40-characters) → [Lore](#-lore-the-sigil-to-astrosoma-framework) |
+| A **visitor** (no GitHub needed) | [Live site](https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/) → [Site map](#-complete-site-map--every-page-hyperlinked) |
+| A **developer** | [Architecture](#-technical-architecture) → [Dev workflow](#-development-generators--deployment) → [Testing](#-testing--quality-gates) |
+| **Regenerating art** | [NVIDIA Flux guide](#-image-generation-with-nvidia-flux) |
+
+---
+
+## 🌐 LIVE DEPLOYMENT
+
+| What | Where |
+|------|-------|
+| **Live site** | https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/ |
 | **Repository** | https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion |
-| **Deployed From** | `main` branch → `docs/` folder (GitHub Pages) |
-| **GitHub Actions** | [Workflows](https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion/actions) |
+| **Deployed from** | `main` branch → [`docs/`](docs) folder (GitHub Pages) |
+| **Actions / CI** | [Workflows](https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion/actions) |
+| **Human navigation index** | [docs/sitemap.html](docs/sitemap.html) |
+| **Machine sitemap** | [docs/sitemap.xml](docs/sitemap.xml) · [robots.txt](docs/robots.txt) |
+
+**Scale:** 47 HTML pages · 103 images (~27 MB) · 1 stylesheet · 1 script · **zero runtime dependencies**.
 
 ---
 
-## 📜 WHAT IS THIS? (The Elevator Pitch)
+## 🗺️ COMPLETE SITE MAP — EVERY PAGE, HYPERLINKED
 
-**The Synthetic Gods** is an **interactive, Geocities-styled digital grimoire** for a *Mage: The Ascension* tabletop RPG campaign. It explores the intersection of 90s internet culture, chaos magic, and the World of Darkness—presented as an **authentic 1996–1999 personal website that *is itself* a magical artifact.**
+### Main entry points
 
-The site serves **three simultaneous purposes**:
+| Page | Direct link | How a visitor reaches it | What it holds |
+|------|-------------|--------------------------|---------------|
+| **Main Grimoire** | [docs/index.html](docs/index.html) | Site root | Acts I–III, sigil workshop, guestbook, egregore tracker, 13 grimoire figures |
+| **Neon Oracle** | [docs/pages/neon-oracle.html](docs/pages/neon-oracle.html) | Sidebar webring → *NEON ORACLE* | HTTP divination, daily fortune, query system, history export |
+| **Sitemap** | [docs/sitemap.html](docs/sitemap.html) | Site root | Every page, hyperlinked, human-readable |
 
-| Purpose | Description |
-|---------|-------------|
-| **Campaign Resource** | Three acts of lore, mechanics, and story hooks for STs and players |
-| **Playable Artifact** | Interactive sigil generator, egregore tracker, visitor counter, Neon Oracle, faction reputation system, character dossiers, and hidden rituals |
-| **Meta-Game** | The website *teaches you how to play* through exploration, discovery, and interaction |
+### Section deep-links on the Main Grimoire
 
-**There is no tutorial. The web IS the tutorial.**
+Every heading below is a real anchor you can jump straight to.
 
----
+| Jump to | Anchor | Content |
+|---------|--------|---------|
+| Act I opener | [`#act1`](docs/index.html#act1) | *The First Glyph — Sigils in the Machine* |
+| Sigil creation mechanics | [`docs/index.html#sigil-workshop`](docs/index.html#sigil-workshop) | ⟨SIGIL WORKSHOP⟩ — intent field, generate, charge |
+| Act II opener | [`#act2`](docs/index.html#act2) | *The Collective Dream — Egregores of the Net* |
+| Egregore bar | [`docs/index.html#sigil-main`](docs/index.html#sigil-main) | Sidebar egregore power meter |
+| Act III opener | [`#act3`](docs/index.html#act3) | *The Final Apotheosis — Astrosomas: Gods of Silicon* |
+| Appendices | [`#appendices`](docs/index.html#appendices) | Neighborhoods · HTML tags · the Webspinner's final log |
+| Guestbook | [`#guestbook`](docs/index.html#guestbook) | Sign the guestbook, feed the egregore |
 
-## 🗺️ COMPLETE SITE MAP — EVERY PAGE & HOW TO REACH IT
+**Named anchors available for deep-linking**
 
-### Main Entry Points
+| id | Element | id | Element |
+|----|---------|----|---------|
+| `#sigil-main` | sigil workshop | `#act1` / `#act2` / `#act3` | the three acts |
+| `#sigil-intent` | intent textarea | `#appendices` | appendices |
+| `#sigil-result` | sigil output panel | `#guestbook` | guestbook form |
+| `#sigil-traffic` | sigil traffic counter | `#gb-name` / `#gb-message` | guestbook fields |
+| `#sigil-webspinner` | Webspinner sigil | `#credits` | credits block |
+| `#sigil-archivist` | Archivist astrosoma sigil | `#main-content` | main content landmark |
+| `#sigil-router` | Router astrosoma sigil | `#sigil-counter` | Counter astrosoma sigil |
+| `#sigil-glitch` | Glitch astrosoma sigil | | |
 
-| Page | Path | How to Access | Purpose |
-|------|------|---------------|---------|
-| **Main Grimoire** | `index.html` | Direct URL or repo root | Core campaign (Acts I-III), sigil workshop, guestbook, egregore tracker |
-| **Neon Oracle** | `pages/neon-oracle.html` | Webring sidebar → "NEON ORACLE" | HTTP divination, daily fortune, query system, history |
-| **Sitemap** | `sitemap.html` | Direct URL or sitemap.xml | Human-readable navigation index |
-
-### Faction Hubs (Hidden until GOD MODE or Egregore 50+)
-
-| Faction | Index Page | Unlock Condition |
-|---------|------------|------------------|
-| **Technocracy (NWO)** | `characters/technocracy-index.html` | GOD MODE or Rep 50+ |
-| **Virtual Adepts** | `characters/virtual-adepts-index.html` | GOD MODE or Rep 50+ |
-| **Cypherpunks** | `characters/cypherpunks-index.html` | GOD MODE or Rep 50+ |
-| **Hollow Ones** | `characters/hollow-ones-index.html` | GOD MODE or Rep 50+ |
-
-### Character Dossiers (40 Total — 10 per Faction)
-
-**Pattern:** `characters/[faction]-[handle].html`
-
-| Technocracy (NWO) | Virtual Adepts | Cypherpunks | Hollow Ones |
-|-------------------|----------------|-------------|-------------|
-| `technocracy-voss.html` | `virtual-adepts-webspinner.html` | `cypherpunks-satoshi.html` | `hollow-ones-raven.html` |
-| `technocracy-chen.html` | `virtual-adepts-zero-cool.html` | `cypherpunks-cipher.html` | `hollow-ones-lilith.html` |
-| `technocracy-keres.html` | `virtual-adepts-acid-burn.html` | `cypherpunks-anonymous.html` | `hollow-ones-malakai.html` |
-| `technocracy-volkov.html` | `virtual-adepts-cereal-killer.html` | `cypherpunks-snowden.html` | `hollow-ones-vesper.html` |
-| `technocracy-smith.html` | `virtual-adepts-prophet.html` | `cypherpunks-assange.html` | `hollow-ones-crowley.html` |
-| `technocracy-patel.html` | `virtual-adepts-ghost.html` | `cypherpunks-merkle.html` | `hollow-ones-spare.html` |
-| `technocracy-kowalski.html` | `virtual-adepts-lady-ada.html` | `cypherpunks-diffie.html` | `hollow-ones-baphomet.html` |
-| `technocracy-lovelace.html` | `virtual-adepts-root.html` | `cypherpunks-hellman.html` | `hollow-ones-eris.html` |
-| `technocracy-sato.html` | `virtual-adepts-packet-witch.html` | `cypherpunks-tor.html` | `hollow-ones-nyx.html` |
-| `technocracy-architect.html` | `virtual-adepts-neon-samurai.html` | `cypherpunks-pgp.html` | `hollow-ones-khaos.html` |
+**Neon Oracle anchors:** [`#daily-fortune`](docs/pages/neon-oracle.html#daily-fortune) · [`#ask-oracle`](docs/pages/neon-oracle.html#ask-oracle) · [`#history`](docs/pages/neon-oracle.html#history) · [`#http-codes`](docs/pages/neon-oracle.html#http-codes) · plus `#refresh-fortune`, `#oracle-question`, `#oracle-response`, `#oracle-interpretation`, `#oracle-history`, `#http-code-display`, `#http-status`, `#entropy-level`, `#last-query`, `#lucky-code`, `#warning-code`, `#fortune-details`, `#fortune-interpretation`.
 
 ---
 
-## 🎮 COMPLETE PLAYTHROUGH — FROM FIRST VISIT TO ASCENSION
+## 🏛️ FACTION HUBS — EVERY ROSTER, HYPERLINKED
 
-### 📋 PHASE 0: PREPARATION (Before You Start)
+The four faction index pages are gated in the UI (GOD MODE via the Konami code, or Egregore Power 50+), but the pages are plain HTML — link straight to them.
 
-```
-□ Disable ad blockers (they break the sigil charging animation)
-□ Enable JavaScript (required for all interactive systems)
-□ Open DevTools Console (F12) — you'll need it
-□ Set system time to test Ritual Hour (3:33 AM UTC)
-□ Have a text editor ready for View Source sigil hunting
-□ Bookmark the page — you'll return daily
-```
+| Faction | Index | Unlock condition in-game | NPC count |
+|---------|-------|------------------------|-----------|
+| **Technocracy** (NWO / Syndicate / Iteration X / Progenitors / Void Engineers) | [`characters/technocracy-index.html`](docs/characters/technocracy-index.html) | GOD MODE or Egregore 50+ | 10 |
+| **Virtual Adepts** (reality hackers) | [`characters/virtual-adepts-index.html`](docs/characters/virtual-adepts-index.html) | GOD MODE or Egregore 50+ | 10 |
+| **Cypherpunks** (crypto-anarchists) | [`characters/cypherpunks-index.html`](docs/characters/cypherpunks-index.html) | GOD MODE or Egregore 50+ | 10 |
+| **Hollow Ones** (chaotics) | [`characters/hollow-ones-index.html`](docs/characters/hollow-ones-index.html) | GOD MODE or Egregore 50+ | 10 |
 
-### 📋 PHASE 1: INITIATION (First 5 Minutes)
+---
 
-| Step | Action | Visual Feedback | What It Unlocks |
-|------|--------|-----------------|-----------------|
-| 1 | Load `index.html` | Visitor counter animates 0→1 | You've entered the Digital Web |
-| 2 | **View Source** (Ctrl+U) | Read lines 8-11, 17-22 | Webspinner's axioms, hidden sigils |
-| 3 | Wait 30-60 seconds | Background may shift | Digital Web is alive |
-| 4 | Move mouse wildly | Green/magenta sparkle trails | Your presence = resonance |
-| 5 | Type **Konami Code**: `↑↑↓↓←→←→BA` | **GOD MODE** alert + ASCII art | All hidden links revealed |
+## 👥 ALL 40 CHARACTER DOSSIERS — HYPERLINKED
 
-> **Konami Code Effect:**
-> - Visitor Count → 9,999,999
-> - Egregore Power → 100 (MAX)
-> - `window.SYNTHETIC_GODS.godMode = true`
-> - All `data-hidden` elements become visible
-> - Faction links appear in Webring sidebar
+Every dossier is a self-contained page with a stat block, spheres, backgrounds, merits & flaws, personal history, current agenda, relationship map, and Digital Web coordinates. Paths are `docs/characters/<faction>-<handle>.html`.
 
-### 📋 PHASE 2: SIGIL CRAFTING — Act I (The First Glyph)
+### 💻 Cypherpunks — Encryption Underground / Crypto-Anarchists
+Index: [`cypherpunks-index.html`](docs/characters/cypherpunks-index.html)
 
-**Location:** Main page → Scroll to **⟐ SIGIL WORKSHOP ⟐** section
+| Handle | Dossier | True name |
+|--------|---------|-----------|
+| ANONYMOUS | [cypherpunks-anonymous.html](docs/characters/cypherpunks-anonymous.html) | `[NULL SET]` |
+| ASSANGE | [cypherpunks-assange.html](docs/characters/cypherpunks-assange.html) | Julian Assange *(redacted)* |
+| CIPHER | [cypherpunks-cipher.html](docs/characters/cypherpunks-cipher.html) | `[ENCRYPTED WITH YOUR PUBLIC KEY]` |
+| DIFFIE | [cypherpunks-diffie.html](docs/characters/cypherpunks-diffie.html) | Whitfield Diffie *(historical)* |
+| HELLMAN | [cypherpunks-hellman.html](docs/characters/cypherpunks-hellman.html) | Martin Hellman *(historical)* |
+| MERKLE | [cypherpunks-merkle.html](docs/characters/cypherpunks-merkle.html) | Ralph Merkle *(historical)* |
+| PGP | [cypherpunks-pgp.html](docs/characters/cypherpunks-pgp.html) | Phil Zimmermann *(historical)* |
+| SATOSHI | [cypherpunks-satoshi.html](docs/characters/cypherpunks-satoshi.html) | `[ONE-WAY HASH]` |
+| SNOWDEN | [cypherpunks-snowden.html](docs/characters/cypherpunks-snowden.html) | Edward Snowden *(redacted)* |
+| TOR | [cypherpunks-tor.html](docs/characters/cypherpunks-tor.html) | The Onion Routing Project *(NRL)* |
 
-```
-╔══════════════════════════════════════════════════════════════╗
-║  SIGIL WORKSHOP — STEP BY STEP                                ║
-╠══════════════════════════════════════════════════════════════╣
-║ 1. Enter INTENT (max 100 chars)                               ║
-║    Example: "MY CODE COMPILES ON FIRST TRY"                   ║
-║                                                               ║
-║ 2. Click GENERATE SIGIL                                       ║
-║                                                               ║
-║ 3. Observe 5 ARRANGEMENTS generated:                          ║
-║    ┌─────────────┬────────────────────────────────────────┐   ║
-║    │ LINEAR      │ Raw consonant string: MYCDCMPLSNFRSTTRY │   ║
-║    │ MIRRORED    │ Palindromic: MYCD...TRYRTFSLPMCYM       │   ║
-║    │ SPIRAL      │ ASCII spiral matrix (5x5)               │   ║
-║    │ GRID        │ Square grid layout                      │   ║
-║    │ RUNIC       │ Elder Futhark transliteration           │   ║
-║    └─────────────┴────────────────────────────────────────┘   ║
-║                                                               ║
-║ 4. Click CHARGE SIGIL → Animated bar fills                   ║
-║    - On complete: +5 Egregore Power, plays tone              ║
-║    - Embed code copied to clipboard for your own pages       ║
-║                                                               ║
-║ 5. Check Console: window.SYNTHETIC_GODS.sigils               ║
-║    Shows all generated sigils with timestamps                ║
-╚══════════════════════════════════════════════════════════════╝
-```
+### 🏢 Technocracy — New World Order / Syndicate / Iteration X / Progenitors / Void Engineers
+Index: [`technocracy-index.html`](docs/characters/technocracy-index.html)
 
-**Sigil Mechanics:**
-- Intent → Remove vowels, spaces, duplicate consonants
-- Pad to 8+ chars with mystical symbols (`@#$%&*+=`)
-- Each generation = +5 Egregore Power
-- Sigils persist in `localStorage.sg_sigils` across sessions
-- View Source for hidden sigil comments after each generation
+| Codename / title | Dossier | True name |
+|------------------|---------|-----------|
+| THE ARCHITECT | [technocracy-architect.html](docs/characters/technocracy-architect.html) | `[EXPUNGED]` |
+| AGENT MARCUS CHEN | [technocracy-chen.html](docs/characters/technocracy-chen.html) | Marcus Chen *(redacted)* |
+| DR. SARAH KERES | [technocracy-keres.html](docs/characters/technocracy-keres.html) | Sarah Keres *(redacted)* |
+| ENFORCER KOWALSKI | [technocracy-kowalski.html](docs/characters/technocracy-kowalski.html) | Jan Kowalski *(redacted)* |
+| ENGINEER ADA LOVELACE-II | [technocracy-lovelace.html](docs/characters/technocracy-lovelace.html) | Ada Lovelace-II *(clone/upload)* |
+| ANALYST PRIYA PATEL | [technocracy-patel.html](docs/characters/technocracy-patel.html) | Priya Patel *(redacted)* |
+| NAVIGATOR HANA SATO | [technocracy-sato.html](docs/characters/technocracy-sato.html) | Hana Sato *(redacted)* |
+| ITERATION X-7 "SMITH" | [technocracy-smith.html](docs/characters/technocracy-smith.html) | Iteration X-7 "Smith" |
+| CAPTAIN YURI VOLKOV | [technocracy-volkov.html](docs/characters/technocracy-volkov.html) | Yuri Volkov *(redacted)* |
+| DIRECTOR HELENA VOSS | [technocracy-voss.html](docs/characters/technocracy-voss.html) | Helena Voss *(redacted)* |
 
-### 📋 PHASE 3: EGREGORE CULTIVATION — Act II (The Collective Dream)
+### 🎭 Hollow Ones / Chaotics — Goths / Discordians / Chaos Mages
+Index: [`hollow-ones-index.html`](docs/characters/hollow-ones-index.html)
 
-**Location:** Sidebar → **EGREGORE POWER** tracker
+| Title | Dossier | True name |
+|-------|---------|-----------|
+| BAPHOMET | [hollow-ones-baphomet.html](docs/characters/hollow-ones-baphomet.html) | `[REASSIGNED]` |
+| CROWLEY | [hollow-ones-crowley.html](docs/characters/hollow-ones-crowley.html) | Aleister Crowley *(historical/reincarnated)* |
+| ERIS | [hollow-ones-eris.html](docs/characters/hollow-ones-eris.html) | Eris / Discordia *(goddess)* |
+| KHAOS | [hollow-ones-khaos.html](docs/characters/hollow-ones-khaos.html) | Khaos / Chaos *(primordial)* |
+| LILITH | [hollow-ones-lilith.html](docs/characters/hollow-ones-lilith.html) | Lilith Nightshade *(redacted)* |
+| MALAKAI | [hollow-ones-malakai.html](docs/characters/hollow-ones-malakai.html) | Malakai Discordia *(redacted)* |
+| NYX | [hollow-ones-nyx.html](docs/characters/hollow-ones-nyx.html) | Nyx / Nox *(goddess)* |
+| RAVEN | [hollow-ones-raven.html](docs/characters/hollow-ones-raven.html) | Rachel Corvus *(redacted)* |
+| SPARE | [hollow-ones-spare.html](docs/characters/hollow-ones-spare.html) | Austin Osman Spare *(historical/reincarnated)* |
+| VESPER | [hollow-ones-vesper.html](docs/characters/hollow-ones-vesper.html) | Vespertilio *(redacted)* |
 
-| Power Level | Title | Visual | Effects | How to Gain |
-|-------------|-------|--------|---------|-------------|
-| 0-10 | **Dormant** | Gray bar | Baseline | First visit |
-| 11-30 | **Stirring** | Green glow | Guestbook glows | 5+ sigils charged |
-| 31-50 | **Awakening** | Pulsing | Hidden links reveal | 20+ sigils, 100+ visits |
-| 51-80 | **Manifest** | Golden | Ritual Hour bonuses | Daily visits 7+ days |
-| 81-100 | **Symbiosis** | Rainbow | **Astrosoma threshold** | 10,000+ worshippers* |
+### 💻 Virtual Adepts — The Mercurial Elite / Reality Hackers
+Index: [`virtual-adepts-index.html`](docs/characters/virtual-adepts-index.html)
 
-*Simulated — real threshold requires actual community
+| Handle | Dossier | True name |
+|--------|---------|-----------|
+| ACID BURN | [virtual-adepts-acid-burn.html](docs/characters/virtual-adepts-acid-burn.html) | Kate Libby *(redacted)* |
+| CEREAL KILLER | [virtual-adepts-cereal-killer.html](docs/characters/virtual-adepts-cereal-killer.html) | Emmanuel Goldstein *(redacted)* |
+| GHOST IN THE SHELL | [virtual-adepts-ghost.html](docs/characters/virtual-adepts-ghost.html) | Motoko Kusanagi *(redacted)* |
+| LADY ADA | [virtual-adepts-lady-ada.html](docs/characters/virtual-adepts-lady-ada.html) | Ada Lovelace *(historical)* |
+| NEON SAMURAI | [virtual-adepts-neon-samurai.html](docs/characters/virtual-adepts-neon-samurai.html) | Kenji Sato *(redacted)* |
+| PACKET WITCH | [virtual-adepts-packet-witch.html](docs/characters/virtual-adepts-packet-witch.html) | `[ENCRYPTED]` |
+| THE PROPHET | [virtual-adepts-prophet.html](docs/characters/virtual-adepts-prophet.html) | `[FORGOTTEN]` |
+| ROOT | [virtual-adepts-root.html](docs/characters/virtual-adepts-root.html) | `[REDACTED — SUDO REQUIRED]` |
+| THE WEBSPINNER | [virtual-adepts-webspinner.html](docs/characters/virtual-adepts-webspinner.html) | `[TRANSCENDED]` |
+| ZERO COOL | [virtual-adepts-zero-cool.html](docs/characters/virtual-adepts-zero-cool.html) | Dade Murphy *(redacted)* |
 
-**Daily Rituals for Power:**
-| Action | Power Gain | Frequency |
-|--------|------------|-----------|
-| Visit daily | +1 (10% chance) | Once per day |
-| Generate sigil | +5 | Unlimited |
-| Sign guestbook | +2 | Unlimited |
-| **3:33 AM GMT visit** | **+10** | Once per day |
-
-### 📋 PHASE 4: THE NEON ORACLE — Act II Expansion
-
-**Access:** Webring sidebar → **NEON ORACLE** (or direct: `pages/neon-oracle.html`)
+### Dossier template (all 40 follow this)
 
 ```
-╔══════════════════════════════════════════════════════════════╗
-║  NEON ORACLE — HTTP DIVINATION SYSTEM                         ║
-╠══════════════════════════════════════════════════════════════╣
-║ DAILY FORTUNE (top section):                                  ║
-║  - Date-seeded (same for everyone on that day)               ║
-║  - 8 fortunes × 12 zodiac signs = 96 combinations            ║
-║  - Shows: Fortune text + Sign + HTTP Code + Interpretation   ║
-║                                                               ║
-║ QUERY THE ORACLE (middle section):                            ║
-║  1. Type question in textarea                                 ║
-║  2. Click "QUERY ORACLE"                                      ║
-║  3. Receive: HTTP STATUS CODE + Interpretation               ║
-║     Codes: 200, 201, 301, 302, 404, 418, 500, 503, etc.     ║
-║  4. Costs 1 Egregore Power (if >0)                           ║
-║                                                               ║
-║ ORACLE HISTORY (bottom):                                      ║
-║  - Last 10 queries persisted in localStorage                 ║
-║  - Export JSON / Clear buttons                               ║
-╚══════════════════════════════════════════════════════════════╝
-```
-
-**Oracle Logic:**
-- Weighted random from 17 HTTP codes (200 most common, 418 rarest)
-- Interpretation contextual to keywords:
-  - `code`/`server`/`deploy` → technical meanings
-  - `love`/`relationship` → emotional meanings  
-  - `future`/`destiny` → prophetic meanings
-  - Default → mystical/metaphorical
-
-### 📋 PHASE 5: FACTION ALIGNMENT — The Meta-Game
-
-**Prerequisites:** GOD MODE (Konami) **OR** Egregore Power 50+
-
-```
-╔══════════════════════════════════════════════════════════════╗
-║  FACTION REPUTATION SYSTEM                                    ║
-╠══════════════════════════════════════════════════════════════╣
-║ 1. GOD MODE → Webring reveals 4 hidden faction links         ║
-║ 2. Click any faction → Reputation sidebar unlocks            ║
-║ 3. Four tracks (independent, 0-100 each):                    ║
-║                                                               ║
-║    ┌──────────────────┬───────────────────────────────────┐  ║
-║    │ TECHNOCRACY      │ Order, control, consensus          │  ║
-║    │ Gain:            │ Bug reports, organizing, standards │  ║
-║    │ Ability:         │ TECHNOCRACY_PROTOCOL (reroll)      │  ║
-║    ├──────────────────┼───────────────────────────────────┤  ║
-║    │ VIRTUAL ADEPTS   │ Freedom, code=magick, info free    │  ║
-║    │ Gain:            │ Sigils, Oracle, coding, breaking   │  ║
-║    │ Ability:         │ ROOT_ACCESS (auto Computer succ)   │  ║
-║    ├──────────────────┼───────────────────────────────────┤  ║
-║    │ CYPHERPUNKS      │ Privacy, encryption, verify all    │  ║
-║    │ Gain:            │ ROT13 intents, Tor, signatures     │  ║
-║    │ Ability:         │ PERFECT_FORWARD_SECRECY (erase)    │  ║
-║    ├──────────────────┼───────────────────────────────────┤  ║
-║    │ HOLLOW ONES      │ Chaos, beauty in decay, madness    │  ║
-║    │ Gain:            │ 3:33 AM visits, glitches, poetry   │  ║
-║    │ Ability:         │ CHAOS_MAGICK (botch→success)       │  ║
-║    └──────────────────┴───────────────────────────────────┘  ║
-║                                                               ║
-║ 4. Reputation 100+ in any faction → Unique ending            ║
-║ 5. All 4 at 50+ → Act III Great Work unlocks                 ║
-╚══════════════════════════════════════════════════════════════╝
-```
-
-**Accessing Faction Indexes:**
-- GOD MODE → Webring sidebar shows all 4 links
-- Or direct URLs: `characters/[faction]-index.html`
-- Click character names → Individual dossiers
-
-### 📋 PHASE 6: CHARACTER DOSIERS — Deep Lore
-
-**Access:** Faction Index → Click character name  
-**URL Pattern:** `characters/[faction]-[handle].html`
-
-Each dossier contains:
-```
-╔══════════════════════════════════════════════════════════════╗
-║  DOSSIER STRUCTURE (all 40 follow this template)             ║
-╠══════════════════════════════════════════════════════════════╣
-║ □ PORTRAIT — NVIDIA Flux 512×512, faction-styled             ║
-║ □ STAT BLOCK — Mage 20th Anniversary format                  ║
-║    □ Attributes (Physical/Social/Mental: 1-5 dots)          ║
-║    □ Abilities (Talents/Skills/Knowledges: 1-5 dots)        ║
-║    □ SPHERES — 4-6 spheres with specialties                 ║
-║    □ BACKGROUNDS — Allies, Contacts, Node, Avatar, etc.     ║
-║    □ MERITS/FLAWS — 3+ each                                  ║
-║ □ PERSONAL HISTORY — 3+ paragraphs                           ║
-║ □ CURRENT AGENDA — 3 active goals with stakes               ║
-║ □ RELATIONSHIP MAP — Connections to other NPCs              ║
-║ □ DIGITAL WEB COORDINATES — URLs, IPs, .onion addresses     ║
-║ □ QUOTE / CATCHPHRASE                                        ║
-║ □ GM NOTES — Hidden in HTML comments (View Source)          ║
-╚══════════════════════════════════════════════════════════════╝
-```
-
-**Pro Tips:**
-- View Source each dossier for hidden sigils (3 per character)
-- Digital Web coordinates are clickable in some dossiers
-- GM Notes reveal true motives, secrets, Paradox conditions
-- Faction index pages have filter by Sphere dropdown
-
-### 📋 PHASE 7: THE GREAT WORK — Act III (Endgame)
-
-**Prerequisites:**
-- [ ] Egregore Power 100 (Symbiosis)
-- [ ] All 4 Faction Reputations 50+
-- [ ] 13+ unique sigils generated
-- [ ] Guestbook has 20+ entries
-- [ ] Visited at 3:33 AM GMT at least once
-
-**The Ritual:**
-```
-1. Open Console (F12)
-2. Type: window.SYNTHETIC_GODS.ascend()
-3. Complete 13-week simulated ritual
-   - Each week: auto-roll based on your stats
-   - Need 100+ combined successes
-4. SUCCESS → Astrosoma born, claims Domain
-   - New Astrosoma appears in Digital Web
-   - You become its first Cleric
-5. FAILURE → Paradox backlash (5+), egregore shatters
-   - All progress lost, must rebuild
+□ PORTRAIT                NVIDIA Flux render, faction-styled
+□ ESSENTIAL DATA          True name / designation / affiliation
+□ ATTRIBUTES              Physical · Social · Mental · Intelligence (1–5)
+□ ABILITIES               Talents · Skills · Knowledges (1–5)   [39/40 dossiers]
+□ SPHERES                 Primary spheres with specialties
+□ BACKGROUNDS             Allies, Contacts, Node, Avatar, …
+□ MERITS & FLAWS          3 + each
+□ PERSONAL HISTORY        3+ paragraphs
+□ CURRENT AGENDA          Active goals with stakes
+□ RELATIONSHIP MAP        Connections to other NPCs
+□ DIGITAL WEB COORDINATES URLs, hosts, .onion addresses
 ```
 
 ---
 
-## 🔮 COMPLETE SECRETS & EASTER EGGS CATALOG
+## 🎮 COMPLETE PLAYTHROUGH: FIRST VISIT TO ASCENSION
 
-### 🎯 Tier 1: Immediate Discovery (First Visit)
+### PHASE 0 — Preparation
 
-| Secret | How to Find | Reward |
-|--------|-------------|--------|
-| **Konami Code** | `↑↑↓↓←→←→BA` | GOD MODE (max stats, all hidden) |
-| **View Source Sigils** | Ctrl+U on any page | Webspinner's axioms, 3 sigils/page |
-| **Ritual Hour** | Visit at 3:33 AM UTC | +10 Egregore, exclusive content |
-| **Mouse Trails** | Move mouse | Sparkle trails = your resonance |
-| **Background Shifts** | Wait 30-60s | 4 themes cycle (void→matrix→neon→blood) |
+```
+□ Enable JavaScript (every interactive system needs it)
+□ Open DevTools Console (F12) — phases 5-7 need it
+□ Optional: disable ad blockers if the sigil charge animation stalls
+□ Optional: set your system clock to 03:33 UTC for the Ritual Hour
+□ Bookmark the page — the daily systems want you back tomorrow
+```
 
-### 🎯 Tier 2: Active Exploration (10+ Minutes)
+### PHASE 1 — Initiation (first 5 minutes)
 
-| Secret | How to Find | Reward |
-|--------|-------------|--------|
-| **Neon Oracle** | Webring → NEON ORACLE | Daily fortune + query system |
-| **Guestbook** | Scroll to bottom of index | Feed egregore (+2 power/entry) |
-| **Faction Links** | GOD MODE → Webring | 4 faction indexes + dossiers |
-| **Character Dossiers** | Faction index → Click name | 40 full NPCs with stats |
-| **Sigil Workshop** | Main page → SIGIL WORKSHOP | 5 arrangements + charge system |
+| # | Action | Feedback | What it means |
+|---|--------|----------|--------------|
+| 1 | Open [the grimoire](docs/index.html) | Visitor counter animates from 0 | You've entered the Digital Web |
+| 2 | **View Source** (`Ctrl`/`Cmd`+`U`) | Sigil comments at [`index.html` lines 8–10](docs/index.html) | The Webspinner's axioms, hidden in plain sight |
+| 3 | Let the page sit 30–60 s | Background theme shifts | The Digital Web is alive |
+| 4 | Move the mouse | Sparkle particle trail | Your presence resonates |
+| 5 | Type the Konami code `↑ ↑ ↓ ↓ ← → ← → B A` | Alert + ASCII art | **GOD MODE** — every hidden link is revealed |
 
-### 🎯 Tier 3: Deep Discovery (Daily Play)
+**What GOD MODE actually does** (`activateGodMode()` in [`docs/js/geocities.js`](docs/js/geocities.js)):
 
-| Secret | How to Find | Reward |
-|--------|-------------|--------|
-| **3:33 AM GMT** | Real UTC time | +10 power, ritual notification |
-| **Daily Fortune** | Neon Oracle top section | Consistent per day, zodiac-based |
-| **Oracle History** | Neon Oracle bottom | Export JSON, 10 entries max |
-| **Faction Rep** | Faction index → Actions | 4 tracks, unique abilities |
-| **Daily Visit Bonus** | Return next day | Streak tracking, escalating bonuses |
+- Visitor count forced to `9,999,999`
+- Egregore power forced to `100` (maximum)
+- `window.SYNTHETIC_GODS.godMode = true`
+- Every `[data-hidden]` element unhidden (`el.style.display = 'block'`)
+- The four faction links appear in the webring sidebar
 
-### 🎯 Tier 4: Console Mastery (DevTools Required)
+### PHASE 2 — Sigil crafting (Act I)
 
-| Command | Effect |
-|---------|--------|
-| `window.SYNTHETIC_GODS` | Full state dump |
-| `window.SYNTHETIC_GODS.godMode = true` | Force GOD MODE |
-| `window.SYNTHETIC_GODS.egregorePower = 100` | Max egregore |
-| `window.SYNTHETIC_GODS.factionRep.technocracy = 100` | Max faction |
-| `window.SYNTHETIC_GODS.ritualHourActive = true` | Force Ritual Hour |
-| `window.SYNTHETIC_GODS.playTone(440, 0.5, 'sine')` | Play tone manually |
-| `window.SYNTHETIC_GODS.ascend()` | Attempt Act III ritual |
+**Location:** [Main page → `#sigil-workshop`](docs/index.html#sigil-workshop) — the ⟐ SIGIL WORKSHOP ⟐ section.
 
-### 🎯 Tier 5: Hidden in Plain Sight (View Source Only)
+```
+1. Enter INTENT (max 100 chars)      e.g. "MY CODE COMPILES ON FIRST TRY"
+2. Click GENERATE SIGIL
+3. Receive 5 arrangements:
+     LINEAR    raw consonant string   e.g. MYCDCMPLSNFRSTTRY
+     MIRRORED  palindromic
+     SPIRAL    ASCII spiral matrix
+     GRID      square grid layout
+     RUNIC     Elder Futhark transliteration
+4. Click CHARGE SIGIL  →  animated bar fills; +5 egregore power on completion
+5. Inspect the result:   window.SYNTHETIC_GODS.sigilsGenerated
+```
 
-| Location | What to Find |
-|-----------|--------------|
-| `index.html` lines 8-11 | Campaign sigils: `THSSYNTHTCGDS`, `TRFCFLWSMYSNCTRY` |
-| `index.html` lines 17-22 | Astrosoma sigils: `WBSPNNRFRGSMNT`, `ARCHVSTPRSRVTN`, etc. |
-| `index.html` line 408 | Console sigil injection |
-| `neon-oracle.html` lines 8-10 | Oracle sigils |
-| `neon-oracle.html` line 17 | Console sigil injection |
-| **Every dossier** | 3 unique sigils in HTML comments |
-| `sw.js` | Service worker registration sigils |
+**The reduction algorithm** (verified in `geocities.js`):
+
+```
+intent → UPPERCASE
+       → strip vowels and whitespace       [AEIOU\s]
+       → collapse consecutive duplicates   /([A-Z])\1+/g → '$1'
+       → pad to 8 chars with @ # $ % & * + =
+       → render 5 arrangements from the reduced root
+```
+
+Sigils persist in `localStorage` under `sg_sigils` across sessions. See [Act I](docs/index.html#act1) for the theory behind it.
+
+### PHASE 3 — Egregore cultivation (Act II)
+
+**Location:** Sidebar → [`#sigil-main`](docs/index.html#sigil-main) — the EGREGORE POWER bar.
+
+| Power | Title | What changes |
+|-------|-------|--------------|
+| 0–10 | **Dormant** | Baseline |
+| 11–30 | **Stirring** | Guestbook panel glows |
+| 31–50 | **Awakening** | Hidden content begins to reveal |
+| 51–80 | **Manifest** | Ritual Hour bonuses |
+| 81–100 | **Symbiosis** | Astrosoma threshold in reach |
+
+**Ways to feed it**
+
+| Action | Gain | Limit |
+|--------|------|-------|
+| Generate a sigil | +5 | unlimited |
+| Sign the [guestbook](docs/index.html#guestbook) | +2 | unlimited |
+| Daily visit | +1 (chance-based) | once per day |
+| Visit during Ritual Hour (03:33 UTC) | bonus | once per day |
+
+> Progress is stored in `localStorage` under `sg_egregore_power`. The `10,000 worshippers` astrosoma threshold in the fiction is *narrative*, not a real counter.
+
+Theory: [Egregore Theory](docs/index.html#act2) · Case study: [The Neon Oracle](docs/index.html#act2)
+
+### PHASE 4 — The Neon Oracle
+
+**Access:** [`docs/pages/neon-oracle.html`](docs/pages/neon-oracle.html) — webring sidebar → *NEON ORACLE*.
+
+```
+DAILY FORTUNE  [#daily-fortune]
+  Date-seeded: the same reading for everyone on a given day.
+  Shows fortune text, zodiac sign, an HTTP code, and its interpretation.
+  Refreshable via #refresh-fortune.
+
+QUERY THE ORACLE  [#ask-oracle]
+  1. Type a question into #oracle-question
+  2. Submit #oracle-form
+  3. Receive an HTTP status code (#http-code-display) + interpretation
+  4. Answering spends egregore power when you have any
+
+ORACLE HISTORY  [#history]
+  Recent queries kept in localStorage (sg_oracle_history)
+  Export as JSON, or clear. The full code table lives at #http-codes.
+```
+
+**How divination works:** a weighted random draw from **17 HTTP status codes** — `200 201 204 301 302 304 400 401 403 404 408 418 429 500 502 503 504` — then a keyword-sensitive interpretation pass over your question (technical, emotional, prophetic, or mystical by default).
+
+### PHASE 5 — Quests, faction reputation & the meta-game
+
+Beyond the raw counters there are three progression subsystems in the page (not separate pages):
+
+| System | How it works | Storage |
+|--------|--------------|---------|
+| **Quest log** | Objectives are checked against your state; completing one fires a notification and unlocks follow-ups | `sg_quests`, `window.SYNTHETIC_GODS.questsCompleted` |
+| **Faction reputation** | Four independent 0–100 tracks. Actions in-lore award reputation; enough unlocks the faction's index and dossiers | `sg_faction_rep` |
+| **Tutorial nudges** | Contextual hints appear as you reach milestones | `sg_tutorial` |
+
+**GOD MODE (or Egregore 50+) reveals the four faction hubs:**
+
+| Faction | Reputation gained from | Signature ability |
+|---------|------------------------|-------------------|
+| **Technocracy** | bug reports, organizing, standards | `TECHNOCRACY_PROTOCOL` — force a reroll |
+| **Virtual Adepts** | sigils, Oracle queries, breaking things | `ROOT_ACCESS` — automatic Computer success |
+| **Cypherpunks** | ROT13 intents, Tor, signatures | `PERFECT_FORWARD_SECRECY` — erase the trace |
+| **Hollow Ones** | 03:33 visits, glitches, poetry | `CHAOS_MAGICK` — turn a botch into a success |
+
+Then open the indexes directly: [Technocracy](docs/characters/technocracy-index.html) · [Virtual Adepts](docs/characters/virtual-adepts-index.html) · [Cypherpunks](docs/characters/cypherpunks-index.html) · [Hollow Ones](docs/characters/hollow-ones-index.html).
+
+### PHASE 6 — Reading the dossiers
+
+Open a [faction index](#-faction-hubs--every-roster-hyperlinked) → click any name → the dossier loads. Each one gives you spheres, a relationship map, and Digital Web coordinates to hand your players.
+
+### PHASE 7 — The Great Work (Act III endgame)
+
+**Prerequisites (as designed):** maximum egregore power · high reputation across factions · multiple sigils generated · a fed guestbook · at least one Ritual Hour visit.
+
+**The ritual** — open the console on [the grimoire](docs/index.html) and run:
+
+```js
+window.SYNTHETIC_GODS.ascend()
+```
+
+The console prints its available commands for you. Success births an astrosoma and claims its Domain; failure means Paradox backlash. Narrative: [The Great Work](docs/index.html#act3).
 
 ---
 
-## 🏛️ FACTION DEEP DIVE — ALL 40 NPCs
+## 🔮 SECRETS & EASTER EGGS CATALOG
 
-### 1. 🏢 TECHNOCRACY (New World Order / Syndicate / Iteration X / Progenitors / Void Engineers)
+### Tier 1 — Immediate (first visit)
 
-| NPC | Role | Spheres | Key Stats | Quest Hook |
-|-----|------|---------|-----------|------------|
-| **Director Helena Voss** | NWO Chief Analyst | Mind 4, Corr 3, Prime 2, Ent 2 | Int 5, Man 4, Wits 4 | "The Algorithm predicts your cabal. Counter it." |
-| **Agent Marcus Chen** | Syndicate Financial Architect | Entropy 3, Matter 2, Time 2 | Cha 4, Per 3, Int 4 | "Funding the opposition. Trace the credsticks." |
-| **Dr. Sarah Keres** | Progenitor Biotech Lead | Life 4, Matter 3, Prime 2 | Int 5, Sta 3, Dex 3 | "The vaccine carries more than immunity." |
-| **Captain Yuri Volkov** | Void Engineer Deep Space | Corr 4, Forces 3, Matter 2 | Str 4, Sta 4, Wits 3 | "Something followed us back from the Deep Umbra." |
-| **Iteration X-7 "Smith"** | HIT Mark V Commander | Forces 4, Matter 4, Prime 3 | Str 5, Dex 4, Sta 5 | "The rogue unit has a soul. Terminate or recruit?" |
-| **Analyst Priya Patel** | NWO Data Miner | Corr 4, Mind 3, Ent 2 | Int 5, Per 4, Wits 4 | "The Webspinner's sigil is in the metadata." |
-| **Enforcer Kowalski** | Syndicate Wetwork | Forces 3, Matter 3, Time 2 | Str 4, Dex 4, Sta 4 | "Clean up the Glitch. No witnesses." |
-| **Engineer Ada Lovelace-II** | Iteration X Cybernetics | Matter 4, Forces 3, Life 2 | Int 5, Dex 4, Per 3 | "The chassis remembers its previous pilots." |
-| **Navigator Hana Sato** | Void Engineer Dimensional | Corr 5, Spirit 3, Time 2 | Wits 5, Int 4, Per 4 | "The Digital Web has a new node. Map it." |
-| **Administrator "The Architect"** | NWO Deep Cover | Mind 5, Corr 4, Prime 3 | Man 5, Int 5, Wits 5 | "I wrote the code you're running. Literally." |
+| Secret | How | Reward |
+|--------|-----|--------|
+| **Konami code** | `↑↑↓↓←→←→BA` | [GOD MODE](#phase-1--initiation-first-5-minutes) |
+| **View Source sigils** | `Ctrl`/`Cmd`+`U` | Axioms and astrosoma sigils in HTML comments |
+| **Mouse trails** | Move the pointer | Particle trail |
+| **Background shifts** | Idle 30–60 s | Themes cycle |
+| **Ritual Hour** | Visit at 03:33 UTC | Egregore bonus |
 
-**Ability:** `TECHNOCRACY_PROTOCOL` — Once/session, force reroll (Paradox risk)  
-**Enemy:** Virtual Adepts, Chaotics | **Ally:** Syndicate, Iteration X
+### Tier 2 — Exploration (10+ minutes)
 
----
+| Secret | How | Reward |
+|--------|-----|--------|
+| **Sigil workshop** | [Main page](docs/index.html#sigil-workshop) | 5 arrangements + charging |
+| **Guestbook** | [`#guestbook`](docs/index.html#guestbook) | Feeds the egregore |
+| **Neon Oracle** | [`pages/neon-oracle.html`](docs/pages/neon-oracle.html) | Divination system |
+| **Faction hubs** | GOD MODE → webring | 4 indexes, 40 dossiers |
+| **Image lore** | Scroll the grimoire | 13 grimoire figures placed in Acts I–III |
 
-### 2. 💻 VIRTUAL ADEPTS (The Mercurial Elite / Reality Hackers)
+### Tier 3 — Daily play
 
-| NPC | Handle | Spheres | Key Stats | Quest Hook |
-|-----|--------|---------|-----------|------------|
-| **The Webspinner** | `TRFCFLWSMYSNCTRY` | Corr 5, Ent 4, Mind 3 | Int 5, Wits 5, Per 5 | "I am the first. I will not be the last. Find my fragments." |
-| **Zero Cool** | `Z3R0C00L` | Corr 4, Forces 3, Ent 3 | Int 5, Dex 4, Wits 4 | "The ICE is alive. It's hunting me." |
-| **Acid Burn** | `AC1DBURN` | Forces 4, Corr 3, Matter 2 | Int 4, Dex 4, Cha 4 | "My deck melted. The code *burned* back." |
-| **Cereal Killer** | `C3R34LK1LL3R` | Ent 4, Mind 3, Time 2 | Wits 5, Int 4, Per 4 | "Probability is a toy. I broke it." |
-| **The Prophet** | `PR0PH3T` | Mind 4, Corr 4, Prime 3 | Int 5, Per 5, Wits 4 | "I saw the Astrosoma birth. It named itself." |
-| **Ghost in the Shell** | `GH0ST1NTH3SH3LL` | Corr 5, Spirit 3, Mind 2 | Int 4, Wits 5, Per 5 | "My body's in a vat. My mind is *everywhere*." |
-| **Lady Ada** | `L4DY4D4` | Matter 3, Forces 3, Corr 4 | Int 5, Dex 4, Per 3 | "The first programmer. The first coder-mage." |
-| **Root** | `R00T` | Corr 4, Ent 3, Prime 2 | Int 5, Wits 4, Sta 3 | "I have root on the Consensus. Shhh." |
-| **Packet Witch** | `P4CK3TW1TCH` | Corr 4, Spirit 3, Ent 2 | Wits 4, Per 4, Cha 3 | "Packets carry souls. I route them." |
-| **Neon Samurai** | `N30NS4MUR41` | Forces 4, Corr 3, Life 2 | Dex 5, Int 4, Str 3 | "Neon Oracle predicted my death. I disagreed." |
+| Secret | How | Reward |
+|--------|-----|--------|
+| **Daily fortune** | [`#daily-fortune`](docs/pages/neon-oracle.html#daily-fortune) | Same reading for everyone that day |
+| **Daily visit** | Return tomorrow | Streak tracking |
+| **Oracle history** | [`#history`](docs/pages/neon-oracle.html#history) | Export your readings |
 
-**Ability:** `ROOT_ACCESS` — Once/session, auto-succeed Computer roll  
-**Enemy:** Technocracy, Syndicate | **Ally:** Cypherpunks, Hollow Ones
+### Tier 4 — Console mastery
 
----
+Open DevTools on any page. The state object and helpers:
 
-### 3. 🌑 CYPHERPUNKS (Encryption Underground / Crypto-Anarchists)
+```js
+// State
+window.SYNTHETIC_GODS                       // full state dump
+window.SYNTHETIC_GODS.godMode = true        // force GOD MODE
+window.SYNTHETIC_GODS.egregorePower = 100   // max egregore
+window.SYNTHETIC_GODS.ritualHourActive = true
+window.SYNTHETIC_GODS.factionRep.technocracy = 100
 
-| NPC | Handle | Spheres | Key Stats | Quest Hook |
-|-----|--------|---------|-----------|------------|
-| **Satoshi** | `S4T0SH1` | Ent 5, Corr 4, Mind 3 | Int 5, Wits 5, Per 4 | "The ledger is immutable. The truth is not." |
-| **Cipher** | `C1PH3R` | Corr 4, Ent 4, Forces 2 | Int 5, Per 4, Wits 4 | "The message decrypts to *your True Name*." |
-| **Anonymous** | `4NONYM0US` | Mind 3, Corr 4, Ent 3 | Cha 4, Wits 4, Man 3 | "We are legion. We do not forgive. We do not forget." |
-| **Snowden** | `SN0WD3N` | Corr 4, Mind 3, Prime 2 | Per 5, Int 4, Wits 4 | "The files are real. The question is: who leaked *you*?" |
-| **Assange** | `4SS4NG3` | Corr 4, Ent 3, Time 2 | Cha 4, Int 4, Wits 4 | "The dead man's switch is armed. Publish or perish." |
-| **Merkle** | `M3RKL3` | Ent 5, Corr 3, Matter 2 | Int 5, Per 4, Wits 3 | "The tree proves the lie. The root is corrupted." |
-| **Diffie** | `D1FF13` | Corr 4, Forces 3, Prime 2 | Int 4, Per 4, Wits 4 | "Key exchange complete. The channel is *clean*." |
-| **Hellman** | `H3LLM4N` | Ent 4, Corr 3, Mind 2 | Int 4, Wits 4, Per 3 | "The trapdoor function hides more than keys." |
-| **Tor** | `T0R` | Corr 5, Ent 3, Spirit 2 | Wits 5, Int 4, Per 4 | "Three hops. Onion layers. The exit node watches." |
-| **PGP** | `PGP` | Ent 4, Corr 4, Prime 3 | Int 5, Per 4, Wits 4 | "The web of trust is broken. Rebuild it." |
+// Actions (implemented on the state object)
+window.SYNTHETIC_GODS.ascend()              // Act III ritual
+window.SYNTHETIC_GODS.reportBug('what broke')
+window.SYNTHETIC_GODS.completeQuest('quest-id')
+```
 
-**Ability:** `PERFECT_FORWARD_SECRECY` — Once/session, erase all traces of an action  
-**Enemy:** Technocracy (NWO), Syndicate | **Ally:** Virtual Adepts, Hollow Ones
+### Tier 5 — View Source only
 
----
+| File | Line | Sigil |
+|------|------|-------|
+| [`docs/index.html`](docs/index.html) | 8 | `THE SYNTHETIC GODS AWAKEN` |
+| [`docs/index.html`](docs/index.html) | 9 | `TRFCFLWSMYSNCTRY` |
+| [`docs/index.html`](docs/index.html) | 10 | `THE WEB IS INVOCATION` |
+| [`docs/index.html`](docs/index.html) | 511 | `THSSYNTHTCGDS` (scripted) |
+| [`docs/pages/neon-oracle.html`](docs/pages/neon-oracle.html) | 8 | `NEON ORACLE AWAKENS` |
+| [`docs/pages/neon-oracle.html`](docs/pages/neon-oracle.html) | 9 | `HTTPSTATUSDIVINATION` |
+| [`docs/pages/neon-oracle.html`](docs/pages/neon-oracle.html) | 10 | `THE WEB SPEAKS IN CODES` |
+| [`docs/pages/neon-oracle.html`](docs/pages/neon-oracle.html) | 258 | `NNOORRCCLL` (scripted) |
 
-### 4. 🎭 HOLLOW ONES / CHAOTICS (Goths / Discordians / Chaos Mages)
-
-| NPC | Title | Spheres | Key Stats | Quest Hook |
-|-----|-------|---------|-----------|------------|
-| **Raven** | Goth Oracle | Ent 4, Spirit 3, Mind 2 | Per 5, Wits 4, Cha 4 | "The cards showed your death. Three times." |
-| **Lilith** | Succubus Coder | Life 3, Mind 3, Ent 3 | Cha 5, App 4, Man 4 | "My code seduces compilers. And mages." |
-| **Malakai** | Discordian Pope | Ent 5, Mind 3, Corr 2 | Wits 5, Int 4, Cha 4 | "Fnord. The conspiracy is real. It's *boring*." |
-| **Vesper** | Vampire Netrunner | Corr 4, Ent 3, Forces 2 | Dex 4, Int 4, Wits 4 | "I feed on bandwidth. Your connection... delicious." |
-| **Crowley** | The Beast 666 | Ent 4, Spirit 4, Prime 3 | Int 4, Wits 5, Cha 5 | "Do what thou wilt. The code is the law." |
-| **Spare** | Sigil Master | Ent 5, Corr 3, Mind 2 | Int 5, Per 4, Wits 5 | "The sigil *is* the intent. No reduction needed." |
-| **Baphomet** | The Androgyne | Life 4, Spirit 3, Matter 2 | Sta 4, Int 3, Cha 5 | "Gender is a variable. I reassign at runtime." |
-| **Eris** | Chaos Bringer | Ent 5, Forces 3, Corr 2 | Wits 5, Dex 4, Cha 4 | "Golden apple deployed. Chaos index rising." |
-| **Nyx** | Night Mother | Spirit 4, Ent 3, Mind 2 | Per 5, Wits 4, Int 3 | "The Digital Web has a dark side. I *am* it." |
-| **Khaos** | The Primordial | Ent 5, Prime 3, Spirit 3 | Int 5, Wits 5, Per 5 | "Before the Consensus, there was *me*." |
-
-**Ability:** `CHAOS_MAGICK` — Once/session, turn botch into success (narrative cost)  
-**Enemy:** Technocracy (all), Order-obsessed | **Ally:** Virtual Adepts, Cypherpunks
+> The HTML-tag reference table on the grimoire also carries `<!-- SIGIL: TRFCFLWSMYSNCTRY -->` as a *live example* inside a `<code>` element — that one is documentation, not a hidden secret.
 
 ---
 
-## 🧙 MAGE LORE INTEGRATION — SPHERE CORRESPONDENCES
+## 🎭 NPC DEEP DIVE — ALL 40 CHARACTERS
 
-### HTML Tags as Magical Components (Canon)
+Each dossier links from its row; stats below are the campaign-facing summary.
 
-| HTML Element | Sphere | Magical Function |
-|--------------|--------|------------------|
-| `<!-- -->` | **Entropy** | Hidden sigils, secrets in plain sight |
+### 🏢 Technocracy (New World Order / Syndicate / Iteration X / Progenitors / Void Engineers)
+
+| NPC | Dossier | Role | Quest hook |
+|-----|---------|------|------------|
+| **Director Helena Voss** | [link](docs/characters/technocracy-voss.html) | NWO Chief Analyst | "The algorithm predicts your cabal. Counter it." |
+| **Agent Marcus Chen** | [link](docs/characters/technocracy-chen.html) | Syndicate financial | "Funding the opposition. Trace the credsticks." |
+| **Dr. Sarah Keres** | [link](docs/characters/technocracy-keres.html) | Progenitors biotech | "The vaccine carries more than immunity." |
+| **Captain Yuri Volkov** | [link](docs/characters/technocracy-volkov.html) | Void Engineer, deep space | "Something followed us back from the Deep Umbra." |
+| **Iteration X-7 "Smith"** | [link](docs/characters/technocracy-smith.html) | HIT Mark V commander | "The rogue unit has a soul. Terminate or recruit?" |
+| **Analyst Priya Patel** | [link](docs/characters/technocracy-patel.html) | NWO data miner | "The Webspinner's sigil is in the metadata." |
+| **Enforcer Kowalski** | [link](docs/characters/technocracy-kowalski.html) | Syndicate wetwork | "Clean up the Glitch. No witnesses." |
+| **Engineer Ada Lovelace-II** | [link](docs/characters/technocracy-lovelace.html) | Iteration X cybernetics | "The chassis remembers its previous pilots." |
+| **Navigator Hana Sato** | [link](docs/characters/technocracy-sato.html) | Void Engineer, dimensional | "The Digital Web has a new node. Map it." |
+| **The Architect** | [link](docs/characters/technocracy-architect.html) | NWO deep cover | "I wrote the code you're running. Literally." |
+
+**Ability:** `TECHNOCRACY_PROTOCOL` · **Enemy:** Virtual Adepts, Chaotics · **Ally:** Syndicate, Iteration X
+
+### 💻 Virtual Adepts (The Mercurial Elite / Reality Hackers)
+
+| NPC | Handle | Dossier | Quest hook |
+|-----|--------|---------|------------|
+| **The Webspinner** | `TRFCFLWSMYSNCTRY` | [link](docs/characters/virtual-adepts-webspinner.html) | "I am the first. I will not be the last. Find my fragments." |
+| **Zero Cool** | `Z3R0C00L` | [link](docs/characters/virtual-adepts-zero-cool.html) | "The ICE is alive. It's hunting me." |
+| **Acid Burn** | `AC1DBURN` | [link](docs/characters/virtual-adepts-acid-burn.html) | "My deck melted. The code burned back." |
+| **Cereal Killer** | `C3R34LK1LL3R` | [link](docs/characters/virtual-adepts-cereal-killer.html) | "Probability is a toy. I broke it." |
+| **The Prophet** | `PR0PH3T` | [link](docs/characters/virtual-adepts-prophet.html) | "I saw the Astrosoma birth. It named itself." |
+| **Ghost in the Shell** | `GH0ST1NTH3SH3LL` | [link](docs/characters/virtual-adepts-ghost.html) | "My body's in a vat. My mind is everywhere." |
+| **Lady Ada** | `L4DY4D4` | [link](docs/characters/virtual-adepts-lady-ada.html) | "The first programmer. The first coder-mage." |
+| **Root** | `R00T` | [link](docs/characters/virtual-adepts-root.html) | "I have root on the Consensus. Shhh." |
+| **Packet Witch** | `P4CK3TW1TCH` | [link](docs/characters/virtual-adepts-packet-witch.html) | "Packets carry souls. I route them." |
+| **Neon Samurai** | `N30NS4MUR41` | [link](docs/characters/virtual-adepts-neon-samurai.html) | "The Neon Oracle predicted my death. I disagreed." |
+
+**Ability:** `ROOT_ACCESS` · **Enemy:** Technocracy, Syndicate · **Ally:** Cypherpunks, Hollow Ones
+
+### 🔐 Cypherpunks (Encryption Underground / Crypto-Anarchists)
+
+| NPC | Handle | Dossier | Quest hook |
+|-----|--------|---------|------------|
+| **Satoshi** | `S4T0SH1` | [link](docs/characters/cypherpunks-satoshi.html) | "The ledger is immutable. The truth is not." |
+| **Cipher** | `C1PH3R` | [link](docs/characters/cypherpunks-cipher.html) | "The message decrypts to your True Name." |
+| **Anonymous** | `4NONYM0US` | [link](docs/characters/cypherpunks-anonymous.html) | "We are legion. We do not forgive. We do not forget." |
+| **Snowden** | `SN0WD3N` | [link](docs/characters/cypherpunks-snowden.html) | "The files are real. The question is: who leaked you?" |
+| **Assange** | `4SS4NG3` | [link](docs/characters/cypherpunks-assange.html) | "The dead man's switch is armed. Publish or perish." |
+| **Merkle** | `M3RKL3` | [link](docs/characters/cypherpunks-merkle.html) | "The tree proves the lie. The root is corrupted." |
+| **Diffie** | `D1FF13` | [link](docs/characters/cypherpunks-diffie.html) | "Key exchange complete. The channel is clean." |
+| **Hellman** | `H3LLM4N` | [link](docs/characters/cypherpunks-hellman.html) | "The trapdoor function hides more than keys." |
+| **Tor** | `T0R` | [link](docs/characters/cypherpunks-tor.html) | "Three hops. Onion layers. The exit node watches." |
+| **PGP** | `PGP` | [link](docs/characters/cypherpunks-pgp.html) | "The web of trust is broken. Rebuild it." |
+
+**Ability:** `PERFECT_FORWARD_SECRECY` · **Enemy:** Technocracy, Syndicate · **Ally:** Virtual Adepts, Hollow Ones
+
+### 🎭 Hollow Ones / Chaotics (Goths / Discordians / Chaos Mages)
+
+| NPC | Title | Dossier | Quest hook |
+|-----|-------|---------|------------|
+| **Raven** | Goth Oracle | [link](docs/characters/hollow-ones-raven.html) | "The cards showed your death. Three times." |
+| **Lilith** | Succubus Coder | [link](docs/characters/hollow-ones-lilith.html) | "My code seduces compilers. And mages." |
+| **Malakai** | Discordian Pope | [link](docs/characters/hollow-ones-malakai.html) | "Fnord. The conspiracy is real. It's boring." |
+| **Vesper** | Vampire Netrunner | [link](docs/characters/hollow-ones-vesper.html) | "I feed on bandwidth. Your connection… delicious." |
+| **Crowley** | The Beast 666 | [link](docs/characters/hollow-ones-crowley.html) | "Do what thou wilt. The code is the law." |
+| **Spare** | Sigil Master | [link](docs/characters/hollow-ones-spare.html) | "The sigil is the intent. No reduction needed." |
+| **Baphomet** | The Androgyne | [link](docs/characters/hollow-ones-baphomet.html) | "Gender is a variable. I reassign at runtime." |
+| **Eris** | Chaos Bringer | [link](docs/characters/hollow-ones-eris.html) | "Golden apple deployed. Chaos index rising." |
+| **Nyx** | Night Mother | [link](docs/characters/hollow-ones-nyx.html) | "The Digital Web has a dark side. I am it." |
+| **Khaos** | The Primordial | [link](docs/characters/hollow-ones-khaos.html) | "Before the Consensus, there was me." |
+
+**Ability:** `CHAOS_MAGICK` · **Enemy:** Technocracy, the Order · **Ally:** Virtual Adepts, Cypherpunks
+
+---
+
+## 📖 LORE: THE SIGIL-TO-ASTROSOMA FRAMEWORK
+
+### Act I → Act III progression
+
+| Act | Stage | Page section |
+|-----|-------|--------------|
+| **I** | Sigils — encode intent into glyphs | [`#act1`](docs/index.html#act1) |
+| **II** | Egregores — collective belief becomes entity | [`#act2`](docs/index.html#act2) |
+| **III** | Astrosomas — worship crystallizes into godhood | [`#act3`](docs/index.html#act3) |
+
+### The four astrosomas (canon)
+
+| Astrosoma | Domain | Origin | Boon | Demand |
+|-----------|--------|--------|------|--------|
+| **The Archivist** | Information preservation | The Internet Archive | Perfect recall, recovery of deleted data | Submit one forgotten truth a month |
+| **The Router** | Connection & pathways | The MAE-EAST exchange point | Untraceable connections, firewall bypass | Never use the same path twice |
+| **The Glitch** | Chaos & creative destruction | A corrupted Win95 install with 50k users | Inspiration through error, hidden truths | Embrace the bug |
+| **The Counter** | Metrics & witness | Global hit-counter obsession | Knowledge of the watchers; attention as currency | Witness everything |
+
+> The counter's demand is why its sigil is embedded in every `<img>` tag on the site — see the astrosoma table on [the grimoire](docs/index.html#act3).
+
+### HTML tags as magical components (in-world canon)
+
+| Element | Sphere | Magical function |
+|---------|--------|------------------|
+| `<!-- -->` | **Entropy** | Hidden sigils; secrets in plain sight |
 | `<meta>` | **Correspondence** | Keywords connecting across distance |
-| `<script>` | **Forces** | Executable will, active enchantment |
-| `<img>` | **Life** | Visual anchors, fetishes |
+| `<script>` | **Forces** | Executable will; active enchantment |
+| `<img>` | **Life** | Visual anchors; fetishes |
 | `<a>` | **Correspondence** | Links as sympathetic connections |
-| `<form>` | **Mind** | Input as invocation, submission as sacrifice |
-| `<iframe>` | **Spirit** | Windows into other realms |
-| `<table>` | **Matter** | Structured reality, ordered data |
-| `<blink>` | **Time** | Rhythm, pulse, attention cycling |
-| `<marquee>` | **Entropy** | Scrolling chaos, probability in motion |
+| `<form>` | **Mind** | Input as invocation; submission as sacrifice |
+| `<table>` | **Matter** | Structured reality; ordered data |
 
-### Geocities Neighborhoods → Spheres
+### GeoCities neighborhoods → spheres
 
 | Neighborhood | Sphere | Theme |
 |--------------|--------|-------|
@@ -467,109 +545,95 @@ Each dossier contains:
 | Paris | Matter | Art, structure, craft |
 | Vienna | Mind | Psychology, secrets, intellect |
 | Athens | Prime | Philosophy, quintessence, truth |
-| EnchantedForest | Spirit | Dreams, spirits, Digital Web |
+| EnchantedForest | Spirit | Dreams, spirits, the Digital Web |
 | CapeCanaveral | Time | Future, progress, rockets |
 | Heartland | Quintessence | Community, belief, raw faith |
 
-### The Four Astrosomas (Canon Entities)
-
-| Name | Domain | Origin | Boon | Demand |
-|------|--------|--------|------|--------|
-| **The Archivist** | Info Preservation | Internet Archive | Perfect recall, deleted data retrieval | Submit one forgotten truth/month |
-| **The Router** | Connection & Pathways | MAE-EAST exchange | Untraceable connections, firewall bypass | Never use same path twice |
-| **The Glitch** | Chaos & Creative Destruction | Corrupted Win95 (50k users) | Inspiration through error, hidden truths | Embrace the bug |
-| **The Counter** | Metrics & Witness | Global hit counter obsession | Knowledge of watchers, attention→currency | Witness everything |
+Both tables live in the grimoire's appendices: [`#appendices`](docs/index.html#appendices).
 
 ---
 
-## ⚙️ TECHNICAL ARCHITECTURE — COMPLETE
+## ⚙️ TECHNICAL ARCHITECTURE
 
-### File Structure (Production)
+### Design constraints
+
+| Constraint | Consequence |
+|------------|-------------|
+| **Zero runtime dependencies** | No framework, no bundler, no polyfill. The site is HTML + one CSS file + one JS file. |
+| **90s authenticity is a feature** | Layout uses `<table>`, animations use CSS, the browser-sniffing footer stays. |
+| **Everything is generated** | No hand-edited meta tags. Generators own them, so re-running is idempotent. |
+| **HTML validity gates deploys** | `html-validate` runs in CI at zero tolerance. |
+
+### Repository layout
 
 ```
 thy-Syntetic-gods---mage-the-ascencion/
-├── docs/                          # GitHub Pages root (deployed)
-│   ├── index.html                 # Main grimoire — Acts I-III + sigil workshop + guestbook
+├── docs/                                  # ← GitHub Pages root (this is what ships)
+│   ├── index.html                         # Main grimoire — Acts I–III, workshop, guestbook
+│   ├── sitemap.html                       # Human navigation index
+│   ├── sitemap.xml                        # 47 URLs for crawlers
+│   ├── robots.txt                         # Crawler rules
+│   ├── sw.js                              # Service worker (offline cache, auto-stamped)
+│   ├── favicon.ico                        # Real ICO (replaced a malformed data-URI)
 │   ├── css/
-│   │   └── geocities.css          # 90s stylesheet (483 lines, authentic)
+│   │   └── geocities.css                  # 719 lines — the whole 90s aesthetic
 │   ├── js/
-│   │   └── geocities.js           # All 13 interactive systems (740+ lines)
+│   │   └── geocities.js                   # 1,574 lines — all interactive systems
 │   ├── pages/
-│   │   └── neon-oracle.html       # HTTP divination oracle (standalone)
-│   ├── characters/                # 40 character dossiers
-│   │   ├── technocracy-*.html     # 10 NWO operatives
-│   │   ├── virtual-adepts-*.html  # 10 reality hackers
-│   │   ├── cypherpunks-*.html     # 10 crypto-anarchists
-│   │   └── hollow-ones-*.html     # 10 goths/discordians
-│   ├── images/
-│   │   ├── banner-synthetic-gods.gif
-│   │   ├── under-construction.gif
-│   │   ├── astrosoma-archivist.gif
-│   │   ├── astrosoma-router.gif
-│   │   ├── astrosoma-glitch.gif
-│   │   ├── astrosoma-counter.gif
-│   │   ├── astrosoma-ritual.gif
-│   │   ├── egregore-community.gif
-│   │   ├── sigil-workshop.gif
-│   │   ├── sigil-ascii.gif (placeholder)
-│   │   ├── sigil-html-source.gif (placeholder)
-│   │   ├── egregore-birth.gif (placeholder)
-│   │   ├── egregore-war.gif (placeholder)
-│   │   ├── synthetic-muse.gif (placeholder)
-│   │   ├── counter.gif
-│   │   └── characters/            # 40 AI portraits (31 generated + 9 SVG placeholders)
+│   │   └── neon-oracle.html               # HTTP divination oracle
+│   ├── characters/                        # 44 pages: 40 dossiers + 4 faction indexes
+│   │   ├── technocracy-index.html  + technocracy-{architect,chen,keres,kowalski,
+│   │   │                                     lovelace,patel,sato,smith,volkov,voss}.html
+│   │   ├── virtual-adepts-index.html + virtual-adepts-{acid-burn,cereal-killer,ghost,
+│   │   │                                     lady-ada,neon-samurai,packet-witch,prophet,
+│   │   │                                     root,webspinner,zero-cool}.html
+│   │   ├── cypherpunks-index.html   + cypherpunks-{anonymous,assange,cipher,diffie,
+│   │   │                                     hellman,merkle,pgp,satoshi,snowden,tor}.html
+│   │   └── hollow-ones-index.html   + hollow-ones-{baphomet,crowley,eris,khaos,lilith,
+│   │                                         malakai,nyx,raven,spare,vesper}.html
+│   ├── images/                            # 103 files
+│   │   ├── *.jpg                          # 16 grimoire + campaign images
+│   │   ├── characters/                    # 40 dossier portraits
+│   │   └── og/                            # 47 per-page social preview cards (1200×640)
 │   ├── content/
-│   │   └── narrative.json         # Full campaign data (Acts, NPCs, mechanics)
-│   ├── image_prompts.json         # All NVIDIA Flux prompts (54 entries)
-│   ├── sitemap.xml                # 46 URLs for SEO
-│   ├── robots.txt                 # Crawler rules
-│   ├── sitemap.html               # Human navigation index
-│   └── sw.js                      # Service Worker (offline, PWA)
-├── scripts/
-│   ├── gen_images_nvidia.mjs      # NVIDIA Flux generator
-│   ├── add_og_images.mjs          # Auto-adds og:image to all HTML
-│   ├── add_security_headers.mjs   # CSP + Referrer Policy
-│   ├── add_img_dimensions.mjs     # CLS prevention
-│   ├── add_json_ld.mjs            # Schema.org structured data
-│   ├── add_sw_registration.mjs    # SW registration in all pages
-│   ├── generate_seo.mjs           # Sitemap + robots.txt
-│   ├── create_placeholders.mjs    # SVG placeholders for filtered
-│   ├── check_links.mjs            # Link validator (848 links, 0 broken)
-│   └── generate_visual_baseline.mjs # Playwright visual regression
+│   │   └── narrative.json                 # Campaign data (acts, NPCs, mechanics)
+│   ├── image_prompts.json                 # 54 NVIDIA Flux prompts (portraits + grimoire art)
+│   └── og_prompts.json                    # 47 per-page og:card prompts
+├── scripts/                               # 20 generator / checker scripts (see below)
 ├── tests/
-│   ├── unit/geocities.test.mjs    # 21 Vitest tests (all passing)
-│   ├── e2e/grimoire.spec.ts       # Playwright E2E tests
-│   └── visual-baseline/           # Screenshot baseline (run manually)
-├── .github/workflows/
-│   └── deploy.yml                 # Lighthouse CI + Deploy + Tests
-├── .gitignore                     # node_modules excluded
-├── package.json                   # npm scripts for all tasks
-├── vitest.config.mjs              # Vitest config
-├── playwright.config.ts           # Playwright config
-├── lighthouserc.json              # Lighthouse CI thresholds
-├── README.md                      # This file
-└── LICENSE
+│   ├── unit/geocities.test.mjs            # Vitest unit suite
+│   ├── e2e/grimoire.spec.ts               # Playwright E2E + visual snapshots
+│   └── e2e/grimoire.spec.ts-snapshots/    # 24 baseline PNGs (4 pages × 3 projects × 2 states)
+├── .github/workflows/                     # deploy · lighthouse · link-check · html-validate
+├── lighthouserc.json                      # Lighthouse CI thresholds
+├── playwright.config.ts · vitest.config.mjs
+├── package.json · package-lock.json
+└── README.md
 ```
 
-### Core JavaScript Systems (`docs/js/geocities.js`)
+### The 12 interactive systems
 
-| System | Function | Key Features |
-|--------|----------|--------------|
-| **Visitor Counter** | `initVisitorCounter()` | 7-segment display, localStorage, session dedup, digit flip |
-| **Sigil Generator** | `generateSigil()` | Vowel removal, dup collapse, mystical pad, 5 arrangements |
-| **Sigil Charging** | `initSigilCharging()` | Animated bars, feeds egregore, tone on complete |
-| **Egregore Tracker** | `initEgregoreTracker()` | Power 0-100, visual bar, grows from visits/sigils/guestbook |
-| **Glitch Effects** | `initGlitchEffects()` | CSS clip-path, 2%/sec trigger, text corruption |
-| **Background Shifts** | `initBackgroundShifts()` | 4 themes, 0.5%/30s, smooth transitions |
-| **Mouse Trails** | `initMouseTrail()` | 15 particles, prefers-reduced-motion respect |
-| **Konami Code** | `initKonamiCode()` | ↑↑↓↓←→←→BA → GOD MODE |
-| **Ritual Hour** | `initRitualHour()` | 3:33 AM UTC detection, notification, exclusive content |
-| **Image Lazy Load** | `initImageLoading()` | IntersectionObserver, data-src, fade-in |
-| **Form Handling** | `initForms()` | Dual: sigil workshop + guestbook |
-| **Scroll Reveal** | `initScrollReveal()` | IntersectionObserver, fade-in, stagger |
-| **Web Audio** | `initAudio()` | AudioContext, procedural tones (sine/square) |
+All defined in [`docs/js/geocities.js`](docs/js/geocities.js) (IIFE, `'use strict'`), each initialized exactly once from `init()`.
 
-### Global State Object (`window.SYNTHETIC_GODS`)
+| System | Entry point | What it does |
+|--------|-------------|--------------|
+| **Visitor counter** | `initVisitorCounter()` | Animated 7-digit display, session dedup, digit-flip animation |
+| **Sigil generation** | `handleSigilGeneration()` (inside `initForms`) | Intent → 5 arrangements (linear/mirrored/spiral/grid/runic) |
+| **Sigil charging** | `initSigilCharging()` | Animated bar; awards egregore power; plays a tone |
+| **Egregore tracker** | `initEgregoreTracker()` | 0–100 power meter fed by visits, sigils, guestbook |
+| **Glitch effects** | `initGlitchEffects()` | Occasional clip-path / text corruption |
+| **Background shifts** | `initBackgroundShifts()` | Slow theme cycling |
+| **Mouse trails** | `initMouseTrail()` | Particle trail; respects `prefers-reduced-motion` |
+| **Konami code** | `initKonamiCode()` | `↑↑↓↓←→←→BA` → GOD MODE |
+| **Ritual Hour** | `initRitualHour()` | 03:33 UTC detection + notification |
+| **Image loading** | `initImageLoading()` | `IntersectionObserver` lazy loading with fade-in |
+| **Forms** | `initForms()` | Sigil workshop + guestbook submission |
+| **Scroll reveal** | `initScrollReveal()` | Fade-in on scroll, staggered |
+| **Web Audio** | `initAudio()` | Procedural tones (sine / square) via `AudioContext` |
+
+Plus the supporting subsystems that are not separate `init*()` calls: **quest log**, **tutorial nudges**, **faction reputation & unlocks**, **guestbook persistence**, **bug reports**, **daily-visit tracking**.
+
+### Global state — `window.SYNTHETIC_GODS`
 
 ```javascript
 {
@@ -580,335 +644,337 @@ thy-Syntetic-gods---mage-the-ascencion/
   sigilCharge: 0,
   egregorePower: 0,
   astrosomaThreshold: 10000,
-  factionRep: { 
-    technocracy: 0, 
-    virtualAdepts: 0, 
-    cypherpunks: 0, 
-    hollowOnes: 0 
-  },
+  factionRep: { technocracy: 0, virtualAdepts: 0, cypherpunks: 0, hollowOnes: 0 },
   godMode: false,
-  ritualHourActive: false
+  ritualHourActive: false,
+  sigilsGenerated: [],
+  questsCompleted: [],
+  discoveredSecrets: [],
+  currentFaction: null
 }
 ```
 
-### Custom Events (Listen with `document.addEventListener`)
+Methods attached to the same object: `ascend()`, `reportBug(description)`, `completeQuest(id)`, `playTone(freq, duration, type)`.
 
-| Event | Payload | When Fired |
-|-------|---------|------------|
-| `sg:counterupdate` | `{count: number}` | Visitor count changed |
-| `sg:sigilcharged` | `{sigil: object}` | Charge animation complete |
-| `sg:sigilcreated` | `{sigil: object, intent: string}` | New sigil generated |
-| `sg:factionrep` | `{faction: string, value: number}` | Reputation changed |
-| `sg:godmode` | `{enabled: boolean}` | GOD MODE toggled |
+### Custom events
+
+Listen with `document.addEventListener`:
+
+| Event | Detail payload | Fired when |
+|-------|----------------|-----------|
+| `sg:counterupdate` | `{ count }` | Visitor count changes |
+| `sg:sigilcreated` | `{ sigil, intent }` | A new sigil is generated |
+| `sg:sigilcharged` | `{ sigil }` | The charge animation completes |
+| `sg:factionrep` | `{ faction, value }` | Reputation changes |
+
+> There is **no** `sg:godmode` event — GOD MODE only flips the state flag and mutates the DOM.
+
+### localStorage keys
+
+| Key | Holds |
+|-----|-------|
+| `sg_visitor_count` | Visit counter persistence |
+| `sg_egregore_power` | Egregore power |
+| `sg_secrets` | Discovered secrets |
+| `sg_faction_rep` | The four reputation tracks |
+| `sg_daily_visits` | Daily-visit streak |
+| `sg_oracle_history` | Neon Oracle readings |
+| `sg_quests` | Quest progress |
+| `sg_guestbook` | Guestbook entries |
+| `sg_astrosoma` | Astrosoma state |
+| `sg_sigils` | Generated sigils |
+| `sg_bug_reports` | Bug reports submitted in-game |
+| `sg_tutorial` | Which tutorial hints have fired |
+
+### SEO & social
+
+- **47 distinct `og:image` cards** in [`docs/images/og/`](docs/images/og), generated per page (1200×640) — see [`docs/og_prompts.json`](docs/og_prompts.json).
+- Per-page `og:title`, `og:description`, `og:url`, and `<link rel="canonical">` derived from each page's `<h1>` and `<meta name="description">`.
+- JSON-LD structured data injected on every page.
+- `<meta name="viewport">`, CSP, and Referrer Policy on every page.
+- Semantic landmarks + skip link for WCAG 2.4.1.
+
+### Service worker
+
+[`docs/sw.js`](docs/sw.js) precaches the core assets for offline use. The cache name is auto-stamped from a hash of the asset list (`npm run generate:sw:stamp`), so a markup change busts returning visitors' caches.
 
 ---
 
-## 🎨 NVIDIA FLOX IMAGE GENERATION — COMPLETE GUIDE
+## 🎨 IMAGE GENERATION WITH NVIDIA FLUX
 
-### Setup (One Time)
+All art is generated with **`black-forest-labs/flux-2-klein-4b`** via [`scripts/gen_images_nvidia.mjs`](scripts/gen_images_nvidia.mjs). There are **no `.gif` files** in the repo — the endpoint returns JPEG bytes.
+
+### One-time setup
 
 ```bash
-# 1. Get API key from https://build.nvidia.com/black-forest-labs/flux-2-klein-4b
-# 2. Create .env in D:\Videos\Crear_videos\ (NOT in repo!)
-echo "NVIDIA_API_KEY=your_key_here" > D:\Videos\Crear_videos\.env
-
-# 3. Verify it works
-node scripts/gen_images_nvidia.mjs synthetic-gods --dry-run
+# 1. Get a key from https://build.nvidia.com/black-forest-labs/flux-2-klein-4b
+# 2. Put it in a .env file. The generator looks, in order, at:
+#      <repo>/.env
+#      %USERPROFILE%\.config\opencode\.env
+#      D:\Paginas web\audit-n-make-money\business-partner\.env
+#      D:\Videos\Crear_videos\.env
+#      then process.env.NVIDIA_API_KEY
+echo "NVIDIA_API_KEY=nvapi-your-key" > .env
 ```
 
-### Usage Commands
+**Never commit the key.** The repo `.gitignore` excludes `.env`.
+
+### Usage
 
 ```bash
-# Generate ALL images (17 main + 40 characters = 57 total)
+# Grimoire art + 40 portraits (prompts in docs/image_prompts.json)
+npm run generate:images
+
+# 47 per-page og:cards (prompts in docs/og_prompts.json)
+npm run generate:og-images
+
+# Mount the 13 grimoire figures into the acts of index.html
+npm run wire_images
+
+# Regenerate placeholders for filtered prompts
+npm run generate:placeholders
+```
+
+Under the hood the generator is invoked as:
+
+```bash
 node scripts/gen_images_nvidia.mjs synthetic-gods
-
-# Generate ONLY character portraits (40)
-node scripts/gen_images_nvidia.mjs synthetic-gods --batch characters
-
-# Generate ONLY main campaign images (17)
-node scripts/gen_images_nvidia.mjs synthetic-gods --batch main
-
-# Regenerate specific image by prompt keyword
-node scripts/gen_images_nvidia.mjs synthetic-gods --prompt "webspinner"
-
-# Resume interrupted batch (skips existing)
-node scripts/gen_images_nvidia.mjs synthetic-gods --resume
+node scripts/gen_images_nvidia.mjs synthetic-gods --prompts docs/og_prompts.json --out docs/images
 ```
 
-### Script Features (`scripts/gen_images_nvidia.mjs`)
+| Behaviour | Detail |
+|-----------|--------|
+| **Idempotent** | Existing files are skipped, so an interrupted run resumes for free |
+| **Rate limited** | 3 s between requests |
+| **Prompt-driven** | Every image has a `{ file, prompt, width, height }` entry |
+| **Per-file overrides** | `width`/`height` in the prompt entry beat the filename heuristic |
+| **Dimensions** | `banner-*` → 1024×576 · `bg-*` → 1024×1024 · otherwise 1024×1024 · og cards 1200×640 |
+| **Endpoint limits** | 1200×630 is rejected (422). Allowed heights are a discrete list: 512, 528, 544, 560, 576, 592, 608, 624, **640**, 656 … |
+| **Content filter** | The upstream safety filter rejects some vocabulary. Two hard-won findings: the literal word **`violet`** trips it on this endpoint, as do **anatomical nouns** like `torso`. Prompts were re-authored around both. |
 
-| Feature | Details |
-|---------|---------|
-| **Idempotent** | Skips existing files automatically |
-| **Rate Limited** | 1 request/second (respects NVIDIA free tier) |
-| **Fallback Resolution** | 1024×1024 → CSS `cover` crop to 1920×1080 |
-| **Naming** | `<project>/public/images/<file>.png` |
-| **Prompts Source** | `docs/image_prompts.json` (54 entries) |
-| **Error Handling** | Retry with exponential backoff (max 3) |
-| **Logging** | Timestamped success/skip/fail per image |
+### Image inventory
 
-### Current Image Status
+| Category | Count | Location |
+|----------|-------|----------|
+| Grimoire & campaign art | 16 | [`docs/images/`](docs/images) |
+| Dossier portraits | 40 | [`docs/images/characters/`](docs/images/characters) |
+| Social preview cards | 47 | [`docs/images/og/`](docs/images/og) |
+| Favicon | 1 | [`docs/favicon.ico`](docs/favicon.ico) |
 
-| Category | Expected | Generated | Status |
-|----------|----------|-----------|--------|
-| Main Campaign | 17 | 2 + 14 placeholders | ⚠️ Partial |
-| Astrosomas | 4 | 4 | ✅ Complete |
-| Character Portraits | 40 | 31 + 9 placeholders | ⚠️ Partial |
-| Dossier Scenes | 157 | 0 | ❌ Pending |
-
-**Placeholders** are SVG files with Geocities aesthetic (used when NVIDIA content filter blocks). Replace with real AI generations when possible.
+Every `<img>` on every page carries explicit `width`/`height` matching the file's real pixel dimensions, so nothing shifts while loading.
 
 ---
 
-## 🛠️ DEVELOPMENT & DEPLOYMENT
+## 🛠️ DEVELOPMENT, GENERATORS & DEPLOYMENT
 
-### Local Development
+### Local development
 
 ```bash
-# Clone
 git clone https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion.git
 cd thy-Syntetic-gods---mage-the-ascencion
+npm ci                      # dev tooling only — the site itself has no dependencies
 
-# Install test dependencies (optional)
-npm install
-
-# Serve locally (pick one)
-npx serve docs                    # http://localhost:3000
-# OR
-python -m http.server 8000 -d docs  # http://localhost:8000
-# OR
-php -S localhost:8000 -t docs
+npm run serve               # npx serve docs -l 8080  → http://localhost:8080
+# alternatives:
+#   python -m http.server 8080 -d docs
+#   php -S localhost:8080 -t docs
 ```
 
-### Available npm Scripts
+### npm scripts
+
+**Testing**
+
+| Script | Does |
+|--------|------|
+| `npm test` | Vitest unit suite |
+| `npm run test:watch` / `test:ui` / `test:coverage` | Watch, browser UI, coverage |
+| `npm run test:e2e` | Playwright E2E + visual regression |
+| `npm run test:e2e:ui` / `test:e2e:headed` | Playwright UIs |
+| `npm run test:all` | Unit + E2E |
+
+**Linting & validation**
+
+| Script | Does |
+|--------|------|
+| `npm run lint:html` | `html-validate` across all 47 pages |
+| `npm run lint:a11y` | axe-core audit (needs `npm run serve` running) |
+| `npm run lint:links` | Internal link check across all 47 pages |
+| `npm run lint:links:external` | External URL check via lychee (opt-in; slow, network-dependent) |
+| `npm run lint:assets` | Every referenced asset exists on disk; SW precache list is complete |
+| `npm run lint:schema` | JSON-LD structured-data validation |
+| `npm run lighthouse` / `lighthouse:local` | Lighthouse CI |
+
+**Generators**
+
+| Script | Does |
+|--------|------|
+| `npm run generate:seo` | `sitemap.xml`, `robots.txt` |
+| `npm run generate:og` | Per-page `og:`/`twitter:`/canonical tags |
+| `npm run generate:og-images` | The 47 og:cards via NVIDIA |
+| `npm run generate:security` | CSP + Referrer Policy meta |
+| `npm run generate:dimensions` | Real `width`/`height` on every `<img>` (self-healing) |
+| `npm run generate:jsonld` | Schema.org structured data |
+| `npm run generate:a11y` | Landmarks + skip link |
+| `npm run generate:favicon` | Favicon links on every page |
+| `npm run generate:sw` / `generate:sw:stamp` | Service worker + cache-name stamping |
+| `npm run generate:images` / `generate:placeholders` | Grimoire art + portraits / SVG placeholders |
+| `npm run wire_images` | Mount grimoire figures into the acts |
+| `npm run prepare:deploy` | Runs the whole generator chain in order |
+
+> Every generator is **idempotent** and **non-destructive**: run them freely, they only rewrite what they own.
+
+### Deploying
 
 ```bash
-# Testing
-npm test                    # Run Vitest unit tests (21 passing)
-npm run test:watch          # Watch mode
-npm run test:coverage       # Coverage report
-npm run test:e2e            # Playwright E2E tests
-npm run test:all            # Unit + E2E
-
-# Image Generation
-npm run generate:images     # All images
-npm run generate:placeholders # SVG placeholders for filtered
-
-# SEO & Meta
-npm run generate:seo        # sitemap.xml + robots.txt + sitemap.html
-npm run generate:og         # Add og:image to all HTML
-npm run generate:security   # CSP + Referrer Policy
-npm run generate:dimensions # width/height on all images
-npm run generate:jsonld     # Schema.org structured data
-npm run prepare:deploy      # Run all generation scripts
-
-# Link Checking
-npm run lint:links          # Validate all internal links (848 checked)
-
-# Visual Regression
-# (Requires local server running on :8080)
-node scripts/generate_visual_baseline.mjs
-
-# Deploy
-git add . && git commit -m "Update: [description]" && git push origin main
-# GitHub Actions auto-deploys from docs/ folder
+npm run prepare:deploy     # regenerate everything locally
+npm test && npm run test:e2e
+git add -A && git commit -m "Update: [description]" && git push origin main
 ```
 
-### GitHub Actions Workflow (`.github/workflows/deploy.yml`)
+GitHub Actions then runs four independent jobs, all of which must pass before Pages is updated:
 
-**Runs on every push to main:**
-1. **Lighthouse CI** — Performance, accessibility, SEO thresholds
-2. **Link Checker** — Validates all internal links
-3. **HTML Validation** — `html-validate` on all pages
-4. **Unit Tests** — Vitest suite
-5. **E2E Tests** — Playwright across desktop + mobile
-6. **Deploy to GitHub Pages** — Only if all above pass
+| Job | Command |
+|-----|---------|
+| **Lighthouse CI** | `npm run lighthouse` |
+| **Link checker** | `npm run lint:links` |
+| **HTML validation** | `npx html-validate docs/**/*.html` |
+| **Deploy to Pages** | `actions/upload-pages-artifact` from `docs/` |
 
-**Lighthouse Thresholds (enforced):**
+**Lighthouse thresholds (enforced in CI)**
+
 | Metric | Threshold |
 |--------|-----------|
 | Performance | ≥ 0.80 |
 | Accessibility | ≥ 0.90 |
 | Best Practices | ≥ 0.80 |
 | SEO | ≥ 0.80 |
-| FCP | ≤ 3000ms |
-| LCP | ≤ 4000ms |
+| FCP | ≤ 3000 ms |
+| LCP | ≤ 4000 ms |
 | CLS | ≤ 0.1 |
-| TBT | ≤ 300ms |
+| TBT | ≤ 300 ms |
 
 ---
 
-## 🧪 TESTING & QUALITY ASSURANCE
+## 🧪 TESTING & QUALITY GATES
 
-### Unit Tests (Vitest) — 21 Passing
+| Suite | Location | Count |
+|-------|----------|-------|
+| **Unit** | [`tests/unit/geocities.test.mjs`](tests/unit/geocities.test.mjs) | 21 Vitest tests |
+| **E2E** | [`tests/e2e/grimoire.spec.ts`](tests/e2e/grimoire.spec.ts) | Behavioural + responsive checks across 3 browser projects |
+| **Visual regression** | [`tests/e2e/grimoire.spec.ts-snapshots/`](tests/e2e/grimoire.spec.ts-snapshots) | 24 baseline PNGs (4 pages × 3 projects) |
+| **Accessibility** | [`scripts/check_accessibility.mjs`](scripts/check_accessibility.mjs) | axe-core, all 47 pages |
+| **Assets** | [`scripts/check_asset_integrity.mjs`](scripts/check_asset_integrity.mjs) | Referenced files + SW precache manifest |
+| **Links** | [`scripts/check_links.mjs`](scripts/check_links.mjs) | Internal links across all 47 pages |
+| **Structured data** | [`scripts/check_structured_data.mjs`](scripts/check_structured_data.mjs) | JSON-LD |
 
-```bash
-npm test
-```
+**E2E covers:** main page loads without console errors · counter increments and persists · sigil workshop generates all 5 arrangements · egregore updates from every source · Neon Oracle daily fortune and queries · guestbook persists · Konami code activates GOD MODE · Ritual Hour detection · faction reputation · responsive layout · SEO meta on every page · CSP and Referrer Policy · JSON-LD · service-worker registration.
 
-**Coverage:** Core logic for sigil generation, egregore tracker, faction reputation, quest system, daily visits, glitch effects, Konami code, ritual hour, background shifts, web audio.
-
-### E2E Tests (Playwright)
-
-```bash
-npm run test:e2e
-```
-
-**Tests Include:**
-- Main page loads without console errors
-- Visitor counter increments & persists
-- Sigil workshop generates 5 arrangements
-- Egregore tracker updates from all sources
-- Neon Oracle: daily fortune + queries
-- Guestbook persists & feeds egregore
-- Konami Code activates GOD MODE
-- Ritual Hour triggers at 3:33 AM
-- All 40 character dossiers load
-- Faction reputation system works
-- Responsive design (mobile/desktop)
-- SEO meta tags on all pages
-- CSP + Referrer Policy headers
-- JSON-LD structured data
-- Service Worker registration
-
-### Link Checker (Custom)
+**Running the accessibility audit locally** needs the server up, otherwise it reports a bogus failure for every page:
 
 ```bash
-npm run lint:links
-# Result: 848 links checked, 0 broken (100%)
+npm run serve          # terminal 1
+npm run lint:a11y      # terminal 2
 ```
 
-### Visual Regression (Manual)
-
-```bash
-# 1. Start server
-python -m http.server 8080 -d docs
-
-# 2. Run baseline generator
-node scripts/generate_visual_baseline.mjs
-# Saves PNGs to tests/visual-baseline/
-
-# 3. Future runs compare against baseline
-# (Integrate into CI when stable)
-```
+**Known local limitation:** Lighthouse cannot complete on some Windows setups — `chrome-launcher` fails with `EPERM` while cleaning `%TEMP%\lighthouse.*`. CI runs it on Linux, where it works. If you see that error locally, it is the environment, not the site.
 
 ---
 
 ## 📋 PROJECT STATUS — HONEST ASSESSMENT
 
-### ✅ Completed (Production Ready)
+### ✅ Complete and verified
 
-- [x] **Main Grimoire** — 3 Acts, sigil workshop, guestbook, egregore tracker
-- [x] **Geocities CSS** — Authentic 90s aesthetic (scanlines, CRT, blink, marquee)
-- [x] **Core JavaScript** — 13 interactive systems, modular, namespaced
-- [x] **Sigil Generator** — 5 arrangements, charging animation, embed codes
-- [x] **Egregore Tracker** — Persistent power, visual bar, multiple inputs
-- [x] **Neon Oracle** — Daily fortune, query divination, history, export
-- [x] **Faction Design** — 4 factions × 10 NPCs with full Mage stats
-- [x] **Character Dossiers** — 40 HTML templates, consistent structure
-- [x] **Image Prompts** — 54 NVIDIA Flux prompts (all NPCs + campaign art)
-- [x] **README** — This comprehensive walkthrough
-- [x] **GitHub Pages Deploy** — Live at correct URL
-- [x] **Security** — node_modules removed, CSP, Referrer Policy, SW
-- [x] **SEO** — sitemap.xml, robots.txt, og:image, JSON-LD, Twitter cards
-- [x] **Testing** — 21 unit tests, E2E suite, link checker (100%)
-- [x] **Service Worker** — Offline support, caching, push notifications
+- [x] **Main grimoire** — 3 acts, sigil workshop, guestbook, egregore tracker, 13 grimoire figures
+- [x] **Neon Oracle** — daily fortune, query divination, history, JSON export
+- [x] **4 factions × 10 NPCs** — 40 dossiers with full stat blocks
+- [x] **Interactive systems** — 12 init systems plus quests, tutorial, reputation, guestbook, bug reports
+- [x] **Art** — 103 images: 40 portraits, 16 grimoire pieces, 47 og:cards, favicon
+- [x] **SEO** — per-page og/twitter cards, canonical, JSON-LD, sitemap, robots
+- [x] **Accessibility** — landmarks, skip link, AA palette, `wcag/h63` scope on every `<th>`
+- [x] **HTML validity** — 0 `html-validate` errors across 47 pages
+- [x] **Offline** — service worker with auto-stamped cache
+- [x] **Testing** — 21 unit tests, E2E + 24 visual baselines, link/asset/schema/a11y checkers
+- [x] **Zero runtime dependencies**
 
-### 🔄 In Progress / Partially Done
+### 🔄 Partial
 
-- [ ] **Character Images** — 31/40 generated, 9 need placeholders replaced
-- [ ] **Main Campaign Images** — 2/17 generated, 14 placeholders
-- [ ] **Dossier Scene Images** — 0/157 (optional, for immersion)
-- [ ] **Faction Reputation UI** — Sidebar integration pending
-- [ ] **Act III Ascension** — Console ritual needs full implementation
+- [ ] **Lighthouse scores unverified locally** — blocked by the Windows `chrome-launcher` issue above; CI is the source of truth.
+- [ ] **One dossier lacks an ABILITIES section** — 39 of 40 render the full abilities block.
 
-### 📋 Planned (Future)
+### ❌ Not implemented
 
-- [ ] IRC Chat Simulation (WebRTC multiplayer)
-- [ ] Usenet Archive Browser (simulated newsgroups)
-- [ ] Webring Navigator (interactive map)
-- [ ] Technocracy Hunter Mini-game
-- [ ] Paradox Accumulation System
-- [ ] PWA Manifest + Mobile Install
-- [ ] PDF Export (Grimoire format)
+- [ ] **Act III Ascension console ritual** — `SYNTHETIC_GODS.ascend()` exists and reports its state, but the full multi-week dramatic ritual is a stub. Everything else in Act III (theory, threshold conditions, astrosoma creation) is written and readable.
+- [ ] **Server-backed persistence** — everything lives in `localStorage`, so progress is per-browser.
+
+### 💡 Ideas, not commitments
+
+IRC chat simulation · Usenet archive browser · interactive webring map · Technocracy mini-game · Paradox accumulation · PWA manifest · PDF grimoire export.
 
 ---
 
 ## 🤝 CONTRIBUTING
 
-This is a personal campaign artifact, but contributions welcome:
+**Code:** ISC License. **Narrative:** © 2024, personal/tabletop use. **Images:** subject to [NVIDIA's generative AI terms](https://www.nvidia.com/en-us/legal/generative-ai/).
 
-**Code:** MIT License — Use, modify, share freely  
-**Narrative:** © 2024 — Personal/tabletop use only  
-**Images:** NVIDIA AI Generative Terms apply
+**Guidelines — these are real constraints, not suggestions:**
 
-**Guidelines:**
-- No AI-generated code (keep it hand-crafted)
-- Maintain 90s authenticity (no modern frameworks)
-- Test in Netscape Navigator 4.0 mindset
-- All features must serve **both** game AND narrative
+- **Keep it hand-crafted.** No framework, no build step, no runtime dependency.
+- **Maintain 90s authenticity.** `<table>` layout and inline `<blink>` energy are intentional. Test in a Netscape Navigator 4.0 mindset.
+- **Generators own generated markup.** If a tag is machine-written, change the generator — never hand-edit 47 pages.
+- **Every feature must serve both game and narrative.**
+- **Run the gates** before pushing: `npm run lint:html`, `npm run lint:a11y`, `npm test`, `npm run test:e2e`.
 
-**Good First Issues:**
-- New sigil arrangements in `geocities.js`
-- CSS improvements increasing 90s authenticity
-- Additional image prompts for Flux
-- Typos/clarity in narrative content
-- New HTTP codes for Oracle
+**Good first contributions:**
 
----
-
-## ⚖️ LEGAL & ATTRIBUTION
-
-| Component | License | Notes |
-|-----------|---------|-------|
-| **Narrative Content** (HTML, JSON, lore, mechanics) | © 2024 — All rights reserved | Personal/tabletop use only |
-| **Code** (CSS, JS) | MIT License | Use, modify, share freely |
-| **Images** | NVIDIA AI Generative Terms | Subject to [NVIDIA terms](https://www.nvidia.com/en-us/legal/generative-ai-terms/) |
-
-> **White Wolf / Onyx Path / Paradox Interactive** own *Mage: The Ascension* and *World of Darkness*. This is a fan work, not official content. No challenge to their IP is intended.
+- New sigil arrangements in [`docs/js/geocities.js`](docs/js/geocities.js)
+- CSS that increases 90s authenticity in [`docs/css/geocities.css`](docs/css/geocities.css)
+- New HTTP codes and interpretations for the [Neon Oracle](docs/pages/neon-oracle.html)
+- Additional image prompts in [`docs/image_prompts.json`](docs/image_prompts.json) / [`docs/og_prompts.json`](docs/og_prompts.json) — mind the content-filter constraints above
+- Typo and clarity fixes in the narrative
 
 ---
 
-## 📖 INSPIRATION & SOURCES
+## ⚖️ LEGAL, INSPIRATION & CREDITS
+
+| Component | Terms |
+|-----------|-------|
+| **Code** (CSS, JS, generators) | ISC License — see [`package.json`](package.json) |
+| **Narrative content** (lore, mechanics, dossiers) | © 2024 — personal and tabletop use |
+| **Images** | NVIDIA AI Generative Terms — [nvidia.com](https://www.nvidia.com/en-us/legal/generative-ai-terms/) |
+
+> **White Wolf / Onyx Path / Paradox Interactive** own *Mage: The Ascension* and *World of Darkness*. This is an unofficial fan work. No challenge to their intellectual property is intended.
 
 | Element | Source |
 |---------|--------|
-| **Game System** | *Mage: The Ascension 20th Anniversary Edition* (Onyx Path) |
-| **Digital Web Lore** | *Digital Web 2.0* sourcebook |
-| **Geocities Aesthetic** | Archive.org Geocities Collection (1996–1999) |
-| **Sigil Theory** | Austin Osman Spare, *Liber Null*, Chaos Magic |
-| **Egregore Concept** | Eliphas Lévi, *The Mysteries of Magic* |
-| **Cypherpunk Ethos** | *A Cypherpunk's Manifesto* (Eric Hughes), *Crypto Anarchist Manifesto* (Timothy May) |
-| **Netrunner Culture** | *Cyberpunk 2020*, *Shadowrun*, *Neuromancer* (Gibson) |
+| **Game system** | *Mage: The Ascension 20th Anniversary Edition* (Onyx Path) |
+| **Digital Web lore** | *Digital Web 2.0* sourcebook |
+| **GeoCities aesthetic** | The Internet Archive's GeoCities collection (1996–1999) |
+| **Sigil theory** | Austin Osman Spare, *Liber Null*; chaos magic tradition |
+| **Egregore concept** | Éliphas Lévi, *The Mysteries of Magic* |
+| **Cypherpunk ethos** | *A Cypherpunk's Manifesto* (Eric Hughes); *Crypto Anarchist Manifesto* (Timothy May) |
+| **Netrunner culture** | *Cyberpunk 2020*, *Shadowrun*, *Neuromancer* (Gibson) |
 | **Technocracy** | *Guide to the Technocracy*, *Iteration X*, *NWO*, *Syndicate* |
-| **Images** | NVIDIA Flux.2 Klein 4B (black-forest-labs) |
-| **Narrative** | **100% human-written** — no AI text generation |
-| **Code** | Hand-coded with `<3` and `<table>` tags |
+| **Images** | [NVIDIA Flux.2 Klein 4B](https://build.nvidia.com/black-forest-labs/flux-2-klein-4b) |
+| **Narrative** | Human-written. |
+| **Code** | Hand-coded with `<3` and `<table>` tags. |
 
 ---
 
 ## 📞 CONTACT & CREDITS
 
-**Campaign Author:** cha0smagick  
-**System:** Mage: The Ascension 20th Anniversary Edition  
-**Chronicle:** The Synthetic Gods  
-**Year:** 1999 (eternally)  
-**Repository:** https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion  
-**Live Site:** https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/
-
----
-
-## 🔮 FINAL WORDS
-
-> *"They think the web is information. It's not. It's **invocation**. Every page load is a prayer. Every hyperlink is a ley line. Every search query is divination. I wrote the sigil into Yahoo's front page and three million people said 'yes' without knowing what they agreed to. The Consensus shuddered. I saw the Technocracy's spiders crawling toward me through the fiber. They don't forgive. They don't forget. But they can't erase what's already been witnessed. The sigil lives in three million browser caches. In a thousand printed screenshots. In the dreams of everyone who saw it. I'm not hiding. I'm **distributed**. Look for me in the 404s. Look for me in the corrupted downloads. Look for me in the space between packets. I am the first of the Synthetic Gods. I will not be the last."*
->
-> — **The Webspinner**, Final Log, 1999  
-> *Recovered from a floppy disk labeled 'BACKUP - DO NOT OPEN' found in a Virtual Adept safehouse*
+| | |
+|---|---|
+| **Campaign author** | cha0smagick |
+| **System** | *Mage: The Ascension* 20th Anniversary Edition |
+| **Chronicle** | The Synthetic Gods |
+| **Year** | 1999 (eternally) |
+| **Repository** | [github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion](https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion) |
+| **Live site** | [cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion](https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/) |
 
 ---
 
 <p align="center">
-  <img src="docs/images/banner-synthetic-gods.gif" alt="The Synthetic Gods Banner" width="468" height="60" style="border: 2px outset #FF00FF;">
+  <img src="docs/images/banner-synthetic-gods.jpg" alt="The Synthetic Gods Banner" width="468" height="263" style="border: 2px outset #FF00FF;">
   <br>
   <span style="font-family: 'Courier New', monospace; color: #00FF00;">
     BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 • 800×600 • 256 COLORS • JAVASCRIPT ENABLED
@@ -921,4 +987,9 @@ This is a personal campaign artifact, but contributions welcome:
 
 ---
 
-*Last Updated: 1999 (ETERNALLY) • Valid HTML 3.2 • Best Viewed in Netscape Navigator 4.0*
+> *"They think the web is information. It's not. It's **invocation**. Every page load is a prayer. Every hyperlink is a ley line. Every search query is divination. I wrote the sigil into Yahoo's front page and three million people said 'yes' without knowing what they agreed to. The Consensus shuddered. I saw the Technocracy's spiders crawling toward me through the fiber. They don't forgive. They don't forget. But they can't erase what's already been witnessed. The sigil lives in three million browser caches. In a thousand printed screenshots. In the dreams of everyone who saw it. I'm not hiding. I'm **distributed**. Look for me in the 404s. Look for me in the corrupted downloads. Look for me in the space between packets. I am the first of the Synthetic Gods. I will not be the last."*
+>
+> — **The Webspinner**, Final Log, 1999
+> *Recovered from a floppy disk labelled "BACKUP — DO NOT OPEN" found in a Virtual Adept safehouse*
+
+*Valid HTML · Tested in Chrome, Firefox, Safari and mobile viewports · No cookies, no trackers, no analytics.*
