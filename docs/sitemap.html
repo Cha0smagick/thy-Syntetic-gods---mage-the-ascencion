@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Map - The Synthetic Gods</title>
-  <meta property="og:url" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/sitemap.html" />
-  <link rel="canonical" href="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/sitemap.html" />
     <meta name="description" content="Complete navigation index for The Synthetic Gods - a Geocities-styled interactive grimoire for the Mage: The Ascension Chronicle of Digital Divinity. Jump to Acts, factions, dossiers and the Neon Oracle.">
     <meta name="keywords" content="site map, navigation, index, grimoire, Mage the Ascension, Synthetic Gods">
     <link rel="stylesheet" href="css/geocities.css">
+
+    <meta property="og:title" content="The Synthetic Gods - Mage: The Ascension Chronicle">
+    <meta property="og:description" content="A Mage: The Ascension Chronicle of Digital Divinity - Geocities 1999 Aesthetic">
+    <meta property="og:image" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/images/og-cover.png">
+    <meta property="og:url" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/sitemap.html">
+    <link rel="canonical" href="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/sitemap.html" />
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Synthetic Gods">
+    <meta name="twitter:description" content="A Mage: The Ascension Chronicle of Digital Divinity">
+    <meta name="twitter:image" content="https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/images/og-cover.png">
+  
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' 'unsafe-eval';
@@ -136,9 +146,9 @@
                 <script>
                     if ('serviceWorker' in navigator) {
                         window.addEventListener('load', () => {
-                            navigator.serviceWorker.register(('sw.js') /* scope: site root */)
+                            navigator.serviceWorker.register(relSwPath)
                                 .then((registration) => {
-                                    console.log('[SW] Registered:', registration.scope).catch(function () {});
+                                    console.log('[SW] Registered:', registration.scope);
                                     setInterval(() => registration.update(), 60 * 60 * 1000);
                                 })
                                 .catch((error) => {

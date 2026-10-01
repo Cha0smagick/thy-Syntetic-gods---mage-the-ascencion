@@ -27,7 +27,8 @@
     "generate:security": "node scripts/add_security_headers.mjs",
     "generate:dimensions": "node scripts/add_img_dimensions.mjs",
     "generate:jsonld": "node scripts/add_json_ld.mjs",
-    "prepare:deploy": "npm run generate:seo && npm run generate:og && npm run generate:security && npm run generate:dimensions && npm run generate:jsonld"
+    "generate:sw": "node scripts/add_sw_registration.mjs",
+    "prepare:deploy": "npm run generate:seo && npm run generate:og && npm run generate:security && npm run generate:dimensions && npm run generate:jsonld && npm run generate:sw"
   },
   "repository": {
     "type": "git",

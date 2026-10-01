@@ -119,6 +119,8 @@ function generateSitemapIndex() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Map - The Synthetic Gods</title>
+    <meta name="description" content="Complete navigation index for The Synthetic Gods - a Geocities-styled interactive grimoire for the Mage: The Ascension Chronicle of Digital Divinity. Jump to Acts, factions, dossiers and the Neon Oracle.">
+    <meta name="keywords" content="site map, navigation, index, grimoire, Mage the Ascension, Synthetic Gods">
     <link rel="stylesheet" href="css/geocities.css">
 </head>
 <body>
