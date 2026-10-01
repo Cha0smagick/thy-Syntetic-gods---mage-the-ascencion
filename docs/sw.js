@@ -4,7 +4,7 @@
  * Version: 1.0.0
  */
 
-const CACHE_NAME = 'synthetic-gods-ee19267b26d3';
+const CACHE_NAME = 'synthetic-gods-a7087dccb561';
 const OFFLINE_URL = 'index.html';
 
 // Assets to cache on install

@@ -701,3 +701,19 @@ img.gif { border-color: var(--highlight); }
 .c-highlight { color: var(--highlight); }
 .c-tertiary  { color: var(--text-tertiary); }
 .c-primary   { color: var(--text-primary); }
+
+/* --- Grimoire Figures ---------------------------------------------- */
+/* Illustrations mounted inline in the grimoire body text (astrosomas,
+   egregore stages, sigil diagrams). Centred, caption-plate framed so they
+   read as plate figures rather than page chrome. */
+.grimoire-figure {
+  display: block;
+  margin: 15px auto;
+  max-width: 100%;
+}
+
+.grimoire-figure + p,
+.grimoire-figure + h3,
+.grimoire-figure + h4 {
+  margin-top: 15px;
+}
