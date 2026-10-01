@@ -30,11 +30,29 @@ const SW_PATH = path.join(DOCS_DIR, 'sw.js');
 // Mirror the asset lists already declared inside sw.js so the hash covers
 // exactly what gets precached. Kept as literals rather than parsed from sw.js
 // so a malformed sw.js can never silently produce an empty hash.
+//
+// The images MUST be listed here. sw.js precaches them cache-first, so without
+// them a redeploy that only changes artwork (e.g. the banner masthead) would
+// leave every returning visitor on the stale cached image.
 const TRACKED_ASSETS = [
   'index.html',
   'pages/neon-oracle.html',
   'css/geocities.css',
   'js/geocities.js',
+  'images/banner-synthetic-gods.jpg',
+  'images/under-construction.jpg',
+  'images/sigil-workshop.jpg',
+  'images/egregore-community.jpg',
+  'images/astrosoma-archivist.jpg',
+  'images/astrosoma-router.jpg',
+  'images/astrosoma-glitch.jpg',
+  'images/astrosoma-counter.jpg',
+  'images/astrosoma-ritual.jpg',
+  'images/sigil-ascii.png',
+  'images/sigil-html-source.png',
+  'images/egregore-birth.png',
+  'images/egregore-war.png',
+  'images/synthetic-muse.png',
   'sitemap.xml',
   'robots.txt',
   'sitemap.html',

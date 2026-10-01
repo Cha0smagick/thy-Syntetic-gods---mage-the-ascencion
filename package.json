@@ -26,6 +26,7 @@
     "generate:og": "node scripts/add_og_images.mjs",
     "generate:og-images": "node scripts/gen_images_nvidia.mjs synthetic-gods --prompts docs/og_prompts.json --out docs/images",
     "wire_images": "node scripts/wire_images.mjs",
+    "generate:banner-text": "node scripts/add_banner_text.mjs",
     "generate:security": "node scripts/add_security_headers.mjs",
     "generate:dimensions": "node scripts/add_img_dimensions.mjs",
     "generate:jsonld": "node scripts/add_json_ld.mjs",

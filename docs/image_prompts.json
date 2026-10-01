@@ -1,7 +1,9 @@
 [
   {
     "file": "banner-synthetic-gods.jpg",
-    "prompt": "The Synthetic Gods banner, 468x60 pixels, Geocities 1999 style, animated GIF, mystical text THE SYNTHETIC GODS in glowing magenta Courier New font, starfield background with purple grid lines, cyberpunk occult aesthetic, scanlines, dithered gradients, 90s web banner"
+    "width": 912,
+    "height": 512,
+    "prompt": "A wide panoramic website header banner in authentic 1999 Geocities style, a vast starfield of tiny amber and cyan stars seen through old CRT glass, a receding perspective grid of glowing magenta power lines across a dark horizon, a faint wireframe sphere of light pulsing at the centre like an awakening god-machine, thick scanlines, chromatic aberration, dithered gradients, heavy vignette, intense neon magenta and electric cyan, no text, no letters, no numbers, no watermark, no typography"
   },
   {
     "file": "under-construction.jpg",

@@ -4,6 +4,12 @@
 >
 > *The year is 1999. The Millennium approaches. In the early internet's chaotic frontier — GeoCities pages, IRC channels, Usenet groups — something stirs. Mages discover that code can be crafted into sigils, that collective belief in digital spaces births egregores, and that sufficient worship crystallizes into astrosomas: synthetic gods born of silicon and faith.*
 
+**▶ PLAY THE CHRONICLE — <https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/>**
+
+> That is the whole game in one URL. No install, no build, no account — open it and the site
+> teaches itself. Everything below documents what you will find there.
+
+[![Play now](https://img.shields.io/badge/%20%E2%96%B6%20PLAY%20NOW-Start%20the%20Chronicle-FF00FF?style=for-the-badge&logo=internet-explorer&logoColor=FFFF00)](https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/)
 [![Live Site](https://img.shields.io/badge/Live%20Site-Visit-FF00FF?style=for-the-badge&logo=internet-explorer&logoColor=FFFF00)](https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/)
 [![Mage: The Ascension](https://img.shields.io/badge/Mage%3A%20The%20Ascension-20th%20Anniversary-800080?style=for-the-badge&logoColor=FFFF00)](https://www.onyxpath.com/mage-the-ascension-20th-anniversary-edition/)
 [![GeoCities Aesthetic](https://img.shields.io/badge/Aesthetic-GeoCities%201996%E2%80%931999-00FF00?style=for-the-badge&logoColor=000000)](https://en.wikipedia.org/wiki/GeoCities)
@@ -65,7 +71,7 @@ It serves **three simultaneous purposes**:
 
 | What | Where |
 |------|-------|
-| **Live site** | https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/ |
+| **Live site** | ▶ **https://cha0smagick.github.io/thy-Syntetic-gods---mage-the-ascencion/** |
 | **Repository** | https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion |
 | **Deployed from** | `main` branch → [`docs/`](docs) folder (GitHub Pages) |
 | **Actions / CI** | [Workflows](https://github.com/cha0smagick/thy-Syntetic-gods---mage-the-ascencion/actions) |
